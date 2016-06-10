@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+<div class="blade-wrapper">
+  <!-- THREE SIXTY COMPONENT -->
+  <section>
+    <div class="arc-threesixty" data-frames="72" data-json="{'interior':[{'baseUrl':'../../360/2016/ILX/ILX_00/index.html', 'colorName':'Self Hosted', 'colorSwatch':'#000000'},{'baseUrl':'//www.acura.com/InteractiveFeatures/model_360_intSpin.html?model=TLX&year=2016', 'colorName':'External', 'colorSwatch':'#31425D'}], 'exterior':[{'baseUrl':'../../360/2016/ILX/exterior/Bellanova_White/ILX_Bellanova_White_00', 'colorName':'Bellanova White', 'colorSwatch':'#DBDBDB'},{'baseUrl':'../../360/2016/ILX/exterior/San_Marino_Red/ILX_San_Marino_Red_00', 'colorName':'San Marino Red', 'colorSwatch':'#432325'},{'baseUrl':'../../360/2016/ILX/exterior/Slate_Silver_Metallic/ILX_Slate_Silver_Metallic_00', 'colorName':'Slate Silver Metallic', 'colorSwatch':'#ccc'},{'baseUrl':'../../360/2016/ILX/exterior/Catalina_Blue_Pearl/ILX_Catalina_Blue_Pearl_00', 'colorName':'Catalina Blue Pearl', 'colorSwatch':'#31425D'},{'baseUrl':'../../360/2016/ILX/exterior/Crystal_Black_Pearl/ILX_Crystal_Black_00', 'colorName':'Crystal Black Pearl', 'colorSwatch':'#303030'}], 'interiorDisclaimer':'Shown: Ebony leather<br><em>Other colors available</em>', 'exteriorDisclaimer':'--exterior disclaimer--'}">
+      <div class="acr-heading acr-left">
+        <h6 class="acr-black">360° Perspective</h6>
+        <div class="acr-underheading"></div>
+      </div>
+      <div class="arc-container">
+        <div class="display-wrapper">
+
+          <div class="threesixty exterior item is-active">
+            <ol class="threesixty-images" id="threesixty_images"></ol>
+            <div class="spinner"><div class="animated-spinner"></div></div>
+            <div class="threesixty-icon"><img src="../../img/360-icon.png" alt=""></div>
+          </div>
+
+          <div class="interior item"></div>
+
+        </div>
+        <div class="row bottom">
+          <div class="color-selector">
+            <div class="row buttons">
+              <a href="#" class="acr-cta-btn is-toggle btn-display-selector is-active" data-target="exterior">Exterior</a>
+              <a href="#" class="acr-cta-btn is-toggle btn-display-selector" data-target="interior">Interior</a>
+            </div>
+          </div>
+          <div class="cell-spacer"></div>
+          <div class="build-n-price is-internal">
+            <div class="row buttons">
+              <a href="#" class="acr-cta-btn is-red-bg is-small is-liquid" data-target="interior"><span>Build</span><svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#arrow-noOutline"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row build-n-price">
+        <a href="#" class="acr-cta-btn is-dark">Build and Price</a>
+      </div>
+    </div>
+  </section>
+  <!-- END THREE SIXTY COMPONENT -->
+</div>
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>
