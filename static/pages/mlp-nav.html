@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+  <header class="acr-header" role="menu">
+    <div class="acr-header-bar">
+      <nav role="menubar">
+        <span class="acr-icon-button-close acr-f1 acr-white" title="Close" role="button" tabindex="0"></span>
+        <!-- Mobile Header -->
+        <header>
+          <span class="menu" role="button" tabindex="0" title="Toggle Menu">
+            Menu
+            <span></span>
+            <span></span>
+          </span>
+          <a href="#" class="logo"><h1 class="logo">
+            <svg class="acr-icon-header acr-icon-nav"><use xlink:href="#acura-stacked"></use></svg>
+          </h1></a>
+          <a href="#" class="dealers-btn dealers-btn-mobile">
+            <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
+            <span>Dealers</span>
+          </a>
+        </header>
+        <!-- >= Tablet BP -->
+        <a href="#" class="logo hidden-xs hidden-md hidden-lg">
+        <h1 class="logo" title="Acura"><svg class="acr-icon-stacked  acr-icon-nav"><use xlink:href="#acura-stacked"></use></svg></h1></a>
+        <a href="#" class="logo hidden-xs hidden-sm">
+        <h1 class="logo" title="Acura"><svg class="acr-icon-slogan  acr-icon-nav"><use xlink:href="#acura-slogan"></use></svg></h1></a>
+        <section>
+          <ul class="primary">
+            <li data-flyout="vehicles-flyout">
+              <a href="#" aria-haspopup="true">Vehicles</a>
+              <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+            </li>
+            <li data-flyout="shopping-tools-flyout">
+              <a href="#" aria-haspopup="true">Shopping Tools</a>
+              <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ul class="secondary">
+            <li class="dealer-locator">
+              <button class="dealers-btn">
+                <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
+                <span>Dealers</span>
+              </button>
+              <form method="GET" action="http://www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="acr-form-validate search" target="_self" novalidate>
+                <svg class="acr-icon"><use xlink:href="#find-dealer"></use></svg>
+                <span class="acr-icon-locator-error acr-red"></span>
+                <aside class="form">
+                  <span class="field">
+                    <input type="number" name="zip" id="nav-dealer-locator" placeholder="Enter your zip" maxlength="5" pattern="^[0-9]{5}$" required />
+                    <label for="nav-dealer-locator" class="sr-only">Enter your zip code to locate the nearest Acura dealer</label>
+                  </span>
+                  <button type="submit" class="acr-icon-explore acr-f2 acr-white acr-bg-red" title="Go"></button>
+                  <button type="button" class="acr-icon-button-close acr-f1 acr-white" title="Close" tabindex="0"></button>
+                </aside>
+              </form>
+            </li>
+            <li class="hidden-sm">
+              <a href="#">Certified Pre-Owned</a>
+            </li>
+            <li class="hidden-sm">
+              <a href="#">Owners</a>
+            </li>
+            <li class="site-search">
+              <button class="search-link">
+                <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
+              </button>
+              <form method="GET" action="http://www.acura.com/Search/Results.aspx" class="acr-form-validate search" target="_self" novalidate>
+                <aside class="form">
+                  <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
+                  <span class="field">
+                    <input type="text" id="nav-search" name="q" placeholder="Search" required />
+                    <label for="nav-search" class="sr-only">Search for more information on Acura vehicles</label>
+                  </span>
+                  <button type="submit" class="acr-icon-explore acr-f2 acr-white acr-bg-red" title="Go"></button>
+                  <button type="button" class="acr-icon-button-close acr-f1 acr-white" title="Close" tabindex="0"></button>
+                </aside>
+              </form>
+            </li>
+            <li class="menu" role="button" tabindex="0">
+              Menu
+              <span></span>
+              <span></span>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+    <!-- MOBILE & TABLET HAMBURGER MENUS -->
+    <nav class="acr-hamburger-nav" role="navigation">
+      <!-- MOBILE MENU -->
+      <ul role="menu">
+        <li role="menuitem" tabindex="0">
+          <a href="#" class="scroll-anchor">Vehicles</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Future Vehicles</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Build &amp; Price</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Current Offers</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Search Inventory</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Request A Quote</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Certified Pre-Owned</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Owners</a>
+        </li>
+      </ul>
+      <!-- TABLET MENU -->
+      <ul role="menu">
+        <li role="menuitem" tabindex="0">
+          <a href="#" class="scroll-anchor">Vehicles</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Future Vehicles</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Build &amp; Price</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Current Offers</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Search Inventory</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Request A Quote</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Certified Pre-Owned</a>
+        </li>
+        <li role="menuitem" tabindex="0">
+          <a href="#">Owners</a>
+        </li>
+      </ul>
+    </nav>  <!-- Vehicles Flyout for Desktop -->
+    <nav class="flyout" data-flyout="vehicles-flyout">
+      <aside>
+      <span class="flyout-disclaimer">*Prices shown are Acura suggested retail prices only and do not include taxes, title, license, destination, handling charges or registration & documentary fees. Acura vehicle accessory costs, labor and installation vary. Dealers set their own prices. Please consult your selected dealer. Base MSRP for NSX is with Iron Rotors and Black Calipers which will not be available until late 2016</span>
+        <section>
+          <h3>Sedans</h3>
+          <a href="#" class="model">
+            <img src="../../img/ILX_275x125.png" alt="">
+            <p>
+              <strong>ILX</strong>
+              <span>Compact Sports Sedan<br>
+              Starting at $27,900</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+          <a href="#" class="model">
+            <img src="../../img/TLX_275x125.png" alt="">
+            <p>
+              <strong>TLX</strong>
+              <span>Midsize Sports Sedan<br>
+              Starting at $31,695</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+          <a href="#" class="model">
+            <img src="../../img/RLX_275x125.png" alt="">
+            <p>
+              <strong>RLX</strong>
+              <span>Spacious Premium Sedan<br>
+              Starting at $54,450</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+        </section>
+        <section>
+          <h3>SUVs</h3>
+          <a href="#" class="model">
+            <img src="../../img/RDX__275x125.png" alt="">
+            <p>
+              <strong>RDX</strong>
+              <span>Midsize Crossover SUV<br>
+              Starting at $35,270</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+          <a href="#" class="model">
+            <img src="../../img/MDX_275x125.png" alt="">
+            <p>
+              <strong>MDX</strong>
+              <span>Three-Row Premium SUV<br>
+              Starting at $42,865</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+          <h3>Sportscars</h3>
+          <a href="#" class="model">
+            <img src="../../img/NSX_275x125.png" alt="">
+            <p>
+              <strong>NSX</strong>
+              <span>Next–Generation Supercar<br>
+              Starting at $TBD</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+        </section>
+        <section>
+          <div>
+            <h3>Future Vehicles</h3>
+            <a href="#" class="model">
+              <img src="../../img/FUTURE_275x125.png" alt="">
+              <p>
+                <span>See what's next in Precision Crafted Peformance</span>
+                <span class="hidden">
+                Lorem ipsum
+                </span>
+              </p>
+            </a>
+          </div>
+        </section>
+    
+      </aside>
+    </nav>
+    <!-- Shopping Tools Flyout for Desktop -->
+    <nav class="flyout" data-flyout="shopping-tools-flyout">
+      <aside>
+        <section class="acr-shopping-tools-header">
+          <a class="acr-tools"
+            href="http://www.google.com" title="Build & Price">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Build &amp; Price
+              <div class="hoverline"></div>
+            </div>
+          </a>
+          <a class="acr-tools"
+            href="http://www.google.com" title="Compare Models">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compare-models"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Compare Models
+              <div class="hoverline"></div>
+            </div>
+          </a>
+          <a class="acr-tools"
+            href="http://www.google.com" title="Search Inventory">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-inventory"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Search Inventory
+              <div class="hoverline"></div>
+            </div>
+          </a>
+          <a class="acr-tools"
+            href="http://www.google.com" title="Find A Dealer">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trade-in-value"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Find A Dealer
+              <div class="hoverline"></div>
+            </div>
+          </a>
+          <a class="acr-tools"
+            href="http://www.google.com" title="Calculate Payment">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calculate-payment"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Calculate Payment
+              <div class="hoverline"></div>
+            </div>
+          </a>
+          <a class="acr-tools"
+            href="http://www.google.com" title="Current offers">
+            <svg class="acr-icon">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#special-offers"></use>
+            </svg>
+    
+            <div class="acr-desc">
+              Current offers
+              <div class="hoverline"></div>
+            </div>
+          </a>
+        </section>
+        <section>
+          <ul>
+            <li>
+              <h3>Financial Tools</h3>
+              <ol>
+                <li><a href="#">Financial Services</a></li>
+                <li><a href="#">Lease vs. Finance</a></li>
+                <li><a href="#">Apply for Financing</a></li>
+              </ol>
+            </li>
+            <li>
+              <h3>Addtional Tools</h3>
+              <ol>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Acura Store</a></li>
+              </ol>
+            </li>
+          </ul>
+          <aside>
+            <h3>Current Offers</h3>
+            <blockquote>
+              2017 ILX 8-Speed Dual-Clutch Featured Special Lease
+              <p>
+                <span class="acr-f2 acr-black">$229</span>
+                <span>per month for 36 months <br />
+                $2499 total due at signing</span>
+              </p>
+            </blockquote>
+            <a href="/" class="acr-cta-text is-red" ontouchstart>
+              <span>Redeem This</span>
+            </a>
+          </aside>
+        </section>
+      </aside>
+    </nav>
+  </header>
+
+  <nav class="mlp-nav" role="navigation">
+  	<section>
+  		<h2>
+  			<svg class="acr-icon"><use xlink:href="#ilx_logo"></use></svg>
+  			<div role="presentation">
+  				<div role="listbox" tabindex="0">
+  						<a href="#" role="option"class="selected">2017</a>
+  						<a href="#" role="option">2016</a>
+  				</div>
+  				<svg class="acr-icon"><use xlink:href="#down-arrow"></use></svg>
+  			</div>
+  		</h2>
+  		<ul class="hidden-xs hidden-sm">
+  			<li class="mlp-overview">
+  				<a href="#">
+  					OVERVIEW
+  					<span class="hoverline"></span>
+  				</a>
+  			</li>
+  			<li>
+  				<a href="#">
+  						GALLERY
+  						<span class="hoverline"></span>
+  				</a>
+  			</li>
+  			<li>
+  				<a href="#">
+  						FEATURES
+  						<span class="hoverline"></span>
+  				</a>
+  			</li>
+  			<li>
+  				<a href="#">
+  						PACKAGES
+  						<span class="hoverline"></span>
+  				</a>
+  			</li>
+  			<li>
+  				<a href="#">
+  						SPECS
+  						<span class="hoverline"></span>
+  				</a>
+  			</li>
+  		</ul>
+  		<button aria-haspopup="true" class="hidden-md hidden-lg">
+  		OVERVIEW
+  		<svg class="acr-icon"><use xlink:href="#mobile-list-arrow-down"></use></svg>
+  		<svg class="acr-icon"><use xlink:href="#mobile-list-arrow-up"></use></svg>
+  		</button>
+  		<span>
+  			<a href="#" class="acr-cta-btn is-dark">BUILD</a>
+  		</span>
+  	</section>
+  	<aside role="menu" style="display: none" class="hidden-md">
+  		<strong>OVERVIEW</strong>
+  			<a href="#">GALLERY</a>
+  			<a href="#">FEATURES</a>
+  			<a href="#">PACKAGES</a>
+  			<a href="#">SPECS</a>
+  			<a href="#">ILX 2016</a>
+  	</aside>
+  </nav>
+
+  <p><strong>First Line</strong></p>
+
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+  <p>Dummy text</p>
+
+  <p><strong>Last Line</strong></p>
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

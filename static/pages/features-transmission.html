@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+<!-- SUB-PAGE HERO COMPONENT -->
+<section class="acr-sub-page-hero 
+                acr-blade-veh-info
+                acr-responsive-background-behavior
+                acr-responsive-background-setheight
+                acr-features-transmission acr-sub-page-hero-stacked broadcast-image-load
+                transmission"
+         data-type="SubHeroPage/imageLoad"
+         data-img-xsmall-1x="../../img/features-transmission-xsmall-1x.jpg"
+         data-img-xsmall-2x="../../img/features-transmission-xsmall-2x.jpg"
+         data-img-medium-1x="../../img/features-transmission-medium-1x.jpg"
+         data-img-medium-2x="../../img/features-transmission-medium-2x.jpg"
+         data-img-large-1x="../../img/features-transmission-xlarge-1x.jpg"
+         data-img-large-2x="../../img/features-transmission-xlarge-2x.jpg"
+         data-img-xlarge-1x="../../img/features-transmission-xlarge-1x.jpg"
+         data-img-xlarge-2x="../../img/features-transmission-xlarge-2x.jpg">
+  <div class="blade-wrapper row
+              header">
+    <div class="acr-heading
+                acr-left">
+      <h6>Transmission</h6>
+
+      <div class="acr-underheading"></div>
+    </div>
+  </div>
+
+  
+  <div class="blade-wrapper info top right">
+    <div class="row">
+      <div class="info-content">
+        <h3>8-Speed Dual Clutch Transmission </h3>
+
+        <p class="acr-larger">The industry’s first 8-Speed Dual-Clutch Transmission with torque converter is standard on every ILX. The design enables lightning-fast shifting and smooth response. It’s particularly impressive when using paddle shifters to control engine speed on curved or mountain roads.</p>
+
+        <a href="http://google.com" class="acr-cta-text is-black">
+          <span>See Details</span>
+        </a>
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="visible-xs">
+    <img srcset="../../img/features-transmission-xsmall-1x.jpg, ../../img/features-transmission-xsmall-2x.jpg 2x">
+  </div>
+</section>
+<!-- END OF SUB-PAGE HERO COMPONENT -->
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>
