@@ -37,6 +37,7 @@
             text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>", // custom notification html text
             newwindow: true // open link in new window/tab
         };
+
         function $buo_f() {
             var e = document.createElement("script");
             e.src = "https://browser-update.org/update.min.js";
@@ -48,34 +49,35 @@
             window.attachEvent("onload", $buo_f)
         }
     </script>
-	
-	<style>
-	.find-a-dealer-form-content1 .input-wrapper .acr-input-pre {
-		background-color: #f3f3f3;
-		display: inline-block;
-		height: 4.4rem;
-		padding: 1.1rem;
-		vertical-align: middle;
-		width: 4.4rem;
-	}
-	
-	.find-a-dealer-form-content1 .input-wrapper input {
-		background-color: #f3f3f3;
-		height: 4.4rem;
-		margin: 0 -0.5rem;
-		outline: 0 none;
-		padding: 1.3rem 0;
-		vertical-align: middle;
-	}
-	.find-a-dealer-form-content1 .acr-cta-btn {
-		min-width: 0;
-		padding: 0.7rem;
-		height:4.4rem;
-	}
-	</style>
-	
 
-	
+    <style>
+        .find-a-dealer-form-content1 .input-wrapper .acr-input-pre {
+            background-color: #f3f3f3;
+            display: inline-block;
+            height: 4.4rem;
+            padding: 1.1rem;
+            vertical-align: middle;
+            width: 4.4rem;
+        }
+        
+        .find-a-dealer-form-content1 .input-wrapper input {
+            background-color: #f3f3f3;
+            height: 4.4rem;
+            margin: 0 -0.5rem;
+            outline: 0 none;
+            padding: 1.3rem 0;
+            vertical-align: middle;
+        }
+        
+        .find-a-dealer-form-content1 .acr-cta-btn {
+            min-width: 0;
+            padding: 0.7rem;
+            height: 4.4rem;
+        }
+    </style>
+
+
+
 </head>
 
 <body>
@@ -96,7 +98,9 @@
           <svg class="acr-icon-header acr-icon-nav"><use xlink:href="#acura-stacked"></use></svg>
         </h1></a>
                         <a href="#" class="dealers-btn dealers-btn-mobile">
-                            <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
+                            <svg class="acr-icon" viewbox="0 0 137 200">
+                                <use xlink:href="#find-dealer"></use>
+                            </svg>
                             <span>Dealers</span>
                         </a>
                     </header>
@@ -109,11 +113,15 @@
                         <ul class="primary">
                             <li data-flyout="vehicles-flyout">
                                 <a href="#" aria-haspopup="true">Vehicles</a>
-                                <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+                                <svg class="acr-icon is-red">
+                                    <use xlink:href="#down-arrow"></use>
+                                </svg>
                             </li>
                             <li data-flyout="shopping-tools-flyout">
                                 <a href="#" aria-haspopup="true">Shopping Tools</a>
-                                <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+                                <svg class="acr-icon is-red">
+                                    <use xlink:href="#down-arrow"></use>
+                                </svg>
                             </li>
                         </ul>
                     </section>
@@ -121,11 +129,15 @@
                         <ul class="secondary">
                             <li class="dealer-locator">
                                 <button class="dealers-btn">
-              <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
-              <span>Dealers</span>
-            </button>
+                                    <svg class="acr-icon" viewbox="0 0 137 200">
+                                        <use xlink:href="#find-dealer"></use>
+                                    </svg>
+                                    <span>Dealers</span>
+                                </button>
                                 <form method="GET" action="http://www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="acr-form-validate search" target="_self" novalidate>
-                                    <svg class="acr-icon"><use xlink:href="#find-dealer"></use></svg>
+                                    <svg class="acr-icon">
+                                        <use xlink:href="#find-dealer"></use>
+                                    </svg>
                                     <span class="acr-icon-locator-error acr-red"></span>
                                     <aside class="form">
                                         <span class="field">
@@ -145,11 +157,15 @@
                             </li>
                             <li class="site-search">
                                 <button class="search-link">
-              <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
-            </button>
+                                    <svg class="acr-icon" viewbox="0 0 200 200">
+                                        <use xlink:href="#mag_glass"></use>
+                                    </svg>
+                                </button>
                                 <form method="GET" action="http://www.acura.com/Search/Results.aspx" class="acr-form-validate search" target="_self" novalidate>
                                     <aside class="form">
-                                        <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
+                                        <svg class="acr-icon" viewbox="0 0 200 200">
+                                            <use xlink:href="#mag_glass"></use>
+                                        </svg>
                                         <span class="field">
                   <input type="text" id="nav-search" name="q" placeholder="Search" required />
                   <label for="nav-search" class="sr-only">Search for more information on Acura vehicles</label>
@@ -325,8 +341,8 @@
                     <section class="acr-shopping-tools-header">
                         <a class="acr-tools" href="http://www.google.com" title="Build & Price">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Build &amp; Price
@@ -335,8 +351,8 @@
                         </a>
                         <a class="acr-tools" href="http://www.google.com" title="Compare Models">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compare-models"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compare-models"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Compare Models
@@ -345,8 +361,8 @@
                         </a>
                         <a class="acr-tools" href="http://www.google.com" title="Search Inventory">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-inventory"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-inventory"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Search Inventory
@@ -355,8 +371,8 @@
                         </a>
                         <a class="acr-tools" href="http://www.google.com" title="Find A Dealer">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trade-in-value"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trade-in-value"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Find A Dealer
@@ -365,8 +381,8 @@
                         </a>
                         <a class="acr-tools" href="http://www.google.com" title="Calculate Payment">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calculate-payment"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calculate-payment"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Calculate Payment
@@ -375,8 +391,8 @@
                         </a>
                         <a class="acr-tools" href="http://www.google.com" title="Current offers">
                             <svg class="acr-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#special-offers"></use>
-          </svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#special-offers"></use>
+                            </svg>
 
                             <div class="acr-desc">
                                 Current offers
@@ -426,282 +442,250 @@
 
 
 
-        <!-- TABS SECTION -->        
+        <!-- TABS SECTION -->
         <section>
-			<div class="blade-wrapper">
-				<div class="acr-heading1 acr-left">
-					<h3>Locate a Dealer</h3>
-				</div>
-				
-				<div class="left-ribbon"><!-- could be left-ribbon or right-ribbon, default state is left-ribbon this should rease properties of push and pull, when right the normal properties for push and pull classes -->
-					<div class="row">
-						<div class=" col-xs-36 col-md-16 col-xl-16">
+            <div class="blade-wrapper">
+                <div class="acr-heading1 acr-left">
+                    <h3>Locate a Dealer</h3>
+                </div>
 
-	
-							<ul class="nav nav-tabs ">
-								<li class="active"><a data-toggle="tab" href="#zipCode">ZIP CODE</a></li>
-								<li><a data-toggle="tab" href="#cityState">CITY, STATE</a></li>
-								<li><a data-toggle="tab" href="#nameTab">NAME</a></li>					
-							</ul>
+                <div class="left-ribbon">
+                    <!-- could be left-ribbon or right-ribbon, default state is left-ribbon this should rease properties of push and pull, when right the normal properties for push and pull classes -->
+                    <div class="row">
+                        <div class=" col-xs-36 col-md-16 col-xl-16">
 
-							<div class="tab-content">
-								<div id="zipCode" class="tab-pane fade in active">
 
-									<section class="acr-blade-veh-info " >
+                            <ul class="nav nav-tabs ">
+                                <li class="active"><a data-toggle="tab" href="#zipCode">ZIP CODE</a></li>
+                                <li><a data-toggle="tab" href="#cityState">CITY, STATE</a></li>
+                                <li><a data-toggle="tab" href="#nameTab">NAME</a></li>
+                            </ul>
 
-										<div class="blade-wrapper info1">
-											<div class="row">
-												<div class="info-content1">
-													<div class="field-group zip " id="dealer-zip-form-data">
-																						
-														<!-- desktop version of the form -->
-														    <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
-															  <div class="find-a-dealer-form-content1 col-sm-36 ">
-																<div class="input-wrapper"
-																	data-form-required="true"
-																	data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$"
-																	data-required-error="Please enter your zip"
-																	data-regex-error="Please enter a valid zip">
-																	<p class="error-message"></p>
-																	<div>
-																	  <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
-																	  <input type="tel"
-																			 name="Zip"
-																			 pattern="[0-9]*"
-																			 maxlength="5"
-																			 class="zip-input"
-																			 placeholder="Enter Your Zip" />
-																	</div>
+                            <div class="tab-content">
+                                <div id="zipCode" class="tab-pane fade in active">
 
-																</div>
-																<button type="submit" class="submit acr-cta-btn is-red-bg">
-																  <span class="acr-icon-explore acr-f1"></span>
-																</button>
-															  </div>
-															</form>
-															
-															
-															
-															              <div class="row">
-                <!--form id="dealer-locator-form" action="//hawkapi.dev.ignition.razorfish.com/api/v1/dealers"-->
-                <form id="dealer-locator-form" action="../../json/data.json" class="clearfix">
-                  <input type="hidden" name="productDivisionCode" value="A" />
-                  <input type="hidden" name="maxResults" value="3" />
-                  <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
-                  <span class="hidden-md hidden-lg hidden-xl">OR</span>
+                                    <section class="acr-blade-veh-info ">
 
-                  <div class="input-wrapper"
-                  data-form-required="true"
-                  data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$"
-                  data-required-error="Please enter your zip"
-                  data-regex-error="Please enter a valid zip">
-                  <label for="zip">Zip code<span class="hidden-xs hidden-sm">*</span></label>
-                  <span for="zip" class="help-block" id="zipHelpBlock">
+                                        <div class="blade-wrapper info1">
+                                            <div class="row">
+                                                <div class="info-content1">
+                                                    <div class="field-group zip " id="dealer-zip-form-data">
+
+                                                        <!-- desktop version of the form -->
+                                                        <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
+                                                            <div class="find-a-dealer-form-content1 col-sm-36 ">
+                                                                <div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
+                                                                    <p class="error-message"></p>
+                                                                    <div>
+                                                                        <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
+                                                                        <input type="tel" name="Zip" pattern="[0-9]*" maxlength="5" class="zip-input" placeholder="Enter Your Zip" />
+                                                                    </div>
+
+                                                                </div>
+                                                                <button type="submit" class="submit acr-cta-btn is-red-bg">
+                                                                    <span class="acr-icon-explore acr-f1"></span>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+
+
+
+                                                        <div class="row">
+                                                            <!--form id="dealer-locator-form" action="//hawkapi.dev.ignition.razorfish.com/api/v1/dealers"-->
+                                                            <form id="dealer-locator-form" action="../../json/data.json" class="clearfix">
+                                                                <input type="hidden" name="productDivisionCode" value="A" />
+                                                                <input type="hidden" name="maxResults" value="3" />
+                                                                <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
+                                                                <span class="hidden-md hidden-lg hidden-xl">OR</span>
+
+                                                                <div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
+                                                                    <label for="zip">Zip code<span class="hidden-xs hidden-sm">*</span></label>
+                                                                    <span for="zip" class="help-block" id="zipHelpBlock">
                     We cannot find a dealer near you <br>
                     Please enter another zip code
                   </span>
-                  <input class="col-xs-13 text-center"
-                  type="text"
-                  name="zip"
-                  id="zip"
-                  value=""
-                  aria-describedby="zipHelpBlock"
-                  maxlength="5" />
-                </div>
-                <button type="submit" name="submit" class="cta-btn col-xs-22" >FIND DEALERS</button>
-              </form>
-            </div>
-															
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
+                                                                    <input class="col-xs-13 text-center" type="text" name="zip" id="zip" value="" aria-describedby="zipHelpBlock" maxlength="5" />
+                                                                </div>
+                                                                <button type="submit" name="submit" class="cta-btn col-xs-22">FIND DEALERS</button>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
 
 
-								</div>
-								<div id="cityState" class="tab-pane fade">
-									<section class="acr-blade-veh-info " >
+                                </div>
+                                <div id="cityState" class="tab-pane fade">
+                                    <section class="acr-blade-veh-info ">
 
-										<div class="blade-wrapper info1">
-											<div class="row">
-												<div class="info-content1">
-													<div class="field-group city " id="dealer-city-form-data">
-														<div class="field-group address-city-state " id="dealer-city-form-data">
-															
-															<form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
-																<div class="find-a-dealer-form-content1 col-sm-36">
-																	<div class="input-wrapper"
-																		data-form-required="true"
-																		data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
-																		data-required-error="Please enter your City"
-																		data-regex-error="Please enter a valid City">
-																		<p class="error-message"></p>
-																		<div>
-																			<span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
-																			<input type="text" 
-																					name="City" 
-																					value="" 
-																					maxlength="30"
-																					class="city-input txt required val-alphanum" 
-																					id="dl-city" 
-																					placeholder="Enter Your City"/>
-																		</div>
-																	</div>
-																	<div class="field state">
-																		<label for="dl-state">State<span class="required-note">*</span>:</label>
+                                        <div class="blade-wrapper info1">
+                                            <div class="row">
+                                                <div class="info-content1">
+                                                    <div class="field-group city " id="dealer-city-form-data">
+                                                        <div class="field-group address-city-state " id="dealer-city-form-data">
 
-																		<select name="state" id="dl-state">
-																		<option value="AL">AL</option>
-																		<option value="AK">AK</option>
-																		<option value="AR">AR</option>
-																		<option value="AZ">AZ</option>
-																		<option value="CA">CA</option>
-																		<option value="CO">CO</option>
-																		<option value="CT">CT</option>
-																		<option value="DC">DC</option>		
-																		<option value="DE">DE</option>		
-																		<option value="FL">FL</option>    
-																		</select>
+                                                            <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
+                                                                <div class="find-a-dealer-form-content1 col-sm-36">
+                                                                    <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter your City" data-regex-error="Please enter a valid City">
+                                                                        <p class="error-message"></p>
+                                                                        <div>
+                                                                            <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
+                                                                            <input type="text" name="City" value="" maxlength="30" class="city-input txt required val-alphanum" id="dl-city" placeholder="Enter Your City" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="field state">
+                                                                        <label for="dl-state">State<span class="required-note">*</span>:</label>
 
-																	</div>
+                                                                        <select name="state" id="dl-state">
+                                                                            <option value="AL">AL</option>
+                                                                            <option value="AK">AK</option>
+                                                                            <option value="AR">AR</option>
+                                                                            <option value="AZ">AZ</option>
+                                                                            <option value="CA">CA</option>
+                                                                            <option value="CO">CO</option>
+                                                                            <option value="CT">CT</option>
+                                                                            <option value="DC">DC</option>
+                                                                            <option value="DE">DE</option>
+                                                                            <option value="FL">FL</option>
+                                                                        </select>
 
-																	<button type="submit" class="submit acr-cta-btn is-red-bg">
-																		<span class="acr-icon-explore acr-f1"></span>
-																	</button>
-																	
-																</div>
-															</form>
-														</div>	
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
+                                                                    </div>
 
-								</div>
+                                                                    <button type="submit" class="submit acr-cta-btn is-red-bg">
+                                                                        <span class="acr-icon-explore acr-f1"></span>
+                                                                    </button>
 
-								<div id="nameTab" class="tab-pane fade">
-									<section class="acr-blade-veh-info " >
-										<div class="blade-wrapper info1">
-											<div class="row">
-												<div class="info-content1">
-													<div class="field-group name " id="dealer-name-form-data">
-														<div class="field-group address-name-state " id="dealer-name-form-data">
-															
-															<form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
-																<div class="find-a-dealer-form-content1 col-sm-36">
-																	<div class="input-wrapper"
-																		data-form-required="true"
-																		data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
-																		data-required-error="Please enter Dealer Name"
-																		data-regex-error="Please enter a valid Dealer Name">
-																		<p class="error-message"></p>
-																		<div>
-																			<span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
-																			<input type="text" 
-																					name="Name" 
-																					value="" 
-																					maxlength="50"
-																					class="name-input txt required val-alphanum" 
-																					id="dl-name" 
-																					placeholder="Enter Dealer Name"/>
-																		</div>
-																	</div>
-																	
-																	<button type="submit" class="submit acr-cta-btn is-red-bg">
-																		<span class="acr-icon-explore acr-f1"></span>
-																	</button>
-																	
-																</div>
-															</form>
-														</div>	
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-							</div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+
+                                <div id="nameTab" class="tab-pane fade">
+                                    <section class="acr-blade-veh-info ">
+                                        <div class="blade-wrapper info1">
+                                            <div class="row">
+                                                <div class="info-content1">
+                                                    <div class="field-group name " id="dealer-name-form-data">
+                                                        <div class="field-group address-name-state " id="dealer-name-form-data">
+
+                                                            <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
+                                                                <div class="find-a-dealer-form-content1 col-sm-36">
+                                                                    <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter Dealer Name" data-regex-error="Please enter a valid Dealer Name">
+                                                                        <p class="error-message"></p>
+                                                                        <div>
+                                                                            <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
+                                                                            <input type="text" name="Name" value="" maxlength="50" class="name-input txt required val-alphanum" id="dl-name" placeholder="Enter Dealer Name" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <button type="submit" class="submit acr-cta-btn is-red-bg">
+                                                                        <span class="acr-icon-explore acr-f1"></span>
+                                                                    </button>
+
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
 
 
-						
-						</div>
-						<div class="col-xs-36 col-md-20 col-xl-20">
-					
-<section id="dealer-locator" class="dealer-locator">
-          <div class="divider col-md-36"></div>
-          <div class="heading-bar clearfix">
 
-            <div class="section-header">
-              <h2>Contact a Dealer</h2>
-              <p>Request a quote from a local dealer</p>
-            </div>
+                        </div>
+                        <div class="col-xs-36 col-md-20 col-xl-20">
 
-            <contact_dealer_vehicle_model></contact_dealer_vehicle_model>
+                            <section id="dealer-locator" class="dealer-locator">
+                                <div class="divider col-md-36"></div>
+                                <div class="heading-bar clearfix">
 
-          </div> <!-- end heading-bar -->
+                                    <div class="section-header">
+                                        <h2>Contact a Dealer</h2>
+                                        <p>Request a quote from a local dealer</p>
+                                    </div>
 
-          <div class="main-content clearfix">
+                                    <contact_dealer_vehicle_model></contact_dealer_vehicle_model>
 
-            <figure class="map">
-              <!-- pulling in the bing map -->
-              <div id="dealer-map" style="height:300px">
-                <!-- <div class="loader" name="loader">
+                                </div>
+                                <!-- end heading-bar -->
+
+                                <div class="main-content clearfix">
+
+                                    <figure class="map">
+                                        <!-- pulling in the bing map -->
+                                        <div id="dealer-map" style="height:300px">
+                                            <!-- <div class="loader" name="loader">
                   <img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
                 </div> -->
-              </div>
-            </figure>
+                                        </div>
+                                    </figure>
 
-            <section class="results">
+                                    <section class="results">
 
 
 
-            <ul class="results-list">
+                                        <ul class="results-list">
 
-              <li class="row results-item-template">
-                <div class="col-xs-3">
-                  <span class="dealer-result-index"></span>
+                                            <li class="row results-item-template">
+                                                <div class="col-xs-3">
+                                                    <span class="dealer-result-index"></span>
+                                                </div>
+                                                <div class="col-xs-25">
+                                                    <h4 class="dealer-result-name"></h4>
+                                                    <p>
+                                                        <span class="dealer-result-address"></span>
+                                                        <br />
+                                                        <span class="dealer-result-city"></span>, <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
+                                                    </p>
+                                                    <p>
+                                                        <a href="tel:" class="dealer-result-phone "></a>
+                                                    </p>
+                                                    <p>
+                                                        <a href="#" class="dealer-result-directions anchor-link" target="_blank">GET DIRECTIONS</a>
+                                                    </p>
+                                                    <a class="cta-btn tertiary dealer-result-raq-modal text-center" href="#">REQUEST A QUOTE</a>
+                                                </div>
+                                                <div class="col-xs-8 text-right">
+                                                    <h5 class="dealer-result-distance"></h5>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                        <!-- END .results-list -->
+
+                                    </section>
+                                    <!-- END .results -->
+                                </div>
+                                <!-- END .main-content -->
+                            </section>
+                            <!-- END .dealer-locator -->
+
+                            <!-- BING MAP INTEGRATION -->
+                            <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-25">
-                  <h4 class="dealer-result-name"></h4>
-                  <p>
-                    <span class="dealer-result-address"></span><br />
-                    <span class="dealer-result-city"></span>, <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
-                  </p>
-                  <p>
-                    <a href="tel:" class="dealer-result-phone "></a>
-                  </p>
-                  <p>
-                    <a href="#" class="dealer-result-directions anchor-link" target="_blank">GET DIRECTIONS</a>
-                  </p>
-                  <a class="cta-btn tertiary dealer-result-raq-modal text-center" href="#">REQUEST A QUOTE</a>
-                </div>
-                <div class="col-xs-8 text-right">
-                  <h5 class="dealer-result-distance"></h5>
-                </div>
-              </li>
 
-            </ul> <!-- END .results-list -->
 
-            </section><!-- END .results -->
-          </div> <!-- END .main-content -->
-        </section> <!-- END .dealer-locator -->
 
-        <!-- BING MAP INTEGRATION -->
-        <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-					
-					
-						</div>
-					</div>
-				</div>
-				
-				
-				
-				
-				
-			
-			</div>
+
+
+
+            </div>
         </section>
 
 
@@ -716,7 +700,9 @@
 
             <div class="acr-footer col-lg-20 col-md-34 col-sm-30">
                 <a href="http://www.acura.com/" class="logo">
-                    <svg class="acr-icon-footer"><use xlink:href="#acura-mark"></use></svg>
+                    <svg class="acr-icon-footer">
+                        <use xlink:href="#acura-mark"></use>
+                    </svg>
                 </a>
 
                 <hr>
@@ -766,43 +752,57 @@
                     <li>
                         <a href="https://twitter.com/Acura">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-twitter"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-twitter"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/Acura">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-facebook"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-facebook"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.instagram.com/acura/">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-instagram"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-instagram"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com/user/Acura">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-youtube"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-youtube"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/+acura/posts">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-googleplus"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-googleplus"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="http://www.acura.com/AboutLanding.aspx">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-pinterest"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-pinterest"></use>
+                            </svg>
                         </a>
                     </li>
                     <li>
                         <a href="http://www.acura.com/AboutLanding.aspx">
                             <span class="circle"></span>
-                            <svg class="acr-icon"><use xlink:href="#footer-mail"></use></svg>
+                            <svg class="acr-icon">
+                                <use xlink:href="#footer-mail"></use>
+                            </svg>
                         </a>
                     </li>
                 </ul>
@@ -836,7 +836,7 @@
     </div>
 
     <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
-<script type="text/javascript" src="../../js/vendor-civic.js"></script>
+    <script type="text/javascript" src="../../js/vendor-civic.js"></script>
     <script type="text/javascript" src="../../js/scripts.js"></script>
     <script type="text/javascript" src="../../js/dealer-locator.js"></script>
 
@@ -844,120 +844,123 @@
         Utility.svgLoader('/icons/systems.svg');
         Utility.svgLoader('/icons/vehicle-sample.svg');
     </script>
-	
-<script>
-		
-	var DealerLocatorZip = (function() {
-		var $form = $('.find-a-dealer-form1'),
-		$submitButton = $('.submit', $form),
-		$zipInput = $('.zip-input', $form),
-		$placeHoldText = '';
-		function init() {
-		  
-			//here read zipCookie
-			var zipCookie = readCookie('zipCookie');
-			//if cookie then populate zip input and execute call to update map
-			if(zipCookie) {
-				$zipInput.val(zipCookie);
-				//update map
-				
-			}
-			  
-			$placeHoldText = $zipInput.attr('placeholder');
-			$zipInput.on('focus', function() {
-			  clearError($(this).closest('.input-wrapper'));
-			  $(this).attr('placeholder', '');
-			});
-			$zipInput.on('blur', function() {
-			  if ($zipInput.val() == '') {
-				$(this).attr('placeholder', $placeHoldText);
-			  }
-			});
-			//restricts users to only entering numeric values
-			$zipInput.on('input', zipInput);
-			$submitButton.on('click', function(e) {
-			  var form = $(this).closest('.find-a-dealer-form1');
-			  e.preventDefault();
-			  if (validateForm(form)) {
-				//if no created here create a cookie for the zip only						
-				//Create expiring cookie, 7 days from then:
-				if($('#zipCode').hasClass('active')){
-					console.log('create a cookie  '+ $zipInput.val());
-					eraseCookie('zipCookie');	
-					createCookie('zipCookie', $zipInput.val() ,7);
-				}
-				
-				
-				//form submit send params to service to update map
-				//form.submit();
-			  }
-			});
-		}
-		function validateForm($form) {
-			var $field = $('.input-wrapper', $form),
-				required = $field.data('formRequired'),
-				regex = new RegExp($field.data('formValidate')),
-				value = $('input', $field).val();
-			if (required && value.length < 1) {
-			  showError($field.data('requiredError'), $field);
-			  return false;
-			} else if ((regex) && (regex.test(value) === false)) {
-			  showError($field.data('regexError'), $field);
-			  return false;
-			} else {
-			  return true;
-			}
-		}
-		function showError(message, $field) {
-			$('.error-message', $field).text(message);
-		}
-		function clearError($field) {
-			$('.error-message', $field).text('');
-		}
-		function zipInput(e) {
-			if (e.keyCode === 13) {
-			  e.preventDefault();
-			  $(this).closest($form).find($submitButton).trigger('click');
-			  return;
-			}
-			this.value = this.value.replace(/\D/m, '');
-			if (this.value.length > 5) {
-			  this.value = this.value.slice(0, 5);
-			}
-		}
-		
-		//function to create a cookie
-		function createCookie(name,value,days) {
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				var expires = "; expires="+date.toGMTString();
-			}
-			else var expires = "";
-			document.cookie = name + "=" + value + expires +"; path=/";
-		}
-		
-		//function to read a cookie
-		function readCookie(name) {
-			var nameEQ = name + "=";
-			var ca = document.cookie.split(';');
-			for(var i=0;i < ca.length;i++) {
-				var c = ca[i];
-				while (c.charAt(0)==' ') c = c.substring(1,c.length);
-				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-			}
-			return null;
-		}
-		//function to erase a cookie
-		function eraseCookie(name) {
-			createCookie(name,"",-1);
-		}
-		return {
-			init: init
-		};
-	})();
-</script>
-	
+
+    <script>
+        var DealerLocatorZip = (function () {
+            var $form = $('.find-a-dealer-form1'),
+                $submitButton = $('.submit', $form),
+                $zipInput = $('.zip-input', $form),
+                $placeHoldText = '';
+
+            function init() {
+
+                //here read zipCookie
+                var zipCookie = readCookie('zipCookie');
+                //if cookie then populate zip input and execute call to update map
+                if (zipCookie) {
+                    $zipInput.val(zipCookie);
+                    //update map
+
+                }
+
+                $placeHoldText = $zipInput.attr('placeholder');
+                $zipInput.on('focus', function () {
+                    clearError($(this).closest('.input-wrapper'));
+                    $(this).attr('placeholder', '');
+                });
+                $zipInput.on('blur', function () {
+                    if ($zipInput.val() == '') {
+                        $(this).attr('placeholder', $placeHoldText);
+                    }
+                });
+                //restricts users to only entering numeric values
+                $zipInput.on('input', zipInput);
+                $submitButton.on('click', function (e) {
+                    var form = $(this).closest('.find-a-dealer-form1');
+                    e.preventDefault();
+                    if (validateForm(form)) {
+                        //if no created here create a cookie for the zip only						
+                        //Create expiring cookie, 7 days from then:
+                        if ($('#zipCode').hasClass('active')) {
+                            console.log('create a cookie  ' + $zipInput.val());
+                            eraseCookie('zipCookie');
+                            createCookie('zipCookie', $zipInput.val(), 7);
+                        }
+
+
+                        //form submit send params to service to update map
+                        //form.submit();
+                    }
+                });
+            }
+
+            function validateForm($form) {
+                var $field = $('.input-wrapper', $form),
+                    required = $field.data('formRequired'),
+                    regex = new RegExp($field.data('formValidate')),
+                    value = $('input', $field).val();
+                if (required && value.length < 1) {
+                    showError($field.data('requiredError'), $field);
+                    return false;
+                } else if ((regex) && (regex.test(value) === false)) {
+                    showError($field.data('regexError'), $field);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function showError(message, $field) {
+                $('.error-message', $field).text(message);
+            }
+
+            function clearError($field) {
+                $('.error-message', $field).text('');
+            }
+
+            function zipInput(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    $(this).closest($form).find($submitButton).trigger('click');
+                    return;
+                }
+                this.value = this.value.replace(/\D/m, '');
+                if (this.value.length > 5) {
+                    this.value = this.value.slice(0, 5);
+                }
+            }
+
+            //function to create a cookie
+            function createCookie(name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                } else var expires = "";
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+            //function to read a cookie
+            function readCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+            //function to erase a cookie
+            function eraseCookie(name) {
+                createCookie(name, "", -1);
+            }
+            return {
+                init: init
+            };
+        })();
+    </script>
+
 </body>
 
 </html>
