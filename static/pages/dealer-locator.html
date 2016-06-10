@@ -37,7 +37,6 @@
             text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>", // custom notification html text
             newwindow: true // open link in new window/tab
         };
-
         function $buo_f() {
             var e = document.createElement("script");
             e.src = "https://browser-update.org/update.min.js";
@@ -480,6 +479,39 @@
 																</button>
 															  </div>
 															</form>
+															
+															
+															
+															              <div class="row">
+                <!--form id="dealer-locator-form" action="//hawkapi.dev.ignition.razorfish.com/api/v1/dealers"-->
+                <form id="dealer-locator-form" action="../../json/data.json" class="clearfix">
+                  <input type="hidden" name="productDivisionCode" value="A" />
+                  <input type="hidden" name="maxResults" value="3" />
+                  <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
+                  <span class="hidden-md hidden-lg hidden-xl">OR</span>
+
+                  <div class="input-wrapper"
+                  data-form-required="true"
+                  data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$"
+                  data-required-error="Please enter your zip"
+                  data-regex-error="Please enter a valid zip">
+                  <label for="zip">Zip code<span class="hidden-xs hidden-sm">*</span></label>
+                  <span for="zip" class="help-block" id="zipHelpBlock">
+                    We cannot find a dealer near you <br>
+                    Please enter another zip code
+                  </span>
+                  <input class="col-xs-13 text-center"
+                  type="text"
+                  name="zip"
+                  id="zip"
+                  value=""
+                  aria-describedby="zipHelpBlock"
+                  maxlength="5" />
+                </div>
+                <button type="submit" name="submit" class="cta-btn col-xs-22" >FIND DEALERS</button>
+              </form>
+            </div>
+															
 													</div>
 												</div>
 											</div>
@@ -597,7 +629,67 @@
 						</div>
 						<div class="col-xs-36 col-md-20 col-xl-20">
 					
-							<h2>here map</h2>
+<section id="dealer-locator" class="dealer-locator">
+          <div class="divider col-md-36"></div>
+          <div class="heading-bar clearfix">
+
+            <div class="section-header">
+              <h2>Contact a Dealer</h2>
+              <p>Request a quote from a local dealer</p>
+            </div>
+
+            <contact_dealer_vehicle_model></contact_dealer_vehicle_model>
+
+          </div> <!-- end heading-bar -->
+
+          <div class="main-content clearfix">
+
+            <figure class="map">
+              <!-- pulling in the bing map -->
+              <div id="dealer-map" style="height:300px">
+                <!-- <div class="loader" name="loader">
+                  <img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
+                </div> -->
+              </div>
+            </figure>
+
+            <section class="results">
+
+
+
+            <ul class="results-list">
+
+              <li class="row results-item-template">
+                <div class="col-xs-3">
+                  <span class="dealer-result-index"></span>
+                </div>
+                <div class="col-xs-25">
+                  <h4 class="dealer-result-name"></h4>
+                  <p>
+                    <span class="dealer-result-address"></span><br />
+                    <span class="dealer-result-city"></span>, <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
+                  </p>
+                  <p>
+                    <a href="tel:" class="dealer-result-phone "></a>
+                  </p>
+                  <p>
+                    <a href="#" class="dealer-result-directions anchor-link" target="_blank">GET DIRECTIONS</a>
+                  </p>
+                  <a class="cta-btn tertiary dealer-result-raq-modal text-center" href="#">REQUEST A QUOTE</a>
+                </div>
+                <div class="col-xs-8 text-right">
+                  <h5 class="dealer-result-distance"></h5>
+                </div>
+              </li>
+
+            </ul> <!-- END .results-list -->
+
+            </section><!-- END .results -->
+          </div> <!-- END .main-content -->
+        </section> <!-- END .dealer-locator -->
+
+        <!-- BING MAP INTEGRATION -->
+        <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 					
 					
 						</div>
@@ -744,8 +836,9 @@
     </div>
 
     <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
-
+<script type="text/javascript" src="../../js/vendor-civic.js"></script>
     <script type="text/javascript" src="../../js/scripts.js"></script>
+    <script type="text/javascript" src="../../js/dealer-locator.js"></script>
 
     <script type="text/javascript">
         Utility.svgLoader('/icons/systems.svg');
@@ -759,7 +852,6 @@
 		$submitButton = $('.submit', $form),
 		$zipInput = $('.zip-input', $form),
 		$placeHoldText = '';
-
 		function init() {
 		  
 			//here read zipCookie
@@ -770,15 +862,12 @@
 				//update map
 				
 			}
-
 			  
 			$placeHoldText = $zipInput.attr('placeholder');
-
 			$zipInput.on('focus', function() {
 			  clearError($(this).closest('.input-wrapper'));
 			  $(this).attr('placeholder', '');
 			});
-
 			$zipInput.on('blur', function() {
 			  if ($zipInput.val() == '') {
 				$(this).attr('placeholder', $placeHoldText);
@@ -786,11 +875,9 @@
 			});
 			//restricts users to only entering numeric values
 			$zipInput.on('input', zipInput);
-
 			$submitButton.on('click', function(e) {
 			  var form = $(this).closest('.find-a-dealer-form1');
 			  e.preventDefault();
-
 			  if (validateForm(form)) {
 				//if no created here create a cookie for the zip only						
 				//Create expiring cookie, 7 days from then:
@@ -806,13 +893,11 @@
 			  }
 			});
 		}
-
 		function validateForm($form) {
 			var $field = $('.input-wrapper', $form),
 				required = $field.data('formRequired'),
 				regex = new RegExp($field.data('formValidate')),
 				value = $('input', $field).val();
-
 			if (required && value.length < 1) {
 			  showError($field.data('requiredError'), $field);
 			  return false;
@@ -823,25 +908,19 @@
 			  return true;
 			}
 		}
-
 		function showError(message, $field) {
 			$('.error-message', $field).text(message);
 		}
-
 		function clearError($field) {
 			$('.error-message', $field).text('');
 		}
-
 		function zipInput(e) {
-
 			if (e.keyCode === 13) {
 			  e.preventDefault();
 			  $(this).closest($form).find($submitButton).trigger('click');
 			  return;
 			}
-
 			this.value = this.value.replace(/\D/m, '');
-
 			if (this.value.length > 5) {
 			  this.value = this.value.slice(0, 5);
 			}
@@ -869,12 +948,10 @@
 			}
 			return null;
 		}
-
 		//function to erase a cookie
 		function eraseCookie(name) {
 			createCookie(name,"",-1);
 		}
-
 		return {
 			init: init
 		};

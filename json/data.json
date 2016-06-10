@@ -1,0 +1,228 @@
+{
+	"ZipCode": "93433",
+	"Dealers": [{
+		"DealerNumber": "207209",
+		"Name": "Sunset Honda                            ",
+		"InternetManager": "David Idell",
+		"Address": "12250 Los Osos Valley Rd",
+		"City": "San Luis Obispo",
+		"State": "CA",
+		"ZipCode": "93405-7222",
+		"Phone": "(805)544-9500",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-6:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "11:00AM-5:00PM"
+		}],
+		"WebAddress": "http://www.sunsethonda.com/",
+		"Latitude": 35.248711,
+		"Longitude": -120.68388,
+		"DrivingDistanceMiles": 12.4
+	}, {
+		"DealerNumber": "208442",
+		"Name": "Honda of Santa Maria         ",
+		"InternetManager": "Fabian Zaragoza",
+		"Address": "2175 S Bradley Rd",
+		"City": "Santa Maria",
+		"State": "CA",
+		"ZipCode": "93455-1347",
+		"Phone": "(805)922-5721",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "8:00AM-8:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "8:00AM-6:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-5:00PM"
+		}],
+		"WebAddress": "http://www.hondaofsantamaria.com/",
+		"Latitude": 34.921066,
+		"Longitude": -120.42208,
+		"DrivingDistanceMiles": 20.0
+	}, {
+		"DealerNumber": "208456",
+		"Name": "Rockettown Honda",
+		"InternetManager": "Ron Hirzel",
+		"Address": "1224 N H St",
+		"City": "Lompoc",
+		"State": "CA",
+		"ZipCode": "93436-3302",
+		"Phone": "(805)736-4595",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "9:00AM-8:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "Closed"
+		}],
+		"WebAddress": "http://www.lompochonda.com",
+		"Latitude": 34.657871,
+		"Longitude": -120.45753,
+		"DrivingDistanceMiles": 44.0
+	}, {
+		"DealerNumber": "206547",
+		"Name": "Santa Barbara Honda                     ",
+		"InternetManager": "Leo Marquez",
+		"Address": "475 S Kellogg Ave",
+		"City": "Goleta",
+		"State": "CA",
+		"ZipCode": "93117-3807",
+		"Phone": "(805)681-1000",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "9:00AM-8:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-6:00PM"
+		}],
+		"WebAddress": "http://www.sbhonda.com/",
+		"Latitude": 34.432629,
+		"Longitude": -119.82088,
+		"DrivingDistanceMiles": 84.6
+	}, {
+		"DealerNumber": "208639",
+		"Name": "Ocean Honda of Ventura",
+		"InternetManager": "",
+		"Address": "6450 Auto Center Dr",
+		"City": "Ventura",
+		"State": "CA",
+		"ZipCode": "93003-7211",
+		"Phone": "(805)654-0066",
+		"SalesHours": [{
+			"Days": "Mon-Sat",
+			"Hours": "9:00AM-9:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-7:00PM"
+		}],
+		"WebAddress": "",
+		"Latitude": 34.245392,
+		"Longitude": -119.19927,
+		"DrivingDistanceMiles": 114.5
+	}, {
+		"DealerNumber": "207615",
+		"Name": "DCH Honda of Oxnard   ",
+		"InternetManager": "Masood Zamani",
+		"Address": "1500 E Ventura Blvd",
+		"City": "Oxnard",
+		"State": "CA",
+		"ZipCode": "93036-1880",
+		"Phone": "(888)221-9994",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "9:00AM-9:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-6:00PM"
+		}],
+		"WebAddress": "http://www.hondaoxnard.com",
+		"Latitude": 34.22728,
+		"Longitude": -119.15627,
+		"DrivingDistanceMiles": 116.9
+	}, {
+		"DealerNumber": "206796",
+		"Name": "Barber Honda                            ",
+		"InternetManager": "Matt Lopez",
+		"Address": "4500 Wible Rd",
+		"City": "Bakersfield",
+		"State": "CA",
+		"ZipCode": "93313-2629",
+		"Phone": "(661)396-4222",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "8:00AM-9:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "8:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-6:00PM"
+		}],
+		"WebAddress": "http://www.barberhonda.com",
+		"Latitude": 35.313141,
+		"Longitude": -119.03875,
+		"DrivingDistanceMiles": 134.5
+	}, {
+		"DealerNumber": "208136",
+		"Name": "First Honda                             ",
+		"InternetManager": "Charlie Shaw",
+		"Address": "2283 1st St",
+		"City": "Simi Valley",
+		"State": "CA",
+		"ZipCode": "93065-1944",
+		"Phone": "(805)584-6632",
+		"SalesHours": [{
+			"Days": "Mon-Sat",
+			"Hours": "9:00AM-9:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "9:30AM-7:00PM"
+		}],
+		"WebAddress": "http://www.1sthonda.com",
+		"Latitude": 34.276932,
+		"Longitude": -118.77916,
+		"DrivingDistanceMiles": 144.5
+	}, {
+		"DealerNumber": "207954",
+		"Name": "Selma Honda                             ",
+		"InternetManager": "Jeffrey Himes",
+		"Address": "2705 Auto Mall Dr",
+		"City": "Selma",
+		"State": "CA",
+		"ZipCode": "93662-3383",
+		"Phone": "(559)891-3100",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "9:00AM-8:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "10:00AM-6:00PM"
+		}],
+		"WebAddress": "http://www.selmahonda.com/",
+		"Latitude": 36.570381,
+		"Longitude": -119.62392,
+		"DrivingDistanceMiles": 151.3
+	}, {
+		"DealerNumber": "207407",
+		"Name": "Visalia Honda                           ",
+		"InternetManager": "John Merideth",
+		"Address": "1016 S Ben Maddox Way",
+		"City": "Visalia",
+		"State": "CA",
+		"ZipCode": "93292-3657",
+		"Phone": "(559)627-4444",
+		"SalesHours": [{
+			"Days": "Mon-Fri",
+			"Hours": "8:30AM-8:00PM"
+		}, {
+			"Days": "Sat",
+			"Hours": "9:00AM-7:00PM"
+		}, {
+			"Days": "Sun",
+			"Hours": "11:00AM-6:00PM"
+		}],
+		"WebAddress": "http://www.visaliahonda.com",
+		"Latitude": 36.321922,
+		"Longitude": -119.27647,
+		"DrivingDistanceMiles": 151.7
+	}]
+}
