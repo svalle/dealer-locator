@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+<div class="style-guide">
+  <div class="container">
+    <h3>100 Pt Grid</h3>
+
+    <div class="guide
+                acr-bg-dim-grey-1">
+      <strong class="visible-xl
+                     text-center
+                     acr-black">Desktop: &gt;= 1400px</strong>
+
+      <strong class="visible-md
+                     visible-lg
+                     text-center
+                     acr-black">Desktop: &gt;= 1024px</strong>
+
+      <strong class="visible-sm
+                     text-center
+                     acr-black">Tablet: &gt;= 550px</strong>
+
+      <strong class="visible-xs
+                     text-center
+                     acr-black">Mobile: &lt;= 549px</strong>
+    </div>
+
+    <div class="guide
+                acr-bg-dim-grey-2
+                acr-deep-blue">
+      <p>
+        <strong class="acr-avenir-light-oblique">The images below will stack on mobile in the order they were placed on the grid.</strong>
+      </p>
+
+      <p>
+        <strong class="acr-avenir-medium">The divs change style from "position: absolute" TO "position: relative" @Mobile: &lt;= 549px</strong>
+      </p>
+
+      <p>
+       <strong class="acr-avenir-light-oblique">Example below: first image placed is No.1. The last image placed has no number on it.</strong>
+      </p>
+
+      <p>
+       <strong class="acr-avenir-medium">Resize the browser to view behavior.</strong>
+      </p>
+    </div>
+
+    <div class="hmc-grid-100
+                hmc-grid-xs
+                hmc-carousel-sm
+                hmc-grid-md
+                acr-responsive-background-behavior
+                acr-responsive-background-setheight"
+         data-img-xsmall-1x="../../img/grid-xsmall-1x.jpg"
+         data-img-xsmall-2x="../../img/grid-xsmall-2x.jpg"
+         data-img-medium-1x="../../img/grid-medium-1x.jpg"
+         data-img-medium-2x="../../img/grid-medium-2x.jpg"
+         data-img-large-1x="../../img/grid-large-1x.jpg"
+         data-img-large-2x="../../img/grid-large-2x.jpg"
+         data-img-xlarge-1x="../../img/grid-xlarge-1x.jpg"
+         data-img-xlarge-2x="../../img/grid-xlarge-2x.jpg">
+      <div class="hmc-grid-items">
+        <div class="hmc-grid-item
+                    hmc-x0-y0
+                    image-tile
+                    hidden-md"
+             data-box-parallax="true"
+             data-id="tile-1">
+          <div class="inner-content
+                      hidden-xs"
+               data-box-content="true"
+               data-box-speed="15">
+            <div class="image-tile-content
+                        acr-shadow-1">
+              <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source media="(min-width: 1400px)" srcset="../../img/nsx-key-story-xl-1x.jpg">
+
+                <source media="(min-width: 1024px)" srcset="../../img/nsx-key-story-lg-1x.jpg">
+
+                <source media="(min-width: 550px)" srcset="../../img/nsx-key-story-sm-1x.jpg">
+                <!--[if IE 9]></video><![endif]-->
+
+                <img srcset="../../img/nsx-key-story-xs-1x.jpg">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmc-grid-item
+                    hmc-x6-y2
+                    hmc-w80
+                    image-tile">
+          <div class="inner-content">
+            <div class="image-tile-content">
+              <picture>
+                <img src="../../img/take-it-1024.svg">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmc-grid-item
+                    hmc-x7-y4"
+                    data-box-parallax="true">
+          <div class="inner-content"
+               data-box-content="true"
+               data-box-speed="1">
+            <div class="acr-white
+                        text-right">
+              Precision Crafted Performance is at the core of our DNA. We build with exhilarating performance, unsurpassed comfort and exacting attention to detail.
+            </div>
+
+            <div class="btn-wrapper
+                        acr-anim
+                        acr-fdown">
+              <a href="#">
+                <div class="acr-cta-r-trans-w">
+                  <span>DISCOVER MORE</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmc-grid-carousel"></div>
+
+        <div class="hmc-grid-item
+                    hmc-x4-y8
+                    hmc-w20
+                    hmc-carousel-slide
+                    image-tile">
+          <div class="inner-content">
+            <div class="image-tile-content">
+              <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source media="(min-width: 1400px)" srcset="../../img/accolades-headline-xsmall-1x.jpg">
+
+                <source media="(min-width: 1024px)" srcset="../../img/accolades-headline-xsmall-1x.jpg">
+
+                <source media="(min-width: 550px)" srcset="../../img/accolades-headline-xsmall-1x.jpg">
+                <!--[if IE 9]></video><![endif]-->
+
+                <img srcset="../../img/accolades-headline-xsmall-1x.jpg">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmc-grid-item
+                    hmc-x5-y8
+                    hmc-w20
+                    hmc-carousel-slide
+                    image-tile"
+              data-id="tile-1">
+          <div class="inner-content">
+            <div class="image-tile-content">
+              <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source media="(min-width: 1400px)" srcset="../../img/culture-img-1-320.jpg">
+
+                <source media="(min-width: 1024px)" srcset="../../img/culture-img-1-320.jpg">
+
+                <source media="(min-width: 550px)" srcset="../../img/culture-img-1-320.jpg">
+                <!--[if IE 9]></video><![endif]-->
+
+                <img srcset="../../img/culture-img-1-320.jpg">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmc-grid-item
+                    hmc-x2-y3
+                    hmc-w10
+                    image-tile">
+          <div class="inner-content">
+            <div class="image-tile-content">
+              <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source media="(min-width: 1400px)" srcset="../../img/nsx-key-story-xl-1x.jpg">
+
+                <source media="(min-width: 1024px)" srcset="../../img/nsx-key-story-lg-1x.jpg">
+
+                <source media="(min-width: 550px)" srcset="../../img/nsx-key-story-sm-1x.jpg">
+                <!--[if IE 9]></video><![endif]-->
+
+                <img srcset="../../img/nsx-key-story-xs-1x.jpg">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

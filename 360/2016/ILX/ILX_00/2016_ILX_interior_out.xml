@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama id="" hideabout="1">
+  <view fovmode="0" pannorth="0">
+    <start pan="323.5" fov="71" tilt="-34"/>
+    <min pan="0" fov="40" tilt="-90"/>
+    <max pan="360" fov="80" tilt="90"/>
+  </view>
+  <userdata title="" datetime="2012:05:18 15:40:04" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+  <hotspots width="180" height="20" wordwrap="1">
+    <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" background="1" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+    <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+  </hotspots>
+  <media/>
+  <input tilesize="750"
+         tilescale="1.013333333333333"
+         tile0url="images/16ILX-spin-flat-0.jpg"
+         tile1url="images/16ILX-spin-flat-1.jpg"
+         tile2url="images/16ILX-spin-flat-2.jpg"
+         tile3url="images/16ILX-spin-flat-3.jpg"
+         tile4url="images/16ILX-spin-flat-4.jpg"
+         tile5url="images/16ILX-spin-flat-5.jpg"
+         prev0url="images/16ILX-spin-flat-preview-0.jpg"
+         prev1url="images/16ILX-spin-flat-preview-1.jpg"
+         prev2url="images/16ILX-spin-flat-preview-2.jpg"
+         prev3url="images/16ILX-spin-flat-preview-3.jpg"
+         prev4url="images/16ILX-spin-flat-preview-4.jpg"
+         prev5url="images/16ILX-spin-flat-preview-5.jpg" />
+  <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+</panorama>

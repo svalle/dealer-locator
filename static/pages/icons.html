@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+<div class="blade-wrapper icon-styleguide">
+	<h2>Icon Set</h2>
+	<p><b>Handlebars Sample</b></p>
+	<p class="code">{{svg id="footer-twitter" className="acr-icon"}}</p> <br><br>
+	<p><b>Using viewBox*</b></p>
+	<p class="code">{{svg id="footer-twitter" className="acr-icon" viewBox="0 0 26 26"}}</p>
+	<p><small>*The viewBox property is required when you need to autoscale the icon (e.g. width: 100px; height: auto;), otherwise you have to set both width and height. Notice that each SVG icon has it's own viewBox value, that you can check on it's source code. If you set the specific value for your icon you can make it autoscale. This shouldn't be necessary if the icon is square since you'll be able to set your width and height via css which is the default way to do it. (e.g. width: 100px; height: 100px;)</small></p>
+	<br>
+	<p>New icons should be added from <a href="https://razorfish.app.box.com/files/0/f/6832096954/New_Icons">BOX folder</a> only. SVG should be manually checked for unwanted inline style tags. Src folder for adding icons using default gulp task is: <b>HTML/src/assets/svg/systems/*.svg</b></p>
+	<br>
+	<p>
+		- The id is the name of the file, that should be the one provided by creative. <br>
+		- The "acr-icon" class is the default style for an icon, you can add a new state on icons.scss or in your component sass if it is too customized <br>
+	</p>
+	<br><br>
+	<ul>
+		<!-- inject:svg -->
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#360-arrows"></use></svg></a><br><span>#360-arrows</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#acura-mark"></use></svg></a><br><span>#acura-mark</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#acura-slogan"></use></svg></a><br><span>#acura-slogan</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#acura-stacked"></use></svg></a><br><span>#acura-stacked</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#alert-icon"></use></svg></a><br><span>#alert-icon</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#arrow-45"></use></svg></a><br><span>#arrow-45</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#arrow-left"></use></svg></a><br><span>#arrow-left</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#arrow-noOutline"></use></svg></a><br><span>#arrow-noOutline</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#arrow-right"></use></svg></a><br><span>#arrow-right</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#bap-alertbell"></use></svg></a><br><span>#bap-alertbell</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#black-dot"></use></svg></a><br><span>#black-dot</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#build-and-price"></use></svg></a><br><span>#build-and-price</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#calculate-payment"></use></svg></a><br><span>#calculate-payment</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#checkmark"></use></svg></a><br><span>#checkmark</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#circle-checkmark"></use></svg></a><br><span>#circle-checkmark</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#close"></use></svg></a><br><span>#close</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#compare-models"></use></svg></a><br><span>#compare-models</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#cta-arrow-down"></use></svg></a><br><span>#cta-arrow-down</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#cta-arrow-outline"></use></svg></a><br><span>#cta-arrow-outline</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#cta-arrow-up"></use></svg></a><br><span>#cta-arrow-up</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#cta-arrow"></use></svg></a><br><span>#cta-arrow</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#cta-play-outline"></use></svg></a><br><span>#cta-play-outline</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#down-arrow"></use></svg></a><br><span>#down-arrow</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#drivetrain"></use></svg></a><br><span>#drivetrain</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#find-dealer"></use></svg></a><br><span>#find-dealer</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-facebook"></use></svg></a><br><span>#footer-facebook</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-googleplus"></use></svg></a><br><span>#footer-googleplus</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-instagram"></use></svg></a><br><span>#footer-instagram</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-mail"></use></svg></a><br><span>#footer-mail</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-pinterest"></use></svg></a><br><span>#footer-pinterest</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-tumblr"></use></svg></a><br><span>#footer-tumblr</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-twitter"></use></svg></a><br><span>#footer-twitter</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#footer-youtube"></use></svg></a><br><span>#footer-youtube</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#ilx_logo"></use></svg></a><br><span>#ilx_logo</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#mag_glass"></use></svg></a><br><span>#mag_glass</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#mdx_logo"></use></svg></a><br><span>#mdx_logo</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#minus"></use></svg></a><br><span>#minus</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#mobile-list-arrow-down"></use></svg></a><br><span>#mobile-list-arrow-down</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#mobile-list-arrow-up"></use></svg></a><br><span>#mobile-list-arrow-up</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#play-noOutline"></use></svg></a><br><span>#play-noOutline</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#play"></use></svg></a><br><span>#play</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#plus"></use></svg></a><br><span>#plus</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#quote-mark"></use></svg></a><br><span>#quote-mark</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#search-inventory"></use></svg></a><br><span>#search-inventory</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#special-offers"></use></svg></a><br><span>#special-offers</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#trade-in-value"></use></svg></a><br><span>#trade-in-value</span></li>
+		<li><a href="#" class="acr-demo-icon"><svg class="acr-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink"xlink:href="#sample-bike"></use></svg></a><br><span>#sample-bike</span></li>
+		<!-- endinject -->
+	</ul>
+</div>
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

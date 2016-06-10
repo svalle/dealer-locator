@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+<header class="acr-header" role="menu">
+  <div class="acr-header-bar">
+    <nav role="menubar">
+      <span class="acr-icon-button-close acr-f1 acr-white" title="Close" role="button" tabindex="0"></span>
+      <!-- Mobile Header -->
+      <header>
+        <span class="menu" role="button" tabindex="0" title="Toggle Menu">
+          Menu
+          <span></span>
+          <span></span>
+        </span>
+        <a href="#" class="logo"><h1 class="logo">
+          <svg class="acr-icon-header acr-icon-nav"><use xlink:href="#acura-stacked"></use></svg>
+        </h1></a>
+        <a href="#" class="dealers-btn dealers-btn-mobile">
+          <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
+          <span>Dealers</span>
+        </a>
+      </header>
+      <!-- >= Tablet BP -->
+      <a href="#" class="logo hidden-xs hidden-md hidden-lg">
+      <h1 class="logo" title="Acura"><svg class="acr-icon-stacked  acr-icon-nav"><use xlink:href="#acura-stacked"></use></svg></h1></a>
+      <a href="#" class="logo hidden-xs hidden-sm">
+      <h1 class="logo" title="Acura"><svg class="acr-icon-slogan  acr-icon-nav"><use xlink:href="#acura-slogan"></use></svg></h1></a>
+      <section>
+        <ul class="primary">
+          <li data-flyout="vehicles-flyout">
+            <a href="#" aria-haspopup="true">Vehicles</a>
+            <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+          </li>
+          <li data-flyout="shopping-tools-flyout">
+            <a href="#" aria-haspopup="true">Shopping Tools</a>
+            <svg class="acr-icon is-red"><use xlink:href="#down-arrow"></use></svg>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <ul class="secondary">
+          <li class="dealer-locator">
+            <button class="dealers-btn">
+              <svg class="acr-icon" viewbox="0 0 137 200"><use xlink:href="#find-dealer"></use></svg>
+              <span>Dealers</span>
+            </button>
+            <form method="GET" action="http://www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="acr-form-validate search" target="_self" novalidate>
+              <svg class="acr-icon"><use xlink:href="#find-dealer"></use></svg>
+              <span class="acr-icon-locator-error acr-red"></span>
+              <aside class="form">
+                <span class="field">
+                  <input type="number" name="zip" id="nav-dealer-locator" placeholder="Enter your zip" maxlength="5" pattern="^[0-9]{5}$" required />
+                  <label for="nav-dealer-locator" class="sr-only">Enter your zip code to locate the nearest Acura dealer</label>
+                </span>
+                <button type="submit" class="acr-icon-explore acr-f2 acr-white acr-bg-red" title="Go"></button>
+                <button type="button" class="acr-icon-button-close acr-f1 acr-white" title="Close" tabindex="0"></button>
+              </aside>
+            </form>
+          </li>
+          <li class="hidden-sm">
+            <a href="#">Certified Pre-Owned</a>
+          </li>
+          <li class="hidden-sm">
+            <a href="#">Owners</a>
+          </li>
+          <li class="site-search">
+            <button class="search-link">
+              <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
+            </button>
+            <form method="GET" action="http://www.acura.com/Search/Results.aspx" class="acr-form-validate search" target="_self" novalidate>
+              <aside class="form">
+                <svg class="acr-icon" viewbox="0 0 200 200"><use xlink:href="#mag_glass"></use></svg>
+                <span class="field">
+                  <input type="text" id="nav-search" name="q" placeholder="Search" required />
+                  <label for="nav-search" class="sr-only">Search for more information on Acura vehicles</label>
+                </span>
+                <button type="submit" class="acr-icon-explore acr-f2 acr-white acr-bg-red" title="Go"></button>
+                <button type="button" class="acr-icon-button-close acr-f1 acr-white" title="Close" tabindex="0"></button>
+              </aside>
+            </form>
+          </li>
+          <li class="menu" role="button" tabindex="0">
+            Menu
+            <span></span>
+            <span></span>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <!-- MOBILE & TABLET HAMBURGER MENUS -->
+  <nav class="acr-hamburger-nav" role="navigation">
+    <!-- MOBILE MENU -->
+    <ul role="menu">
+      <li role="menuitem" tabindex="0">
+        <a href="#" class="scroll-anchor">Vehicles</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Future Vehicles</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Build &amp; Price</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Current Offers</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Search Inventory</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Request A Quote</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Certified Pre-Owned</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Owners</a>
+      </li>
+    </ul>
+    <!-- TABLET MENU -->
+    <ul role="menu">
+      <li role="menuitem" tabindex="0">
+        <a href="#" class="scroll-anchor">Vehicles</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Future Vehicles</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Build &amp; Price</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Current Offers</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Search Inventory</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Request A Quote</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Certified Pre-Owned</a>
+      </li>
+      <li role="menuitem" tabindex="0">
+        <a href="#">Owners</a>
+      </li>
+    </ul>
+  </nav>  <!-- Vehicles Flyout for Desktop -->
+  <nav class="flyout" data-flyout="vehicles-flyout">
+    <aside>
+    <span class="flyout-disclaimer">*Prices shown are Acura suggested retail prices only and do not include taxes, title, license, destination, handling charges or registration & documentary fees. Acura vehicle accessory costs, labor and installation vary. Dealers set their own prices. Please consult your selected dealer. Base MSRP for NSX is with Iron Rotors and Black Calipers which will not be available until late 2016</span>
+      <section>
+        <h3>Sedans</h3>
+        <a href="#" class="model">
+          <img src="../../img/ILX_275x125.png" alt="">
+          <p>
+            <strong>ILX</strong>
+            <span>Compact Sports Sedan<br>
+            Starting at $27,900</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+        <a href="#" class="model">
+          <img src="../../img/TLX_275x125.png" alt="">
+          <p>
+            <strong>TLX</strong>
+            <span>Midsize Sports Sedan<br>
+            Starting at $31,695</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+        <a href="#" class="model">
+          <img src="../../img/RLX_275x125.png" alt="">
+          <p>
+            <strong>RLX</strong>
+            <span>Spacious Premium Sedan<br>
+            Starting at $54,450</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+      </section>
+      <section>
+        <h3>SUVs</h3>
+        <a href="#" class="model">
+          <img src="../../img/RDX__275x125.png" alt="">
+          <p>
+            <strong>RDX</strong>
+            <span>Midsize Crossover SUV<br>
+            Starting at $35,270</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+        <a href="#" class="model">
+          <img src="../../img/MDX_275x125.png" alt="">
+          <p>
+            <strong>MDX</strong>
+            <span>Three-Row Premium SUV<br>
+            Starting at $42,865</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+        <h3>Sportscars</h3>
+        <a href="#" class="model">
+          <img src="../../img/NSX_275x125.png" alt="">
+          <p>
+            <strong>NSX</strong>
+            <span>Next–Generation Supercar<br>
+            Starting at $TBD</span>
+            <span class="hidden">
+            Lorem ipsum
+            </span>
+          </p>
+        </a>
+      </section>
+      <section>
+        <div>
+          <h3>Future Vehicles</h3>
+          <a href="#" class="model">
+            <img src="../../img/FUTURE_275x125.png" alt="">
+            <p>
+              <span>See what's next in Precision Crafted Peformance</span>
+              <span class="hidden">
+              Lorem ipsum
+              </span>
+            </p>
+          </a>
+        </div>
+      </section>
+  
+    </aside>
+  </nav>
+  <!-- Shopping Tools Flyout for Desktop -->
+  <nav class="flyout" data-flyout="shopping-tools-flyout">
+    <aside>
+      <section class="acr-shopping-tools-header">
+        <a class="acr-tools"
+          href="http://www.google.com" title="Build & Price">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Build &amp; Price
+            <div class="hoverline"></div>
+          </div>
+        </a>
+        <a class="acr-tools"
+          href="http://www.google.com" title="Compare Models">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compare-models"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Compare Models
+            <div class="hoverline"></div>
+          </div>
+        </a>
+        <a class="acr-tools"
+          href="http://www.google.com" title="Search Inventory">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-inventory"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Search Inventory
+            <div class="hoverline"></div>
+          </div>
+        </a>
+        <a class="acr-tools"
+          href="http://www.google.com" title="Find A Dealer">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trade-in-value"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Find A Dealer
+            <div class="hoverline"></div>
+          </div>
+        </a>
+        <a class="acr-tools"
+          href="http://www.google.com" title="Calculate Payment">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calculate-payment"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Calculate Payment
+            <div class="hoverline"></div>
+          </div>
+        </a>
+        <a class="acr-tools"
+          href="http://www.google.com" title="Current offers">
+          <svg class="acr-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#special-offers"></use>
+          </svg>
+  
+          <div class="acr-desc">
+            Current offers
+            <div class="hoverline"></div>
+          </div>
+        </a>
+      </section>
+      <section>
+        <ul>
+          <li>
+            <h3>Financial Tools</h3>
+            <ol>
+              <li><a href="#">Financial Services</a></li>
+              <li><a href="#">Lease vs. Finance</a></li>
+              <li><a href="#">Apply for Financing</a></li>
+            </ol>
+          </li>
+          <li>
+            <h3>Addtional Tools</h3>
+            <ol>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Acura Store</a></li>
+            </ol>
+          </li>
+        </ul>
+        <aside>
+          <h3>Current Offers</h3>
+          <blockquote>
+            2017 ILX 8-Speed Dual-Clutch Featured Special Lease
+            <p>
+              <span class="acr-f2 acr-black">$229</span>
+              <span>per month for 36 months <br />
+              $2499 total due at signing</span>
+            </p>
+          </blockquote>
+          <a href="/" class="acr-cta-text is-red" ontouchstart>
+            <span>Redeem This</span>
+          </a>
+        </aside>
+      </section>
+    </aside>
+  </nav>
+</header>
+
+<!-- HERO COMPONENT -->
+<section class="acr-hero" data-hero-parallax="true">
+    <div class="hero-slide dark-theme"
+         data-time="3000"
+         data-title="A LEGACY &lt;br&gt;OF INNOVATION">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <video class="hero-video" loop poster="../../img/home/hero/carousel-panel-pass-side-detail-M.jpg">
+              <source src="../../video/carousel-panel-NSX-SB-10SEC-2000x1125.mp4" type="video/mp4">
+              <source src="../../video/carousel-panel-NSX-SB-10SEC-2000x1125.ogv" type="video/ogv">
+              <source src="../../video/carousel-panel-NSX-SB-10SEC-2000x1125.webm" type="video/webm">
+          </video>
+
+          <!-- A fallback image should be only when there is a video tag -->
+          <div class="video-fallback">
+
+            <picture class="stars">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-XL.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-XL.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-L.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-L.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-M.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-M.jpg 2x">
+
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/home/hero/carousel-panel-pass-profile-red-S.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-S.jpg 2x" alt="Cars">
+            </picture>
+
+          </div>
+      </div>
+
+      <div class="acr-hero-panel acr-vcenter">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              A LEGACY <br>OF INNOVATION<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+            <h3 class="col-md-32 acr-fdown acr-stagger is-06s">Thank you for helping us reach 30 years of Precision Crafted Performance</h3>
+
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="AfsZ9tXnv5M"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">watch the ad</span>
+                </a>
+              </div>
+              <div class="acr-cta-container col-sm-18">
+                <a href="discover-more"
+                      class="hero-cta hero-link hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 30 26"><use xlink:href="#arrow-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">explore the nsx</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+    <div class="hero-slide light-theme"
+         data-time="3000"
+         data-title="A LEGACY OF INNOVATION">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <video class="hero-video" loop poster="../../img/home/hero/carousel-panel-pass-side-detail-M.jpg">
+              <source src="" type="video/mp4">
+              <source src="" type="video/ogv">
+              <source src="" type="video/webm">
+          </video>
+
+          <!-- A fallback image should be only when there is a video tag -->
+          <div class="video-fallback">
+
+            <picture class="stars">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../img/home/hero/carousel-panel-pass-side-detail-XL.jpg, ../../img/home/hero/carousel-panel-pass-side-detail-XL.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../img/home/hero/carousel-panel-pass-side-detail-L.jpg, ../../img/home/hero/carousel-panel-pass-side-detail-L.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../img/home/hero/carousel-panel-pass-side-detail-M.jpg, ../../img/home/hero/carousel-panel-pass-side-detail-M.jpg 2x">
+
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/home/hero/carousel-panel-pass-side-detail-S.jpg, ../../img/home/hero/carousel-panel-pass-side-detail-S.jpg 2x" alt="Cars">
+            </picture>
+
+          </div>
+      </div>
+
+      <div class="acr-hero-panel acr-vcenter">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              A LEGACY OF INNOVATION<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+            <h3 class="col-md-32 acr-fdown acr-stagger is-06s">Thank you for helping us reach 30 years of Precision Crafted Performance</h3>
+
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="AfsZ9tXnv5M"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">watch the ad</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+    <div class="hero-slide light-theme"
+         data-time="3000"
+         data-title="PRECISION CONCEPT">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <picture class="stars">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/home/hero/red-XL.jpg, ../../img/home/hero/red-XL.jpg 2x">
+            <source media="(min-width: 1024px)" srcset="../../img/home/hero/red-L.jpg, ../../img/home/hero/red-L.jpg 2x">
+            <source media="(min-width: 550px)" srcset="../../img/home/hero/red-M.jpg, ../../img/home/hero/red-M.jpg 2x">
+
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/home/hero/red-S.jpg, ../../img/home/hero/red-S.jpg 2x" alt="Cars">
+          </picture>
+      </div>
+
+      <div class="acr-hero-panel acr-vjustify">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              PRECISION CONCEPT<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+            <h3 class="col-md-32 acr-fdown acr-stagger is-06s">Designed to Shape the Future of Acura</h3>
+
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="VGEyh9i1F64"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">ad</span>
+                </a>
+              </div>
+              <div class="acr-cta-container col-sm-18">
+                <a href="discover-more"
+                      class="hero-cta hero-link hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 30 26"><use xlink:href="#arrow-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">explore the nsx</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+    <div class="hero-slide dark-theme"
+         data-time="3000"
+         data-title="NEW SPORTS EXPERIENCE - MODAL MODAL">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <picture class="stars">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-XL.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-XL.jpg 2x">
+            <source media="(min-width: 1024px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-L.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-L.jpg 2x">
+            <source media="(min-width: 550px)" srcset="../../img/home/hero/carousel-panel-pass-profile-red-M.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-M.jpg 2x">
+
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/home/hero/carousel-panel-pass-profile-red-S.jpg, ../../img/home/hero/carousel-panel-pass-profile-red-S.jpg 2x" alt="Cars">
+          </picture>
+      </div>
+
+      <div class="acr-hero-panel acr-vjustify">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              NEW SPORTS EXPERIENCE - MODAL MODAL<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="VGEyh9i1F64"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">watch the ad</span>
+                </a>
+              </div>
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="VGEyh9i1F64"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">explore the nsx</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+    <div class="hero-slide light-theme"
+         data-time="3000"
+         data-title="NEW SPORTS EXPERIENCE LINK LINK">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <picture class="stars">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/home/hero/hero-XL.jpg, ../../img/home/hero/hero-XL.jpg 2x">
+            <source media="(min-width: 1024px)" srcset="../../img/home/hero/hero-L.jpg, ../../img/home/hero/hero-L.jpg 2x">
+            <source media="(min-width: 550px)" srcset="../../img/home/hero/hero-M.jpg, ../../img/home/hero/hero-M.jpg 2x">
+
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/home/hero/hero-S.jpg, ../../img/home/hero/hero-S.jpg 2x" alt="Cars">
+          </picture>
+      </div>
+
+      <div class="acr-hero-panel acr-vjustify">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              NEW SPORTS EXPERIENCE LINK LINK<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+            <h3 class="col-md-32 acr-fdown acr-stagger is-06s">Thank you for helping us reach 30 years of Precision Crafted Performance</h3>
+
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="discover-more"
+                      class="hero-cta hero-link hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 30 26"><use xlink:href="#arrow-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">watch the ad</span>
+                </a>
+              </div>
+              <div class="acr-cta-container col-sm-18">
+                <a href="discover-more"
+                      class="hero-cta hero-link hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 30 26"><use xlink:href="#arrow-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">explore the nsx</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+    <div class="hero-slide light-theme"
+         data-time="3000"
+         data-title="THE ICON DRIVES AGAIN - MODAL LINK">
+    <!-- start slide -->
+      <div class="hero-media">
+
+          <picture class="stars">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/home/hero/hero-XL.jpg, ../../img/home/hero/hero-XL.jpg 2x">
+            <source media="(min-width: 1024px)" srcset="../../img/home/hero/hero-L.jpg, ../../img/home/hero/hero-L.jpg 2x">
+            <source media="(min-width: 550px)" srcset="../../img/home/hero/hero-M.jpg, ../../img/home/hero/hero-M.jpg 2x">
+
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/home/hero/hero-S.jpg, ../../img/home/hero/hero-S.jpg 2x" alt="Cars">
+          </picture>
+      </div>
+
+      <div class="acr-hero-panel acr-vcenter">
+        <div class="acr-hero-panel-container">
+          <!-- this is the headline -->
+           <header class="arc-hero-heading acr-anim acr-fdown">
+            <h2 class="col-sm-32">
+              THE ICON DRIVES AGAIN - MODAL LINK<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+            </h2>
+            <h3 class="col-md-32 acr-fdown acr-stagger is-06s">Thank you for helping us reach 30 years of Precision Crafted Performance</h3>
+
+          </header>
+
+          <div class="hero-ctas acr-anim acr-fdown acr-stagger is-95s">
+            <div class="hero-ctas-inner col-sm-32">
+              <div class="acr-cta-container col-sm-18">
+                <a href="discover-more"
+                      class="hero-cta hero-link hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 30 26"><use xlink:href="#arrow-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">explore the nsx</span>
+                </a>
+              </div>
+              <div class="acr-cta-container col-sm-18">
+                <a href="#acr-modal"
+                      data-toggle="modal"
+                      data-target="#acr-modal"
+                      data-video-id="VGEyh9i1F64"
+                      data-video-source="youtube"
+                      role="button"
+                      class="hero-cta hero-modal hero-desktop acr-cta-block"
+                    >
+                  <span class="acr-cta-icon">
+                        <svg class="acr-icon" viewbox="0 0 26 26"><use xlink:href="#play-noOutline"></use></svg>
+                  </span>
+
+                  <span class="cta-text">ad</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end slide -->
+    </div>
+</section>
+<!-- END HERO COMPONENT -->
+
+<section class="promo-tiles-1">
+	<div class="acr-heading text-center acr-anim acr-fbottom">
+    <h6 class="acr-stagger">The latest</h6>
+    <div class="acr-stagger acr-underheading"></div>
+  </div>
+	<a href="home.html">
+		<figure>
+			<picture>
+		    <!--[if IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="../../img/promo-tiles-2-xlarge-1x.jpg, ../../img/promo-tiles-2-xlarge-2x.jpg 2x" media="(min-width: 1400px)">
+        <source srcset="../../img/promo-tiles-2-large-1x.jpg, ../../img/promo-tiles-2-large-2x.jpg 2x" media="(min-width: 1024px)">
+        <source srcset="../../img/promo-tiles-2-medium-1x.jpg, ../../img/promo-tiles-2-medium-2x.jpg 2x" media="(min-width: 550px)">
+
+        <!--[if IE 9]></video><![endif]-->
+        <img srcset="../../img/promo-tiles-2-xsmall-1x.jpg, ../../img/promo-tiles-2-xsmall-2x.jpg 2x" alt="" title="">
+		  </picture>
+			<figcaption>
+				<h5 class="acr-white">For Us, <br /> Safety is Personal</h5>
+			</figcaption>
+		</figure>
+	</a>
+	<a href="http://www.google.com">
+		<figure>
+			<picture>
+		    <!--[if IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="../../img/promo-tiles-1-xlarge-1x.jpg, ../../img/promo-tiles-1-xlarge-2x.jpg 2x" media="(min-width: 1400px)">
+        <source srcset="../../img/promo-tiles-1-large-1x.jpg, ../../img/promo-tiles-1-large-2x.jpg 2x" media="(min-width: 1024px)">
+        <source srcset="../../img/promo-tiles-1-medium-1x.jpg, ../../img/promo-tiles-1-medium-2x.jpg 2x" media="(min-width: 550px)">
+
+        <!--[if IE 9]></video><![endif]-->
+        <img srcset="../../img/promo-tiles-1-xsmall-1x.jpg, ../../img/promo-tiles-1-xsmall-2x.jpg 2x" alt="" title="">
+		  </picture>
+			<figcaption>
+				<h5 class="acr-black">Concept Car <br /> Design Driven Innovation<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">2</sup></h5>
+			</figcaption>
+		</figure>
+	</a>
+</section>
+
+<!-- VEHICLE LINEUP COMPONENT -->
+
+
+<div class="blade-wrapper vehicle-lineup">
+  <div class="carslist">
+    <!-- start header component -->
+    <div class="head-section-comp">
+      <div class="acr-heading text-center">
+        <h6>Full Model Line</h6>
+        <div class="acr-underheading"></div>
+      </div>
+
+      <div class="bladeheadline acr-callout">
+        Exhilaration takes many forms
+      </div>
+    </div>
+    <!-- end header component -->
+
+    <!-- start tile-list-comp -->
+    <div class="tile-carlist-comp acr-anim acr-fbottom-scatter clearfix">
+      <div class="col-mob">
+        <div class="tile acr-stagger is-01s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/ilx.jpg"
+              data-hover-img="../../../img/ilx-on.jpg">
+            <h3 class="line ilx">ILX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/ilx.jpg 1x, ../../../img/ilx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/ilx.jpg 1x, ../../../img/ilx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/ilx.jpg 1x, ../../../img/ilx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/ilx.jpg, ../../../img/ilx.jpg 2x" alt="ILX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/ilx-on.jpg 1x, ../../../img/ilx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/ilx-on.jpg 1x, ../../../img/ilx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/ilx-on.jpg 1x, ../../../img/ilx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/ilx-on.jpg, ../../../img/ilx-on.jpg 2x" alt="ILX car">
+            </picture>
+
+            <span class='tile-tagline'>Compact Sport Sedan</span>
+          </a>
+        </div>
+
+        <div class="tile acr-stagger is-02s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/tlx.jpg"
+              data-hover-img="../../../img/tlx-on.jpg">
+            <h3 class="line tlx">TLX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/tlx.jpg 1x, ../../../img/tlx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/tlx.jpg 1x, ../../../img/tlx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/tlx.jpg 1x, ../../../img/tlx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/tlx.jpg, ../../../img/tlx.jpg 2x" alt="TLX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/tlx-on.jpg 1x, ../../../img/tlx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/tlx-on.jpg 1x, ../../../img/tlx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/tlx-on.jpg 1x, ../../../img/tlx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/tlx-on.jpg, ../../../img/tlx-on.jpg 2x" alt="TLX car">
+            </picture>
+
+            <span class='tile-tagline'>Midsize Sport Sedan</span>
+          </a>
+        </div>
+
+        <div class="tile acr-stagger is-03s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/rlx.jpg"
+              data-hover-img="../../../img/rlx-on.jpg">
+            <h3 class="line rlx">RLX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/rlx.jpg 1x, ../../../img/rlx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/rlx.jpg 1x, ../../../img/rlx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/rlx.jpg 1x, ../../../img/rlx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rlx.jpg, ../../../img/rlx.jpg 2x" alt="RLX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/rlx-on.jpg 1x, ../../../img/rlx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/rlx-on.jpg 1x, ../../../img/rlx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/rlx-on.jpg 1x, ../../../img/rlx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rlx-on.jpg, ../../../img/rlx-on.jpg 2x" alt="RLX car">
+            </picture>
+
+            <span class='tile-tagline'>Spacious Premiun Sedan</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-mob">
+        <div class="tile acr-stagger is-04s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/rdx.jpg"
+              data-hover-img="../../../img/rdx-on.jpg">
+            <h3 class="line rdx">RDX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/rdx.jpg 1x, ../../../img/rdx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/rdx.jpg 1x, ../../../img/rdx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/rdx.jpg 1x, ../../../img/rdx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rdx.jpg, ../../../img/rdx.jpg 2x" alt="RDX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/rdx-on.jpg 1x, ../../../img/rdx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/rdx-on.jpg 1x, ../../../img/rdx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/rdx-on.jpg 1x, ../../../img/rdx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rdx-on.jpg, ../../../img/rdx-on.jpg 2x" alt="RDX car">
+            </picture>
+
+            <span class="tile-tagline">Midsize Versatile SUV</span>
+          </a>
+        </div>
+
+        <div class="tile acr-stagger is-05s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/mdx.jpg"
+              data-hover-img="../../../img/mdx-on.jpg">
+            <h3 class="line mdx">MDX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/mdx.jpg 1x, ../../../img/mdx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/mdx.jpg 1x, ../../../img/mdx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/mdx.jpg 1x, ../../../img/mdx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rdx.jpg, ../../../img/rdx.jpg 2x" alt="MDX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/mdx-on.jpg 1x, ../../../img/mdx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/mdx-on.jpg 1x, ../../../img/mdx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/mdx-on.jpg 1x, ../../../img/mdx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/mdx-on.jpg, ../../../img/mdx-on.jpg 2x" alt="MDX car">
+            </picture>
+
+            <span class="tile-tagline">Sizable Premium SUV</span>
+          </a>
+        </div>
+
+        <div class="tile acr-stagger is-06s">
+          <a href="http://www.google.com"
+              target="_blank"
+              data-normal-img="../../../img/nsx.jpg"
+              data-hover-img="../../../img/nsx-on.jpg">
+            <h3 class="line nsx">NSX</h3>
+
+            <picture class="normalcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/nsx.jpg 1x, ../../../img/nsx.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/nsx.jpg 1x, ../../../img/nsx.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/nsx.jpg 1x, ../../../img/nsx.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rdx.jpg, ../../../img/rdx.jpg 2x" alt="NSX car">
+            </picture>
+
+            <picture class="overcar">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../../img/nsx-on.jpg 1x, ../../../img/nsx-on.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../../img/nsx-on.jpg 1x, ../../../img/nsx-on.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../../img/nsx-on.jpg 1x, ../../../img/nsx-on.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../../img/rdx-on.jpg, ../../../img/rdx-on.jpg 2x" alt="NSX car">
+            </picture>
+
+            <span class="tile-tagline">Iconic Next-Generation Supercar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end tile-list-comp -->
+</div>
+<!-- END OF VEHICLE LINEUP COMPONENT -->
+
+<!-- SHOPPING TOOLS COMPONENT -->
+<div class="blade-wrapper shoping-tools-component">
+  <div class="head-section-comp">
+    <div class="acr-heading text-center">
+      <h6>Shopping Tools</h6>
+      <div class="acr-underheading"></div>
+    </div>
+  </div>
+  <div class="buttons-container row acr-shopping-tools acr-dim-grey-3">
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Build &amp; Price">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+      </svg>      <span class="acr-desc">Build &amp; Price</span>
+    </a>
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Compare Models">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compare-models"></use>
+      </svg>      <span class="acr-desc">Compare Models</span>
+    </a>
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Search Inventory">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+      </svg>      <span class="acr-desc">Search Inventory</span>
+    </a>
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Find A Dealer">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+      </svg>      <span class="acr-desc">Find A Dealer</span>
+    </a>
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Calculate Payment">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+      </svg>      <span class="acr-desc">Calculate Payment</span>
+    </a>
+    <a class="col-xs-12 col-md-6 text-center acr-tools acr-fade-zoom scatter"
+      href="http://www.google.com" title="Current offers">
+      <svg class="acr-icon">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#build-and-price"></use>
+      </svg>      <span class="acr-desc">Current offers</span>
+    </a>
+  </div>
+</div>
+<!-- END OF SHOPPING TOOLS COMPONENT -->
+
+<div class="key-story" id="key-story">
+
+  <!-- start header component -->
+  <div class="blade-wrapper">
+    <div class="head-section-comp">
+      <div class="acr-heading text-center">
+        <h6>OUR POINT OF VIEW</h6>
+        <div class="acr-underheading acr-left"></div>
+      </div>
+    </div>
+  </div>
+  <!-- end header component -->
+
+  <div class="row dark-theme">
+
+    <div class="col-sm-36 acr-grid-25-container component-grid">
+      <div class="bg acr-responsive-background-behavior acr-responsive-background-setheight"
+        data-img-xsmall-1x="../../img/grid-large-1x.jpg"
+        data-img-xsmall-2x="../../img/grid-large-2x.jpg"
+        data-img-medium-1x="../../img/grid-large-1x.jpg"
+        data-img-medium-2x="../../img/grid-large-2x.jpg"
+        data-img-large-1x="../../img/grid-xlarge-1x.jpg"
+        data-img-large-2x="../../img/grid-xlarge-2x.jpg"
+        data-img-xlarge-1x="../../img/grid-xlarge-1x.jpg"
+        data-img-xlarge-2x="../../img/grid-xlarge-2x.jpg">
+      </div>
+
+      <div class="acr-grid-item acr-x25-y100 nsx-car" data-box-parallax="true">
+          <div class="inner-content" data-box-content="true" data-box-speed="15">
+          <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/nsx-key-story-xl-1x.jpg">
+            <source media="(min-width: 1024px)" srcset="../../img/nsx-key-story-lg-1x.jpg">
+            <source media="(min-width: 550px)" srcset="../../img/nsx-key-story-sm-1x.jpg">
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/nsx-key-story-xs-1x.jpg" src="../../img/nsx-key-story-xs-1x.jpg" alt="">
+          </picture>
+        </div>
+      </div>
+      <div class="acr-grid-item acr-x50-y25 takeitsign hidden-xs hidden-sm">
+        <div class="inner-content">
+          <picture>
+            <source media="(min-width: 1400px)" srcset="../../img/take-it-1400.svg ../../img/take-it-1400.svg 2x">
+            <img srcset="../../img/take-it-1024.svg ../../img/take-it-1024.svg 2x" src="../../img/take-it-1024.svg">
+          </picture>
+        </div>
+      </div>
+
+      <div class="acr-grid-item acr-x50-y25 takeitsign hidden-md hidden-lg hidden-xl">
+        <div class="inner-content">
+          <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 550px)" srcset="../../img/take-it-550.svg ../../img/take-it-550.svg 2x">
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/take-it-320.svg ../../img/take-it-320.svg 2x" src="../../img/take-it-320.svg">
+          </picture>
+        </div>
+      </div>
+      <div class="acr-grid-item acr-x75-y75 copytext hidden-sm" data-box-parallax="true">
+          <div class="inner-content" data-box-content="true" data-box-speed="1">
+          <div class="desc-text">
+            Precision Crafted Performance is at the core of our DNA. We build with exhilarating performance, unsurpassed comfort and exacting attention to detail.
+          </div>
+          <div class="btn-wrapper">
+            <a href="#">
+              <div class="cta-btn">
+              </div>
+              <div class="acr-cta-r-trans-w">
+                <span>DISCOVER MORE</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="acr-grid-item acr-x50-y50 copytext hidden-xs hidden-md hidden-lg hidden-xl">
+        <div class="inner-content">
+          <div class="desc-text">
+            Precision Crafted Performance is at the core of our DNA. We build with exhilarating performance, unsurpassed comfort and exacting attention to detail.
+          </div>
+          <div class="btn-wrapper">
+            <a href="#">
+              <div class="cta-btn">
+              </div>
+              <div class="acr-cta-r-trans-w">
+                <span>DISCOVER MORE</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Handlebar templates start-->
+
+<div class="culture">
+  <div class="acr-heading visible-xs">
+    <h6 class="acr-stagger text-center">A culture of performance</h6>
+    <div class="acr-underheading"></div>
+  </div>
+  <div class="w75 acr-callout text-center hidden-xs">
+    <div class="acr-anim acr-fdown">A culture of performance</div>
+    <p class="acr-fdown acr-stagger is-06s acr-larger">Not only are we constantly breaking molds to make Not only are we constantly breaking molds to makeNot only are we constantly breaking molds to make</p>
+  </div>
+  <div class="row culture-wrapper light-theme">
+    <div class="col-sm-36 acr-grid-25-container culture-grid">
+      <div class="bg"></div>
+      <div class="acr-grid-item acr-x75-y25" data-box-parallax="true">
+        <div class="inner-content" data-box-content="true" data-box-speed="5">
+          <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1400px)" srcset="../../img/culture-img-1-1400.jpg">
+            <source media="(min-width: 1024px)" srcset="../../img/culture-img-1-1024.jpg">
+            <source media="(min-width: 550px)" srcset="../../img/culture-img-1-550.jpg">
+            <!--[if IE 9]></video><![endif]-->
+            <img srcset="../../img/culture-img-1-320.jpg" alt="">
+          </picture>
+        </div>
+      </div>
+      <div class="acr-grid-item acr-x25-y25" data-box-parallax="true">
+        <div class="inner-content acr-card" data-box-content="true" data-box-speed="15">
+          <p class="title-text text-left">Auto Show Spotlight</p>
+          <div class="desc-text text-left hidden-xs show">
+            The 2017 Acura MDX debuts at the New York International Auto Show. Powered by experience-enhancing technologies, it’s definitively dynamic.
+          </div>
+          <div class="btn-wrapper">
+            <a href="#">
+              <div class="cta-btn">
+              </div>
+              <div class="acr-cta-text">
+                <span>See All Events</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="acr-grid-item acr-x25-y75">
+        <div class="inner-content">
+          <div class="internal-gallery component-slick">
+            <div class="acr-grid-item acr-x75-y0 hidden-sm galleryimg1">
+              <a href="#acr-modal" data-toggle="modal" data-target="#acr-modal" class="video-class-gallery" tabindex="-1"
+                data-video-id="AfsZ9tXnv5M"
+                data-video-source="youtube"
+                >
+                <span class="acr-icon-play-btn acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-3-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-3-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-3-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-3-320.jpg" alt="">
+                  </picture>
+                </div>
+              </a>
+            </div>
+            <div class="acr-grid-item acr-x75-y75 hidden-sm galleryimg3">
+              <a href="#">
+              <span class="acr-icon-insta acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-4-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-4-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-4-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-4-320.jpg" alt="" class="acr-shadow-6">
+                  </picture>
+                </div>
+              </a>
+            </div>
+            <div class="acr-grid-item acr-x0-y50 hidden-sm galleryimg2">
+              <a href="#">
+              <span class="acr-icon-insta acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-2-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-2-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-2-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-2-320.jpg" alt="">
+                  </picture>
+                </div>
+              </a>
+            </div>
+            <div class="acr-grid-item acr-x50-y25 hidden-xs hidden-md hidden-lg hidden-xl galleryimg1">
+              <a href="#acr-modal" data-toggle="modal" data-target="#acr-modal" class="video-class-gallery" tabindex="-1"
+                data-video-id="AfsZ9tXnv5M"
+                data-video-source="youtube"
+                >
+                <span class="acr-icon-play-btn acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-3-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-3-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-3-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-3-320.jpg" alt="">
+                  </picture>
+                </div>
+              </a>
+            </div>
+            <div class="acr-grid-item acr-x75-y75 hidden-xs hidden-md hidden-lg hidden-xl galleryimg3">
+              <a href="#">
+               <span class="acr-icon-insta acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-4-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-4-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-4-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-4-320.jpg" alt="" class="acr-shadow-6">
+                  </picture>
+                </div>
+              </a>
+            </div>
+            <div class="acr-grid-item acr-x25-y50 hidden-xs hidden-md hidden-lg hidden-xl galleryimg2">
+              <a href="#">
+                <span class="acr-icon-insta acr-f1"></span>
+                <div class="inner-content acr-grow">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source media="(min-width: 1400px)" srcset="../../img/culture-img-2-1400.jpg">
+                    <source media="(min-width: 1024px)" srcset="../../img/culture-img-2-1024.jpg">
+                    <source media="(min-width: 550px)" srcset="../../img/culture-img-2-550.jpg">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img srcset="../../img/culture-img-2-320.jpg" alt="">
+                  </picture>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acr-grid-item acr-x75-y75" data-box-parallax="true">
+        <div class="inner-content acr-card" data-box-content="true" data-box-speed="15">
+          <p class="title-text text-left">Join the Fast Crowd</p>
+          <div class="desc-text hidden-xs ">
+            The world of Acura moves fast. There’s always something inspiring to like, follow or share.
+          </div>
+          <div class="social-container">
+            <p class="social-title hidden-xs show">FOLLOW US</p>
+            <ul class="social">
+              <li>
+                <a href="">
+                  <span class="acr-icon-fb"></span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span class="acr-icon-insta"></span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span class="acr-icon-yt"></span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span class="acr-icon-tw"></span>
+                </a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AWARDS COMPONENT -->
+<section class="acr-awards acr-accolades">
+
+  <div class="blade-wrapper awards-container">
+    <header
+      class="awards-copy acr-heading text-center">
+      <h6>ACCOLADES</h6>
+      <div class="acr-underheading"></div>
+    </header>
+
+    <div class="awards-headline acr-anim acr-fdown">
+      <p class="acr-stagger awards-copy headline acr-deep-blue col-lg-21 col-md-18 col-sm-34 col-xs-36">
+        The only luxury brand awarded top safety ratings across its entire model
+        line.<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+      </p>
+
+      <div class="acr-fdown acr-stagger is-06s">
+
+        <picture class="stars">
+          <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <source media="(min-width: 1400px)" srcset="../../img/stars-1400.svg">
+          <source media="(min-width: 1024px)" srcset="../../img/stars-1024.svg">
+          <source media="(min-width: 550px)" srcset="../../img/stars-550.svg">
+          <!--[if IE 9]></video><![endif]-->
+          <img srcset="../../img/stars-320.svg" alt="Cars">
+        </picture>
+
+        <span class="awards-copy subheadline">
+          NHTSA 5-Star Overall Vehicle Score
+        </span>
+
+      </div>
+    </div>
+
+    <a class="awards-copy acr-cta-r-trans-b acr-anim acr-fdown acr-stagger is-09s" href="discover-more">
+      See Why
+    </a>
+  </div>
+  <picture class="acr-bg">
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source media="(min-width: 1400px)" srcset="../../img/awards-background-vehicle-lineup-XL.jpg, ../../img/awards-background-vehicle-lineup-XL.jpg 2x">
+    <source media="(min-width: 1024px)" srcset="../../img/awards-background-vehicle-lineup-L.jpg, ../../img/awards-background-vehicle-lineup-L.jpg 2x">
+    <source media="(min-width: 550px)" srcset="../../img/awards-background-vehicle-lineup-M.jpg, ../../img/awards-background-vehicle-lineup-M.jpg 2x">
+    <!--[if IE 9]></video><![endif]-->
+    <img srcset="../../img/awards-background-vehicle-lineup-S.jpg, ../../img/awards-background-vehicle-lineup-S.jpg 2x" alt="Cars">
+  </picture>
+</section>
+<!-- END OF AWARDS COMPONENT -->
+
+<!-- start promotions -->
+<section class="acr-promotions" data-box-parallax="true">
+   <div class="blade-wrapper promotions-slick col-xs-36 col-sm-30" data-box-content="true" data-box-speed="15">
+
+        <article class="col-xs-12">
+          <a href="some-page">
+            <header class="acr-heading copy">
+              <!-- h6 class is the text color (white/black) -->
+              <h6 class="acr-white">offers</h6>
+              <div class="acr-underheading acr-left"></div>
+            </header>
+            <!-- h5 class is the text color (white/black) -->
+            <h5 class="copy acr-white">$500 Bonus <br>For Your New Acura</h5>
+            <picture class="acr-bg">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../img/promotions-1-1400.jpg, ../../img/promotions-1-1400x2.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../img/promotions-1-1024.jpg, ../../img/promotions-1-1024x2.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../img/promotions-1-768.jpg, ../../img/promotions-1-768x2.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/promotions-1-550.jpg, ../../img/promotions-1-550x2.jpg 2x" alt="Cars">
+            </picture>
+          </a>
+        </article>
+        <article class="col-xs-12">
+          <a href="some-page">
+            <header class="acr-heading copy">
+              <!-- h6 class is the text color (white/black) -->
+              <h6 class="acr-black">owners</h6>
+              <div class="acr-underheading acr-left"></div>
+            </header>
+            <!-- h5 class is the text color (white/black) -->
+            <h5 class="copy acr-black">Welcome to the <br>Acura Owners Site</h5>
+            <picture class="acr-bg">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../img/promotions-2-1400.jpg, ../../img/promotions-2-1400x2.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../img/promotions-2-1024.jpg, ../../img/promotions-2-1024x2.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../img/promotions-2-768.jpg, ../../img/promotions-2-768x2.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/promotions-2-550.jpg, ../../img/promotions-2-550x2.jpg 2x" alt="Cars">
+            </picture>
+          </a>
+        </article>
+        <article class="col-xs-12">
+          <a href="some-page">
+            <header class="acr-heading copy">
+              <!-- h6 class is the text color (white/black) -->
+              <h6 class="acr-white">motorsports</h6>
+              <div class="acr-underheading acr-left"></div>
+            </header>
+            <!-- h5 class is the text color (white/black) -->
+            <h5 class="copy acr-white">The Apex of Velocity <br>and Veracity</h5>
+            <picture class="acr-bg">
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source media="(min-width: 1400px)" srcset="../../img/promotions-3-1400.jpg, ../../img/promotions-3-1400x2.jpg 2x">
+              <source media="(min-width: 1024px)" srcset="../../img/promotions-3-1024.jpg, ../../img/promotions-3-1024x2.jpg 2x">
+              <source media="(min-width: 550px)" srcset="../../img/promotions-3-768.jpg, ../../img/promotions-3-768x2.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/promotions-3-550.jpg, ../../img/promotions-3-550x2.jpg 2x" alt="Cars">
+            </picture>
+          </a>
+        </article>
+
+  </div>
+</section>
+<!-- end promotions -->
+
+<!-- GLOBAL FOOTER COMPONENT -->
+<footer>
+
+  <div class="acr-footer col-lg-20 col-md-34 col-sm-30">
+    <a href="http://www.acura.com/" class="logo">
+      <svg class="acr-icon-footer"><use xlink:href="#acura-mark"></use></svg>
+    </a>
+
+    <hr>
+  </div>
+
+  <div class="acr-footer col-lg-22 col-md-33 col-sm-30">
+
+    <ul class="inner">
+      <li>
+        <a href="http://m.acura.com/">Mobile Site</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/Sitemap.aspx">Site Map</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/HelpLanding.aspx">Help</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/ClientRelations.aspx">Client Relations</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/FinancingLanding.aspx">Financing</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/AboutLanding.aspx">About Acura</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/dealeradassociations.aspx">Dealer Directory</a>
+      </li>
+      <li>
+        <a href="http://www.acurafinancialservices.com/">Acura Financial Services</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/Motorsports.aspx">Motor Sports</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/Engagements.aspx">Events</a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/Store.aspx">Acura Store</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="acr-footer col-lg-22 col-md-33 col-sm-36">
+    <ul class="social">
+      <li>
+        <a href="https://twitter.com/Acura">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-twitter"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/Acura">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-facebook"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/acura/">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-instagram"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/user/Acura">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-youtube"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://plus.google.com/+acura/posts">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-googleplus"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/AboutLanding.aspx">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-pinterest"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.acura.com/AboutLanding.aspx">
+          <span class="circle"></span>
+          <svg class="acr-icon"><use xlink:href="#footer-mail"></use></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="acr-footer secondary col-sm-36">
+    <li>
+      <a href="http://preferences-mgr.truste.com/?affiliateId=95" >
+      <span class="acr-icon-adchoices"></span>
+      Ad Choices</a>
+    </li>
+    <li>
+      <a href="http://www.acura.com/Privacy.aspx" >Privacy Policy</a>
+    </li>
+    <li>
+      <a href="http://owners.acura.com/service-maintenance/recalls" >Safety Recalls</a>
+    </li>
+    <li>
+      <a href="http://www.acura.com/TermsConditions.aspx" >Terms &amp; Conditions</a>
+    </li>
+    <li>
+      &copy; 2016 Acura
+    </li>
+  </ul>
+</footer>
+<!-- END OF GLOBAL FOOTER COMPONENT -->
+
+<!-- MODAL COMPONENT -->
+<div class="modal fade acr-modal"
+     id="acr-modal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-md modal-lg" role="document">
+    <div class="modal-content">
+
+      <button type="button"
+            class="close acr-icon-button-close acr-white acr-f2 acr-modal-close"
+            data-dismiss="modal"
+            aria-label="Close">
+        </button>
+
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END OF MODAL COMPONENT -->
+
+<!-- ALERT COMPONENT -->
+<section class="acr-alert col-xs-36 col-sm-34">
+
+  <section class="acr-disclaimer acr-alert-container" role="alert">
+    <button type="button" class="acr-icon-button-close acr-f1" aria-label="Close"></button>
+
+    <div class="alert-msg">
+      <div class="acr-icon-alert"></div>
+      <p>
+        <strong>Airbag Recall 2 </strong>
+          A message about airbag recalls
+        <a href="#" class="acr-cta-text-org">
+          <span>learn more</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="acr-disclaimer acr-alert-container" role="alert">
+    <button type="button" class="acr-icon-button-close acr-f1" aria-label="Close"></button>
+
+    <div class="alert-msg">
+      <div class="acr-icon-alert"></div>
+      <p>
+        <strong>Airbag Recall 2 </strong>
+          A message about airbag recalls
+        <a href="#" class="acr-cta-text-org">
+          <span>learn more</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+</section>
+<!-- END ALERT COMPONENT -->
+
+<!-- DISCLAIMER COMPONENT -->
+<section class="acr-disclaimer col-xs-36 col-sm-34"
+    id="acura-disclaimer" role="alert">
+  <button type="button" class="acr-icon-button-close acr-f1" aria-label="Close"></button>
+  <h4></h4>
+  <p></p>
+</section>
+<!-- END OF DISCLAIMER COMPONENT -->
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

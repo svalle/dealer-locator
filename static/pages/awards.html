@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+<!-- AWARDS COMPONENT -->
+<section class="acr-awards acr-accolades">
+
+  <div class="blade-wrapper awards-container">
+    <header
+      class="awards-copy acr-heading text-center">
+      <h6>ACCOLADES</h6>
+      <div class="acr-underheading"></div>
+    </header>
+
+    <div class="awards-headline acr-anim acr-fdown">
+      <p class="acr-stagger awards-copy headline acr-deep-blue col-lg-21 col-md-18 col-sm-34 col-xs-36">
+        The only luxury brand awarded top safety ratings across its entire model
+        line.<sup role="button" data-target="#acura-disclaimer" data-number="1" data-title="loren ipsum" data-copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." class="acr-sup">1</sup>
+      </p>
+
+      <div class="acr-fdown acr-stagger is-06s">
+
+        <picture class="stars">
+          <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <source media="(min-width: 1400px)" srcset="../../img/stars-1400.svg">
+          <source media="(min-width: 1024px)" srcset="../../img/stars-1024.svg">
+          <source media="(min-width: 550px)" srcset="../../img/stars-550.svg">
+          <!--[if IE 9]></video><![endif]-->
+          <img srcset="../../img/stars-320.svg" alt="Cars">
+        </picture>
+
+        <span class="awards-copy subheadline">
+          NHTSA 5-Star Overall Vehicle Score
+        </span>
+
+      </div>
+    </div>
+
+    <a class="awards-copy acr-cta-r-trans-b acr-anim acr-fdown acr-stagger is-09s" href="discover-more">
+      See Why
+    </a>
+  </div>
+  <picture class="acr-bg">
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source media="(min-width: 1400px)" srcset="../../img/awards-background-vehicle-lineup-XL.jpg, ../../img/awards-background-vehicle-lineup-XL.jpg 2x">
+    <source media="(min-width: 1024px)" srcset="../../img/awards-background-vehicle-lineup-L.jpg, ../../img/awards-background-vehicle-lineup-L.jpg 2x">
+    <source media="(min-width: 550px)" srcset="../../img/awards-background-vehicle-lineup-M.jpg, ../../img/awards-background-vehicle-lineup-M.jpg 2x">
+    <!--[if IE 9]></video><![endif]-->
+    <img srcset="../../img/awards-background-vehicle-lineup-S.jpg, ../../img/awards-background-vehicle-lineup-S.jpg 2x" alt="Cars">
+  </picture>
+</section>
+<!-- END OF AWARDS COMPONENT -->
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

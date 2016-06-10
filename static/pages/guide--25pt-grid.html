@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+  <div class="style-guide">
+    <div class="container">
+      <h3>25 Pt Grid</h3>
+
+      <div class="guide acr-bg-dim-grey-1">
+        <strong class="visible-xl text-center acr-black">Desktop: &gt;= 1400px</strong>
+        <strong class="visible-md visible-lg text-center acr-black">Desktop: &gt;= 1024px</strong>
+        <strong class="visible-sm text-center acr-black">Tablet: &gt;= 550px</strong>
+        <strong class="visible-xs text-center acr-black">Mobile: &lt;= 549px</strong>
+      </div>
+
+      <div class="guide acr-bg-dim-grey-2 acr-deep-blue">
+        <strong class="acr-avenir-light-oblique">The images below will stack on mobile in the order they were placed on the grid.  </strong>
+          <br />
+          <strong class="acr-avenir-medium">The divs change style from "position: absolute" TO "position: relative" @Mobile: &lt;= 549px</strong>
+         <br />
+         <strong class="acr-avenir-light-oblique">Example below: first image placed is No.1. The last image placed has no number on it.</strong>
+         <br />
+         <strong class="acr-avenir-medium">Resize the browser to view behavior.</strong>
+      </div>
+
+      <style>
+
+      .wrapper {
+        max-width: none;
+      }
+
+      .acr-grid-25-container {
+        overflow: hidden;
+      }
+
+      </style>
+
+
+
+      <div class="row">
+        <div class="col-sm-36 acr-grid-25-container">
+
+          <!-- 25 pt grid has a BG image placed relative to simulate CMS -->
+          <!-- The image height determines the vertical spacing between the anchor/grid pts -->
+          <div class="bg">
+            <img srcset="../../img/styleguide/fpo/fpo_grid_25_bg.png" alt="">
+          </div>
+
+          <div class="acr-grid-item acr-x50-y0 br">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="../../img/styleguide/fpo/fpo_xlarge-1_1x.png, ../../img/styleguide/fpo/fpo_xlarge-1_2x.png 2x" media="(min-width: 1400px)">
+              <source srcset="../../img/styleguide/fpo/fpo_large-1_1x.png, ../../img/styleguide/fpo/fpo_large-1_2x.png 2x" media="(min-width: 1024px)">
+              <source srcset="../../img/styleguide/fpo/fpo_medium-1_1x.png, ../../img/styleguide/fpo/fpo_medium-1_2x.png 2x" media="(min-width: 550px)">
+
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/styleguide/fpo/fpo_small-1_1x.png, ../../img/styleguide/fpo/fpo_small-1_2x.png 2x" alt="">
+            </picture>
+
+            <div class="acr-grid-item acr-x50-y50">
+              <h2 class="acr-bg-white" style="padding: 2rem; border: 1px solid green">hulloh! </h2>
+            </div>
+          </div>
+ 
+          <div class="acr-grid-item acr-x100-y75 tl"> 
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="../../img/styleguide/fpo/fpo_xlarge-2_1x.png, ../../img/styleguide/fpo/fpo_xlarge-2_2x.png 2x" media="(min-width: 1400px)">
+              <source srcset="../../img/styleguide/fpo/fpo_large-2_1x.png, ../../img/styleguide/fpo/fpo_large-2_2x.png 2x" media="(min-width: 1024px)">
+              <source srcset="../../img/styleguide/fpo/fpo_medium-2_1x.png, ../../img/styleguide/fpo/fpo_medium-2_2x.png 2x" media="(min-width: 550px)">
+
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/styleguide/fpo/fpo_small-2_1x.png, ../../img/styleguide/fpo/fpo_small-2_2x.png 2x" alt="">
+            </picture>
+          </div>
+
+          <div class="acr-grid-item acr-x25-y75 t">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="../../img/styleguide/fpo/fpo_xlarge_1x.jpg, ../../img/styleguide/fpo/fpo_xlarge_2x.jpg 2x" media="(min-width: 1400px)">
+              <source srcset="../../img/styleguide/fpo/fpo_large_1x.jpg, ../../img/styleguide/fpo/fpo_large_2x.jpg 2x" media="(min-width: 1024px)">
+              <source srcset="../../img/styleguide/fpo/fpo_medium_1x.jpg, ../../img/styleguide/fpo/fpo_medium_2x.jpg 2x" media="(min-width: 550px)">
+
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="../../img/styleguide/fpo/fpo_small_1x.jpg, ../../img/styleguide/fpo/fpo_small_2x.jpg 2x" alt="">
+            </picture>
+          </div>
+
+          <!-- ******  25 pt RID GUIDE OVERLAY (points only) ****** -->
+          <div class="acr-pt-grid">
+            <!-- ANCHOR POINTS -->
+            <!-- line  #1 (from top)  -->
+            <div class="acr-x0-y0">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x25-y0">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x50-y0">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x75-y0">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+             <div class="acr-x100-y0">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <!-- line  #2 (from top)  -->
+            <div class="acr-x0-y25">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x25-y25">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x50-y25">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x75-y25">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x100-y25">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <!-- line  #3 (from top)  -->
+            <div class="acr-x0-y50">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x25-y50">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x50-y50">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x75-y50">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x100-y50">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <!-- line  #4 (from top)  -->
+            <div class="acr-x0-y75">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+
+            <div class="acr-x25-y75">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x50-y75">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x75-y75">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x100-y75">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <!-- line  #5 (from top)  -->
+            <div class="acr-x0-y100">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x25-y100">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x50-y100">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+            <div class="acr-x75-y100">
+              <div class="pt acr-x50-y50 intermed"></div>
+            </div>
+            <div class="acr-x100-y100">
+              <div class="pt acr-x50-y50 main"></div>
+            </div>
+          </div>
+          <!-- ******  END 25 pt GRID GUIDE OVERLAY ****** -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>

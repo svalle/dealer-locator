@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <title>Acura</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <link rel="shortcut icon" type="image/png" href="../../img/favicon_16.png" />
+    <link rel="icon" type="image/png" href="../../img/favicon_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="32x32" href="../../img/favicon_32.png">
+    <link rel="apple-touch-icon" href="../../img/favicon_60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon_76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon_120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon_152.png">
+
+    <link rel="stylesheet" href="../../css/vendor.min.css">
+
+    <link rel="stylesheet" href="../../css/main.min.css">
+
+    <script>
+        var $buoop = {
+            vs: { i: 10 },  // browser versions to notify
+            reminder: 24,                   // after how many hours should the message reappear
+            reminderClosed: 150,           // if the user closes message it reappears after x hours
+            test: false,                    // true = always show the bar (for testing)
+            text: "<strong>Please Upgrade Your Browser</strong><br />We noticed you're using an outdated browser. Updating it will allow you to access certain features unavailable to you now. It is not required, but highly recommended. <a href='http://browser-update.org/update-browser.html' target='_blank'>Learn More</a>",                       // custom notification html text
+            newwindow: true                 // open link in new window/tab
+        };
+    
+        function $buo_f() {
+            var e = document.createElement("script");
+            e.src = "https://browser-update.org/update.min.js";
+            document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+<div class="acr-modal-page-container">
+<div class="collapse-content">
+<div class="header">
+  <h5 class="header-name">Lorem ipsum dolor sit amet</h5>
+
+<svg class="acr-icon feature-modal-close"><use xlink:href="#close"></use></svg>
+</div>
+
+<div class="content-container">
+  <picture>
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source srcset="../../img/feature-modal-1x.jpg, ../../img/feature-modal-2x.jpg 2x"
+            media="(min-width: 1400px)">
+
+    <source srcset="../../img/feature-modal-1x.jpg, ../../img/feature-modal-2x.jpg"
+            media="(min-width: 1024px)">
+
+    <source srcset="../../img/feature-modal-1x.jpg, ../../img/feature-modal-2x.jpg 2x"
+            media="(min-width: 550px)">
+    <!--[if IE 9]></video><![endif]-->
+
+    <img srcset="../../img/feature-modal-1x.jpg, ../../img/feature-modal-2x.jpg 2x" src="../../img/feature-modal-1x.jpg">
+  </picture>
+
+  <div class="content">
+    <h5 class="content-name">Lorem ipsum dolor sit amet</h5>
+
+    <div class="description">
+    <p>The A-SPEC Package takes style to the next level. Interior and exterior details give a bolder, sportier appearance.<sup role='button' data-target='#acura-disclaimer' class='acr-sup' data-number='63' data-title='' data-copy='DTS and the DTS symbol are registered trademarks of DTS, Inc.'>63</sup>.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- END OF FEATURE MODAL COMPONENT -->
+    </div>
+
+    <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
+
+    <script type="text/javascript" src="../../js/scripts.min.js"></script>
+
+    <script type="text/javascript">
+      Utility.svgLoader('/icons/systems.svg');
+      Utility.svgLoader('/icons/vehicle-sample.svg');
+    </script>
+  </body>
+</html>
