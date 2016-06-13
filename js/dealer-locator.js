@@ -17,7 +17,7 @@ var DealerLocator = (function () {
 			};
 			var $dealerLocator = $('#dealer-locator'),
 				$map = $('#dealer-map', $dealerLocator),
-				//$form = $('#dealer-locator-form'),
+				$form = $('#search-by-zip-form'),
 				//$submitButton = $('[type=submit]', $form),
 				//$zipInput = $('#zip', $form),
 				$resultsList = $('.results-list', $dealerLocator),
@@ -27,11 +27,11 @@ var DealerLocator = (function () {
 		
 		
 		// custom vars
-            var $form = $('.find-a-dealer-form-acura'),
-                $submitButton = $('.submit', $form),
-                $zipInput = $('.zip-input', $form),
-				$cityInput = $('.city-input', $form),
-				$nameInput = $('.name-input', $form),
+            var $formValidation = $('.find-a-dealer-form-acura'),
+                $submitButton = $('.submit', $formValidation),
+                $zipInput = $('.zip-input', $formValidation),
+				$cityInput = $('.city-input', $formValidation),
+				$nameInput = $('.name-input', $formValidation),
                 $placeHoldTextZip = '';
 				$placeHoldTextCity = '';
 				$placeHoldTextName = '';
@@ -92,7 +92,7 @@ var DealerLocator = (function () {
 						}
 					});
 
-					$form.bind('submit', function(e) {
+					$formValidation.bind('submit', function(e) {
 						e.preventDefault();
 						$submitButton.trigger('click');
 						return false;
@@ -108,9 +108,9 @@ var DealerLocator = (function () {
 					});*/
 
 					//restricts users to only entering numeric values
-					$zipInput.on('keydown', zipKeyDown);
+//					$zipInput.on('keydown', zipKeyDown);
 					//enableds or disables submit button
-					$zipInput.on('keyup', zipCheckOnMousemove);
+//					$zipInput.on('keyup', zipCheckOnMousemove);
 					//checking zip length on mouseover/mouseout to fix the case where
 					//  a user uses autofill/autocomplete to populate zip input
 					//$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
@@ -170,14 +170,17 @@ var DealerLocator = (function () {
 							//if no created here create a cookie for the zip only						
 							//Create expiring cookie, 7 days from then:
 							if ($('#zipTab').hasClass('active')) {
+								$form = $('#search-by-zip-form');
 								zipSearch($zipInput.val());
 								$('input#zip').blur();
 							}
 							if ($('#cityTab').hasClass('active')) {
 								
 							}
-							if ($('#nameTab').hasClass('active')) {
-								alert('name tab')
+							if ($('#nameTab').hasClass('active')) {								
+								$form = $('#search-by-name-form');
+								getDealerData('Airport Marina');
+								
 							}
 							
 
