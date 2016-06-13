@@ -868,7 +868,6 @@
                 if (zipCookie) {
                     $zipInput.val(zipCookie);
                     //update map
-
                 }
 
                 $placeHoldText = $zipInput.attr('placeholder');
@@ -891,8 +890,8 @@
                         //Create expiring cookie, 7 days from then:
                         if ($('#zipCode').hasClass('active')) {
                             console.log('create a cookie  ' + $zipInput.val());
-                            eraseCookie('zipCookie');
-                            createCookie('zipCookie', $zipInput.val(), 7);
+                            //eraseCookie('zipCookie');
+                            //createCookie('zipCookie', $zipInput.val(), 7);
                         }
 
 

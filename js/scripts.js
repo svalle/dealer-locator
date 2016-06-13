@@ -6800,7 +6800,7 @@ var Main = (function() {
 
     SlickOverride.init();
 
-    Utility.enableActive();
+    //Utility.enableActive();
 
     YouTubeManager.init();
 
@@ -6829,7 +6829,7 @@ var Main = (function() {
 
     ModelSlider.init();
 
-    Validation.init();
+    //Validation.init();
 
     Acr.threeSixty.init();
 
