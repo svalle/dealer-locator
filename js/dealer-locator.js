@@ -127,8 +127,7 @@ var Cookies = function() {
 
                 $submitButton.click(function submitClick(e) {
                     e.preventDefault();
-                    $submitButton.addClass('disabled-button');
-                    DoubleClickTags.track('https://4114413.fls.doubleclick.net/activityi;src=4114413;type=fy04n873;cat=newde381;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=');
+                    $submitButton.addClass('disabled-button');                    
                     if (ValidationCivic.validateForm($form)) {
                         zipSearch($zipInput.val());
                         $('input#zip').blur();
@@ -549,22 +548,8 @@ var Cookies = function() {
             init: init
         };
     }(),
-
     // End Dealer Locator    
-    DoubleClickTags = function() {
-        function e(e) {
-            try {
-                var t = Math.random() + "",
-                    i = 1e13 * t;
-                $("html").append('<iframe src="' + e + i + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>')
-            } catch (n) {
-                Utility.error(n.message)
-            }
-        }
-        return Utility.log("DoubleClickTags.js loaded"), {
-            track: e
-        }
-    }(),
+    
     ValidationCivic = function() {
         function e(e) {
             var i = 0,
@@ -634,11 +619,15 @@ var Cookies = function() {
     }(),
     Main = function() {
         return document.addEventListener("DOMContentLoaded", function(e) {
-            Utility.log("DOMContentLoaded event fired"), Modernizr.addTest("ipad", function() {
+            Utility.log("DOMContentLoaded event fired dealer locator js"), 
+			/*Modernizr.addTest("ipad", function() {
                 return null != navigator.userAgent.match(/iPad/i)
-            }), Modernizr.addTest("android", function() {
+            }), 
+			Modernizr.addTest("android", function() {
                 return navigator.userAgent.match("Android") && null != navigator.userAgent.match("Chrome/[.0-9]* (?!Mobile)")
-            }), $.event.special.swipe.horizontalDistanceThreshold = 100, DealerLocator.init()
+            }), 
+			$.event.special.swipe.horizontalDistanceThreshold = 100, */
+			DealerLocator.init()
         }), {}
     }()
     //# sourceMappingURL=scripts.min.js.map
