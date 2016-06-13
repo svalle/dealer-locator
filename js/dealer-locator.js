@@ -1,6 +1,659 @@
-"use strict";
+var DealerLocator = (function () {
+		//vars from dealer locator civic
+			//temporary var for testing future use of ip to lat/long service
+			var fallbackGeoTest = false;
+			var bapWaypoint = {};
+			var map,
+				isMobile = false,
+				zipGlobal = "",
+				lat = "",
+				lng = "",
+				dealerListings = {};
+			var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
+			//options for the geolocation.getCurrentPosition call
+			var geoLocateOptions = {
+				enableHighAccuracy: true,
+				timeout: 5000
+			};
+			var $dealerLocator = $('#dealer-locator'),
+				$map = $('#dealer-map', $dealerLocator),
+				//$form = $('#dealer-locator-form'),
+				//$submitButton = $('[type=submit]', $form),
+				//$zipInput = $('#zip', $form),
+				$resultsList = $('.results-list', $dealerLocator),
+				$resultsItemTemplate = $('.results-item-template', $resultsList).clone();
 
-var Cookies = function() {
+			$resultsList.empty();
+		
+		
+		// custom vars
+            var $form = $('.find-a-dealer-form-acura'),
+                $submitButton = $('.submit', $form),
+                $zipInput = $('.zip-input', $form),
+				$cityInput = $('.city-input', $form),
+				$nameInput = $('.name-input', $form),
+                $placeHoldTextZip = '';
+				$placeHoldTextCity = '';
+				$placeHoldTextName = '';
+
+            function init() {
+				
+				try {
+					//riot.mount('contact_dealer_vehicle_model', {});
+
+					isMobile = checkMobile();
+
+					$('#dealer-map .loader').stop().fadeOut(100);
+
+					//initialize the map
+					map = new Microsoft.Maps.Map(document.getElementById('dealer-map'), {
+						credentials: bingApiCredentials,
+						mapTypeId: Microsoft.Maps.MapTypeId.road,
+						//center: new Microsoft.Maps.Location(34.0058945,-118.4440439),
+						center: new Microsoft.Maps.Location(39.407547, -94.2591867),
+						zoom: 4
+					});
+
+					Microsoft.Maps.Events.addHandler(map, 'keydown', function(e) {
+						e.handled = true;
+						return true;
+					});
+
+					Microsoft.Maps.Events.addHandler(map, 'mousewheel', function(e) {
+						e.handled = true;
+						return true;
+					});
+
+					//delay geoservices until user has scrolled down to the dealerLocator component
+					$('.dealer-locator').waypoint({
+						handler: function(direction) {
+							if (direction == 'down') {
+								//check for value stored in cookie with name of'zip'
+								if (checkCookie()) {
+									setZipInputValue(zipGlobal);
+									getDealerDataFromZip(zipGlobal);
+									//if no cookie found try to use browser geolocation
+								} else if (navigator.geolocation) {
+									navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
+								}
+								//if no browser geolocation try to use hawk IP to zip service
+								else {
+									ipToZip();
+								}
+							}
+						},
+						offset: '-20%'
+					});
+
+
+					$('.use-my-location', $form).click(function useMyLocationClick() {
+						if (navigator.geolocation) {
+							navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
+						}
+					});
+
+					$form.bind('submit', function(e) {
+						e.preventDefault();
+						$submitButton.trigger('click');
+						return false;
+					});
+					
+
+					/*
+					$zipInput.focus(function() {
+						if ($zipInput.val().length == 5) {
+							enableSubmitButton();
+							$submitButton.removeClass('disabled-button');
+						}
+					});*/
+
+					//restricts users to only entering numeric values
+					$zipInput.on('keydown', zipKeyDown);
+					//enableds or disables submit button
+					$zipInput.on('keyup', zipCheckOnMousemove);
+					//checking zip length on mouseover/mouseout to fix the case where
+					//  a user uses autofill/autocomplete to populate zip input
+					//$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
+					
+					
+					//here read zipCookie
+					var zip = readCookie('zip');
+					//if cookie then populate zip input and execute call to update map
+					if (zip) {
+						$zipInput.val(zip);
+						//update map
+						zipSearch($zipInput.val());
+					}
+
+					$placeHoldTextZip = $zipInput.attr('placeholder');				
+					$zipInput.on('focus', function () {
+						clearError($(this).closest('.input-wrapper'));
+						$(this).attr('placeholder', '');
+					});
+					$zipInput.on('blur', function () {
+						if ($zipInput.val() == '') {
+							$(this).attr('placeholder', $placeHoldTextZip);
+						}
+					});
+					
+					//focus / blur on city input
+					$placeHoldTextCity = $cityInput.attr('placeholder');				
+					$cityInput.on('focus', function () {
+						clearError($(this).closest('.input-wrapper'));
+						$(this).attr('placeholder', '');
+					});
+					$cityInput.on('blur', function () {
+						if ($cityInput.val() == '') {
+							$(this).attr('placeholder', $placeHoldTextCity);
+						}
+					});
+					
+					//focus / blur on name input
+					$placeHoldTextName = $nameInput.attr('placeholder');
+					$nameInput.on('focus', function () {
+						clearError($(this).closest('.input-wrapper'));
+						$(this).attr('placeholder', '');
+					});
+					$nameInput.on('blur', function () {
+						if ($nameInput.val() == '') {
+							$(this).attr('placeholder', $placeHoldTextName);
+						}
+					});
+					//restricts users to only entering numeric values
+					$zipInput.on('input', zipInput);
+					
+					$submitButton.on('click', function (e) {
+						console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
+						var form = $(this).closest('.find-a-dealer-form-acura');
+						e.preventDefault();
+						if (validateForm(form)) {
+							//if no created here create a cookie for the zip only						
+							//Create expiring cookie, 7 days from then:
+							if ($('#zipTab').hasClass('active')) {
+								zipSearch($zipInput.val());
+								$('input#zip').blur();
+							}
+							if ($('#cityTab').hasClass('active')) {
+								
+							}
+							if ($('#nameTab').hasClass('active')) {
+								alert('name tab')
+							}
+							
+
+
+							//form submit send params to service to update map
+							//form.submit();
+					   }
+					});
+														
+
+				} catch (e) {
+					if ($form.length > 0) {
+						Utility.error(e);
+					}
+				}								
+
+            }
+						
+
+            function validateForm($form) {
+                var $field = $('.input-wrapper', $form),
+                    required = $field.data('formRequired'),
+                    regex = new RegExp($field.data('formValidate')),
+                    value = $('input', $field).val();
+                if (required && value.length < 1) {
+                    showError($field.data('requiredError'), $field);
+                    return false;
+                } else if ((regex) && (regex.test(value) === false)) {
+                    showError($field.data('regexError'), $field);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function showError(message, $field) {
+                $('.error-message', $field).text(message);
+            }
+
+            function clearError($field) {
+                $('.error-message', $field).text('');
+            }
+
+            function zipInput(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    $(this).closest($form).find($submitButton).trigger('click');
+                    return;
+                }
+                this.value = this.value.replace(/\D/m, '');
+                if (this.value.length > 5) {
+                    this.value = this.value.slice(0, 5);
+                }
+            }
+
+            //function to create a cookie
+            function createCookie(name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                } else var expires = "";
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+            //function to read a cookie
+            function readCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+            //function to erase a cookie
+            function eraseCookie(name) {
+                createCookie(name, "", -1);
+            }
+			
+			//functions dealer locator civic
+			function debounce(func, wait, immediate) {
+				var timeout;
+				return function() {
+					var context = this,
+						args = arguments;
+					var later = function() {
+						timeout = null;
+						if (!immediate) func.apply(context, args);
+					};
+					var callNow = immediate && !timeout;
+					clearTimeout(timeout);
+					timeout = setTimeout(later, wait);
+					if (callNow) func.apply(context, args);
+				};
+			};
+
+			//sets mobile flag to allow for correct handling of map pin touch events
+			function checkMobile() {
+				try {
+					document.createEvent("TouchEvent");
+					return true;
+				} catch (e) {
+					return false;
+				}
+			}
+
+			// ---------------------------------------------------
+			// zip input field keyup and keydown events
+			// zipKeyDown:
+			//    restricts user input to numbers & some hotkeys
+			// zipKeyUp:
+			//    enables/disables submit button based on
+			//    zip input field value length (5 = enabled)
+			// ---------------------------------------------------
+			function zipKeyDown(e) {
+				//restricts user input to numbers + some hotkeys
+				if (e.keyCode === 13 && $zipInput.val().length === 5) {
+					e.preventDefault();
+					$submitButton.trigger('click');
+					return;
+				}
+				if (e.keyCode === 13) {
+					$submitButton.addClass('disabled-button');
+				}
+				if ($.inArray(e.keyCode, [46, 8, 9, 27, 110, 190]) !== -1 ||
+					// Allow: Ctrl+A, Command+A
+					(e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+					// Allow: home, end, left, right, down, up
+					(e.keyCode >= 35 && e.keyCode <= 40)) {
+					// let it happen, don't do anything
+					return;
+				}
+				// Ensure that it is a number and stop the keypress
+				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+					e.preventDefault();
+				}
+			}
+
+			//toggles disable property of submit button on keyup
+			//triggered by mouse events to enable the submit button
+			//  when users use autocomplete
+			var zipCheckOnMousemove = function(e) {
+				if ($zipInput.val().length == 5) {
+					enableSubmitButton();
+					$submitButton.removeClass('disabled-button');
+				} else {
+					disableSubmitButton();
+				}
+			};
+
+
+			// ---------------------------------------------------
+			// browser geolocation functions
+			// ---------------------------------------------------
+			function geoLocateSuccess(position) {
+				getDealerDataFromLatLong(position.coords.latitude, position.coords.longitude);
+			}
+
+			function geoLocateFail(err) {
+				//Utility.log('geoLocateFail: ' + err);
+				ipToZip();
+			}
+
+			// ---------------------------------------------------
+			// fallbackGeo:
+			//    placeholder function for future ip to lat/long service
+			// ---------------------------------------------------
+			function ipToZip() {
+				Utility.log('trying auto-ip service call');
+				var endpoint = '/platform/api/v1/zipcodes?ipaddress=auto';
+				$.ajax({
+						url: endpoint,
+						crossDomain: true,
+						dataType: 'json',
+						beforeSend: function beforeZipSubmit() {
+							disableSubmitButton();
+						}
+					})
+					.done(ipToZipHandler)
+					.always(function formSubmitAlways() {
+						enableSubmitButton();
+					});
+			}
+
+			function ipToZipHandler(data) {
+				Utility.log(data);
+				Utility.log(data.ZipCode);
+				if (data.ZipCode !== null && data.ZipCode !== "null") {
+					getDealerDataFromZip(data.ZipCode);
+				}
+			}
+
+
+			// ---------------------------------------------------
+			// zipSearch:
+			//    fires after validated zipinput submit
+			//    sets zip, creates cookie, updates maps & results list
+			// ---------------------------------------------------
+			function zipSearch(zip) {
+				zipGlobal = zip;
+				Cookies.createCookie('zip', zip, 365);
+				getDealerDataFromZip(zip);
+			}
+
+			function getFormData() {
+				var formData = {};
+				$('input', $form).each(function() {
+					formData[$(this).attr('name')] = $(this).attr('value');
+				});
+				return formData;
+			}
+
+			// ---------------------------------------------------
+			// getDealerDataFromZip:
+			// ---------------------------------------------------
+			function getDealerDataFromZip(zip) {
+				var formData = getFormData();
+				delete formData['lat'];
+				delete formData['long'];
+				formData['zip'] = zip;
+				getDealerData(formData);
+			}
+
+			// ---------------------------------------------------
+			// getDealerDataFromZip:
+			// ---------------------------------------------------
+			function getDealerDataFromLatLong(lat, long) {
+				var formData = getFormData();
+				delete formData['zip'];
+				formData['lat'] = lat;
+				formData['long'] = long;
+				getDealerData(formData);
+			}
+
+			// ---------------------------------------------------
+			// getDealerData:
+			//    ajax call to hawk API to retrieve dealer results
+			// ---------------------------------------------------
+			function getDealerData(formData) {
+				var endpoint = $form.attr('action');
+				//var endpoint = './json/data.json';
+
+				$.ajax({
+						url: endpoint,
+						crossDomain: true,
+						data: formData,
+						dataType: 'json',
+						beforeSend: function beforeZipSubmit() {
+							disableSubmitButton();
+						}
+					})
+					.done(applyDealerData)
+					.fail(function getDealerDataFail(xhr, textStatus, errorThrown) {
+						Utility.log('getdealer call failing');
+						Utility.log(xhr);
+						if (xhr.status === 400) {
+							$('.input-wrapper', $form).addClass('has-error');
+							$('.help-block', $form).html(xhr.responseText);
+						} else {
+							$('.input-wrapper', $form).addClass('has-error');
+							$('.help-block', $form).html('A server error occured. Please try again.');
+						}
+					})
+					.always(function formSubmitAlways() {
+						enableSubmitButton();
+					});
+			}
+
+
+			// ---------------------------------------------------
+			// applyDealerData:
+			//    set max # of results, checks result length,
+			//    applies error if no results, calls addPins,
+			//    and createList if results > 0
+			// ---------------------------------------------------
+			function applyDealerData(data) {
+				Utility.log('applyDealerData', data);
+
+				//check if service returned a zip code
+				if (data.ZipCode) {
+					setZipInputValue(data.ZipCode);
+				}
+
+				//empty result set = invalid zip
+				if (!data.Dealers || data.Dealers.length == 0) {
+					Utility.log('no dealers returned');
+					$('.input-wrapper', $form).addClass('has-error');
+					var regexError = $('.input-wrapper').data('regex-error');
+					$('.help-block', $form).html(regexError);
+					return;
+				} else {
+					//remove any past error messaging
+					$('.input-wrapper', $form).removeClass('has-error');
+					//set max results (we only want the 3 closest dealers)
+					addPins(data.Dealers.slice(0, 3));
+					createList(data.Dealers.slice(0, 3));
+					window.dataDealerList = data.Dealers;
+				}
+			}
+
+
+			// ---------------------------------------------------
+			// addPins:
+			//    gets json results
+			//    adds pins to map based on dealer result lat/long
+			// ---------------------------------------------------
+			function addPins(dealers) {
+				//clear previous pins
+				map.entities.pop(pinLayer);
+
+				//create pins from the long/lat of long/lat of returned dealers
+				var pins = [];
+				var pinLayer = new Microsoft.Maps.EntityCollection();
+
+				for (var i = 0; i < dealers.length; i++) {
+					pins[i] = {
+						'lat': dealers[i].Latitude,
+						'lng': dealers[i].Longitude
+					};
+				}
+
+				//place the pins on the map
+				var locs = [];
+				for (var i = 0; i < dealers.length; i++) {
+					locs[i] = new Microsoft.Maps.Location(pins[i].lat, pins[i].lng);
+					var offset = new Microsoft.Maps.Point(0, 5);
+					var pushpinOptions = {
+						text: '' + (i + 1)
+					};
+					var pin = new Microsoft.Maps.Pushpin(locs[i], pushpinOptions);
+					Microsoft.Maps.Events.addHandler(pin, 'mouseover', pinMouseOver);
+					Microsoft.Maps.Events.addHandler(pin, 'click', pinMouseOver);
+					Microsoft.Maps.Events.addHandler(pin, 'mouseout', pinMouseOut);
+					pinLayer.push(pin);
+				}
+
+				map.entities.push(pinLayer);
+
+				//center the map around bestview relative to new pins
+				var bestview = Microsoft.Maps.LocationRect.fromLocations(locs);
+				map.setView({
+					center: bestview.center,
+					bounds: bestview
+				});
+			}
+
+			function pinMouseOver(e) {
+				if (e.isTouchEvent === true || e.eventName === "mouseover") {
+					pinMouseOut();
+					var pinNumber = e.target._text - 1;
+					dealerListings[pinNumber].addClass('hovered');
+				}
+			}
+
+			function pinMouseOut() {
+				$('.results-item-template').removeClass('hovered');
+			}
+
+			function removePins() {}
+
+			// ---------------------------------------------------
+			// createList:
+			//    constructs list of <li>s with dealer data and
+			// ---------------------------------------------------
+			function createList(dealers) {
+				var listItems = "";
+				dealerListings = {};
+
+				$resultsList.empty();
+
+				//not limiting zip to 5 digits breaks the dealer name in bing mobile
+				for (var i = 0; i < dealers.length; i++) {
+					var mapDirections = encodeURI(
+						'http://www.bing.com/mapspreview?rtp=adr.' + zipGlobal +
+						'~adr.' +
+						dealers[i].Address + ', ' +
+						dealers[i].City + ', ' +
+						dealers[i].State + ' ' +
+						dealers[i].ZipCode.substr(0, 5)
+					);
+
+					var $listItem = $resultsItemTemplate.clone();
+					var distance = dealers[i].DrivingDistanceMiles;
+
+					if (distance === null) {
+						distance = "";
+					} else {
+						distance += ' mi';
+					}
+
+					var listItemValues = {
+						index: i + 1,
+						name: dealers[i].Name,
+						address: dealers[i].Address,
+						city: dealers[i].City,
+						state: dealers[i].State,
+						zipcode: dealers[i].ZipCode.substr(0, 5),
+						phone: Utility.formatPhone(dealers[i].Phone),
+						distance: distance
+					};
+
+					for (var j in listItemValues) {
+						$('.dealer-result-' + j, $listItem).text(listItemValues[j]);
+					}
+
+					$('.dealer-result-directions', $listItem).attr('href', mapDirections);
+					$('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
+
+					var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
+					$('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);
+
+					$('.results-list').append($listItem);
+				}
+
+				//creates list of dealers for use by pinMouseOver
+				var k = 0;
+				$('.results-item-template', $resultsList).each(function() {
+					dealerListings[k] = $(this);
+					//prevent :hover styles from making multiple dealers highlighted
+					//ex: click map pin then click different dealer listing
+					if (isMobile === true) {
+						dealerListings[k].addClass('mobile');
+					}
+					k++
+				})
+			}
+
+			// ---------------------------------------------------
+			// setZipInputValue:
+			//    autofills the zip input field with the zipcode
+			//    acquired from either cookie or geolocation
+			// ---------------------------------------------------
+			function setZipInputValue(zip) {
+				$zipInput.val(zip);
+				zipGlobal = zip;
+				enableSubmitButton();
+			}
+
+			// ---------------------------------------------------
+			// enableSubmitButton:
+			//    enables the submit button. called once zip validated
+			// ---------------------------------------------------
+			function enableSubmitButton() {
+				$submitButton.prop('disabled', false);
+			}
+
+			// ---------------------------------------------------
+			// disableSubmitButton:
+			//    disables the submit button.
+			// ---------------------------------------------------
+			function disableSubmitButton() {
+				$submitButton.prop('disabled', true);
+				$submitButton.addClass('disabled-button');
+			}
+
+
+			function checkCookie() {
+				var flag = false;
+				var cookieZip = Cookies.getCookie("zip");
+				if (cookieZip != "") {
+					flag = true;
+					zipGlobal = cookieZip;
+				}
+				return flag;
+			}
+
+			//end functions dealer locator civic
+			
+            return {
+                init: init
+            };
+        })(),
+		
+	Cookies = function() {
         function e(e, t, i) {
             var n;
             if (i) {
@@ -30,527 +683,8 @@ var Cookies = function() {
             getCookie: i
         }
     }(),
-    // Dealer Locator    
-    DealerLocator = function() {
-        Utility.log('DealerLocator.js loaded');
-
-        //temporary var for testing future use of ip to lat/long service
-        var fallbackGeoTest = false;
-        var bapWaypoint = {};
-        var map,
-            isMobile = false,
-            zipGlobal = "",
-            lat = "",
-            lng = "",
-            dealerListings = {};
-        var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
-        //options for the geolocation.getCurrentPosition call
-        var geoLocateOptions = {
-            enableHighAccuracy: true,
-            timeout: 5000
-        };
-        var $dealerLocator = $('#dealer-locator'),
-            $map = $('#dealer-map', $dealerLocator),
-            $form = $('#dealer-locator-form'),
-            $submitButton = $('[type=submit]', $form),
-            $zipInput = $('#zip', $form),
-            $resultsList = $('.results-list', $dealerLocator),
-            $resultsItemTemplate = $('.results-item-template', $resultsList).clone();
-
-        $resultsList.empty();
-
-
-        /*
-         *  Initializes DealerLocator
-         *  @public
-         */
-        function init() {
-            try {
-                //riot.mount('contact_dealer_vehicle_model', {});
-
-                isMobile = checkMobile();
-
-                $('#dealer-map .loader').stop().fadeOut(100);
-
-                //initialize the map
-                map = new Microsoft.Maps.Map(document.getElementById('dealer-map'), {
-                    credentials: bingApiCredentials,
-                    mapTypeId: Microsoft.Maps.MapTypeId.road,
-                    //center: new Microsoft.Maps.Location(34.0058945,-118.4440439),
-                    center: new Microsoft.Maps.Location(39.407547, -94.2591867),
-                    zoom: 4
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'keydown', function(e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'mousewheel', function(e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                //delay geoservices until user has scrolled down to the dealerLocator component
-                $('.dealer-locator').waypoint({
-                    handler: function(direction) {
-                        if (direction == 'down') {
-                            //check for value stored in cookie with name of'zip'
-                            if (checkCookie()) {
-                                setZipInputValue(zipGlobal);
-                                getDealerDataFromZip(zipGlobal);
-                                //if no cookie found try to use browser geolocation
-                            } else if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
-                            }
-                            //if no browser geolocation try to use hawk IP to zip service
-                            else {
-                                ipToZip();
-                            }
-                        }
-                    },
-                    offset: '-20%'
-                });
-
-
-                $('.use-my-location', $form).click(function useMyLocationClick() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
-                    }
-                });
-
-                $form.bind('submit', function(e) {
-                    e.preventDefault();
-                    $submitButton.trigger('click');
-                    return false;
-                });
-
-                $submitButton.click(function submitClick(e) {
-                    e.preventDefault();
-                    $submitButton.addClass('disabled-button');                    
-                    if (ValidationCivic.validateForm($form)) {
-                        zipSearch($zipInput.val());
-                        $('input#zip').blur();
-                    }
-                });
-
-                $zipInput.focus(function() {
-                    if ($zipInput.val().length == 5) {
-                        enableSubmitButton();
-                        $submitButton.removeClass('disabled-button');
-                    }
-                });
-
-                //restricts users to only entering numeric values
-                $zipInput.on('keydown', zipKeyDown);
-                //enableds or disables submit button
-                $zipInput.on('keyup', zipCheckOnMousemove);
-                //checking zip length on mouseover/mouseout to fix the case where
-                //  a user uses autofill/autocomplete to populate zip input
-                //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
-
-            } catch (e) {
-                if ($form.length > 0) {
-                    Utility.error(e);
-                }
-            }
-        }
-
-        function debounce(func, wait, immediate) {
-            var timeout;
-            return function() {
-                var context = this,
-                    args = arguments;
-                var later = function() {
-                    timeout = null;
-                    if (!immediate) func.apply(context, args);
-                };
-                var callNow = immediate && !timeout;
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-                if (callNow) func.apply(context, args);
-            };
-        };
-
-        //sets mobile flag to allow for correct handling of map pin touch events
-        function checkMobile() {
-            try {
-                document.createEvent("TouchEvent");
-                return true;
-            } catch (e) {
-                return false;
-            }
-        }
-
-        // ---------------------------------------------------
-        // zip input field keyup and keydown events
-        // zipKeyDown:
-        //    restricts user input to numbers & some hotkeys
-        // zipKeyUp:
-        //    enables/disables submit button based on
-        //    zip input field value length (5 = enabled)
-        // ---------------------------------------------------
-        function zipKeyDown(e) {
-            //restricts user input to numbers + some hotkeys
-            if (e.keyCode === 13 && $zipInput.val().length === 5) {
-                e.preventDefault();
-                $submitButton.trigger('click');
-                return;
-            }
-            if (e.keyCode === 13) {
-                $submitButton.addClass('disabled-button');
-            }
-            if ($.inArray(e.keyCode, [46, 8, 9, 27, 110, 190]) !== -1 ||
-                // Allow: Ctrl+A, Command+A
-                (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-                // Allow: home, end, left, right, down, up
-                (e.keyCode >= 35 && e.keyCode <= 40)) {
-                // let it happen, don't do anything
-                return;
-            }
-            // Ensure that it is a number and stop the keypress
-            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                e.preventDefault();
-            }
-        }
-
-        //toggles disable property of submit button on keyup
-        //triggered by mouse events to enable the submit button
-        //  when users use autocomplete
-        var zipCheckOnMousemove = function(e) {
-            if ($zipInput.val().length == 5) {
-                enableSubmitButton();
-                $submitButton.removeClass('disabled-button');
-            } else {
-                disableSubmitButton();
-            }
-        };
-
-
-        // ---------------------------------------------------
-        // browser geolocation functions
-        // ---------------------------------------------------
-        function geoLocateSuccess(position) {
-            getDealerDataFromLatLong(position.coords.latitude, position.coords.longitude);
-        }
-
-        function geoLocateFail(err) {
-            //Utility.log('geoLocateFail: ' + err);
-            ipToZip();
-        }
-
-        // ---------------------------------------------------
-        // fallbackGeo:
-        //    placeholder function for future ip to lat/long service
-        // ---------------------------------------------------
-        function ipToZip() {
-            Utility.log('trying auto-ip service call');
-            var endpoint = '/platform/api/v1/zipcodes?ipaddress=auto';
-            $.ajax({
-                    url: endpoint,
-                    crossDomain: true,
-                    dataType: 'json',
-                    beforeSend: function beforeZipSubmit() {
-                        disableSubmitButton();
-                    }
-                })
-                .done(ipToZipHandler)
-                .always(function formSubmitAlways() {
-                    enableSubmitButton();
-                });
-        }
-
-        function ipToZipHandler(data) {
-            Utility.log(data);
-            Utility.log(data.ZipCode);
-            if (data.ZipCode !== null && data.ZipCode !== "null") {
-                getDealerDataFromZip(data.ZipCode);
-            }
-        }
-
-
-        // ---------------------------------------------------
-        // zipSearch:
-        //    fires after validated zipinput submit
-        //    sets zip, creates cookie, updates maps & results list
-        // ---------------------------------------------------
-        function zipSearch(zip) {
-            zipGlobal = zip;
-            Cookies.createCookie('zip', zip, 365);
-            getDealerDataFromZip(zip);
-        }
-
-        function getFormData() {
-            var formData = {};
-            $('input', $form).each(function() {
-                formData[$(this).attr('name')] = $(this).attr('value');
-            });
-            return formData;
-        }
-
-        // ---------------------------------------------------
-        // getDealerDataFromZip:
-        // ---------------------------------------------------
-        function getDealerDataFromZip(zip) {
-            var formData = getFormData();
-            delete formData['lat'];
-            delete formData['long'];
-            formData['zip'] = zip;
-            getDealerData(formData);
-        }
-
-        // ---------------------------------------------------
-        // getDealerDataFromZip:
-        // ---------------------------------------------------
-        function getDealerDataFromLatLong(lat, long) {
-            var formData = getFormData();
-            delete formData['zip'];
-            formData['lat'] = lat;
-            formData['long'] = long;
-            getDealerData(formData);
-        }
-
-        // ---------------------------------------------------
-        // getDealerData:
-        //    ajax call to hawk API to retrieve dealer results
-        // ---------------------------------------------------
-        function getDealerData(formData) {
-            var endpoint = $form.attr('action');
-            //var endpoint = './json/data.json';
-
-            $.ajax({
-                    url: endpoint,
-                    crossDomain: true,
-                    data: formData,
-                    dataType: 'json',
-                    beforeSend: function beforeZipSubmit() {
-                        disableSubmitButton();
-                    }
-                })
-                .done(applyDealerData)
-                .fail(function getDealerDataFail(xhr, textStatus, errorThrown) {
-                    Utility.log('getdealer call failing');
-                    Utility.log(xhr);
-                    if (xhr.status === 400) {
-                        $('.input-wrapper', $form).addClass('has-error');
-                        $('.help-block', $form).html(xhr.responseText);
-                    } else {
-                        $('.input-wrapper', $form).addClass('has-error');
-                        $('.help-block', $form).html('A server error occured. Please try again.');
-                    }
-                })
-                .always(function formSubmitAlways() {
-                    enableSubmitButton();
-                });
-        }
-
-
-        // ---------------------------------------------------
-        // applyDealerData:
-        //    set max # of results, checks result length,
-        //    applies error if no results, calls addPins,
-        //    and createList if results > 0
-        // ---------------------------------------------------
-        function applyDealerData(data) {
-            Utility.log('applyDealerData', data);
-
-            //check if service returned a zip code
-            if (data.ZipCode) {
-                setZipInputValue(data.ZipCode);
-            }
-
-            //empty result set = invalid zip
-            if (!data.Dealers || data.Dealers.length == 0) {
-                Utility.log('no dealers returned');
-                $('.input-wrapper', $form).addClass('has-error');
-                var regexError = $('.input-wrapper').data('regex-error');
-                $('.help-block', $form).html(regexError);
-                return;
-            } else {
-                //remove any past error messaging
-                $('.input-wrapper', $form).removeClass('has-error');
-                //set max results (we only want the 3 closest dealers)
-                addPins(data.Dealers.slice(0, 3));
-                createList(data.Dealers.slice(0, 3));
-                window.dataDealerList = data.Dealers;
-            }
-        }
-
-
-        // ---------------------------------------------------
-        // addPins:
-        //    gets json results
-        //    adds pins to map based on dealer result lat/long
-        // ---------------------------------------------------
-        function addPins(dealers) {
-            //clear previous pins
-            map.entities.pop(pinLayer);
-
-            //create pins from the long/lat of long/lat of returned dealers
-            var pins = [];
-            var pinLayer = new Microsoft.Maps.EntityCollection();
-
-            for (var i = 0; i < dealers.length; i++) {
-                pins[i] = {
-                    'lat': dealers[i].Latitude,
-                    'lng': dealers[i].Longitude
-                };
-            }
-
-            //place the pins on the map
-            var locs = [];
-            for (var i = 0; i < dealers.length; i++) {
-                locs[i] = new Microsoft.Maps.Location(pins[i].lat, pins[i].lng);
-                var offset = new Microsoft.Maps.Point(0, 5);
-                var pushpinOptions = {
-                    text: '' + (i + 1)
-                };
-                var pin = new Microsoft.Maps.Pushpin(locs[i], pushpinOptions);
-                Microsoft.Maps.Events.addHandler(pin, 'mouseover', pinMouseOver);
-                Microsoft.Maps.Events.addHandler(pin, 'click', pinMouseOver);
-                Microsoft.Maps.Events.addHandler(pin, 'mouseout', pinMouseOut);
-                pinLayer.push(pin);
-            }
-
-            map.entities.push(pinLayer);
-
-            //center the map around bestview relative to new pins
-            var bestview = Microsoft.Maps.LocationRect.fromLocations(locs);
-            map.setView({
-                center: bestview.center,
-                bounds: bestview
-            });
-        }
-
-        function pinMouseOver(e) {
-            if (e.isTouchEvent === true || e.eventName === "mouseover") {
-                pinMouseOut();
-                var pinNumber = e.target._text - 1;
-                dealerListings[pinNumber].addClass('hovered');
-            }
-        }
-
-        function pinMouseOut() {
-            $('.results-item-template').removeClass('hovered');
-        }
-
-        function removePins() {}
-
-        // ---------------------------------------------------
-        // createList:
-        //    constructs list of <li>s with dealer data and
-        // ---------------------------------------------------
-        function createList(dealers) {
-            var listItems = "";
-            dealerListings = {};
-
-            $resultsList.empty();
-
-            //not limiting zip to 5 digits breaks the dealer name in bing mobile
-            for (var i = 0; i < dealers.length; i++) {
-                var mapDirections = encodeURI(
-                    'http://www.bing.com/mapspreview?rtp=adr.' + zipGlobal +
-                    '~adr.' +
-                    dealers[i].Address + ', ' +
-                    dealers[i].City + ', ' +
-                    dealers[i].State + ' ' +
-                    dealers[i].ZipCode.substr(0, 5)
-                );
-
-                var $listItem = $resultsItemTemplate.clone();
-                var distance = dealers[i].DrivingDistanceMiles;
-
-                if (distance === null) {
-                    distance = "";
-                } else {
-                    distance += ' mi';
-                }
-
-                var listItemValues = {
-                    index: i + 1,
-                    name: dealers[i].Name,
-                    address: dealers[i].Address,
-                    city: dealers[i].City,
-                    state: dealers[i].State,
-                    zipcode: dealers[i].ZipCode.substr(0, 5),
-                    phone: Utility.formatPhone(dealers[i].Phone),
-                    distance: distance
-                };
-
-                for (var j in listItemValues) {
-                    $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
-                }
-
-                $('.dealer-result-directions', $listItem).attr('href', mapDirections);
-                $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
-
-                var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
-                $('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);
-
-                $('.results-list').append($listItem);
-            }
-
-            //creates list of dealers for use by pinMouseOver
-            var k = 0;
-            $('.results-item-template', $resultsList).each(function() {
-                dealerListings[k] = $(this);
-                //prevent :hover styles from making multiple dealers highlighted
-                //ex: click map pin then click different dealer listing
-                if (isMobile === true) {
-                    dealerListings[k].addClass('mobile');
-                }
-                k++
-            })
-        }
-
-        // ---------------------------------------------------
-        // setZipInputValue:
-        //    autofills the zip input field with the zipcode
-        //    acquired from either cookie or geolocation
-        // ---------------------------------------------------
-        function setZipInputValue(zip) {
-            $zipInput.val(zip);
-            zipGlobal = zip;
-            enableSubmitButton();
-        }
-
-        // ---------------------------------------------------
-        // enableSubmitButton:
-        //    enables the submit button. called once zip validated
-        // ---------------------------------------------------
-        function enableSubmitButton() {
-            $submitButton.prop('disabled', false);
-        }
-
-        // ---------------------------------------------------
-        // disableSubmitButton:
-        //    disables the submit button.
-        // ---------------------------------------------------
-        function disableSubmitButton() {
-            $submitButton.prop('disabled', true);
-            $submitButton.addClass('disabled-button');
-        }
-
-
-        function checkCookie() {
-            var flag = false;
-            var cookieZip = Cookies.getCookie("zip");
-            if (cookieZip != "") {
-                flag = true;
-                zipGlobal = cookieZip;
-            }
-            return flag;
-        }
-
-
-        //Expose the following variables and functions
-        return {
-            init: init
-        };
-    }(),
-    // End Dealer Locator    
-    
-    ValidationCivic = function() {
+	
+	ValidationCivic = function() {
         function e(e) {
             var i = 0,
                 n = $(".form-error-list", e);
@@ -616,18 +750,4 @@ var Cookies = function() {
             autoFill: i,
             saveToCookies: o
         }
-    }(),
-    Main = function() {
-        return document.addEventListener("DOMContentLoaded", function(e) {
-            Utility.log("DOMContentLoaded event fired dealer locator js"), 
-			/*Modernizr.addTest("ipad", function() {
-                return null != navigator.userAgent.match(/iPad/i)
-            }), 
-			Modernizr.addTest("android", function() {
-                return navigator.userAgent.match("Android") && null != navigator.userAgent.match("Chrome/[.0-9]* (?!Mobile)")
-            }), 
-			$.event.special.swipe.horizontalDistanceThreshold = 100, */
-			DealerLocator.init()
-        }), {}
-    }()
-    //# sourceMappingURL=scripts.min.js.map
+    }();

@@ -6890,8 +6890,9 @@ var Main = (function() {
     StyleGuide.init();
 
     MultiCol.init();
+		
+	DealerLocator.init();
 	
-	DealerLocatorZip.init(); //dealer locartor zip code validate and submit button
   });
 
   //Expose the following variables and functions

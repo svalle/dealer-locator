@@ -51,7 +51,7 @@
     </script>
 
     <style>
-        .find-a-dealer-form-content1 .input-wrapper .acr-input-pre {
+        .find-a-dealer-form-content-acura .input-wrapper .acr-input-pre {
             background-color: #f3f3f3;
             display: inline-block;
             height: 4.4rem;
@@ -60,7 +60,7 @@
             width: 4.4rem;
         }
         
-        .find-a-dealer-form-content1 .input-wrapper input {
+        .find-a-dealer-form-content-acura .input-wrapper input {
             background-color: #f3f3f3;
             height: 4.4rem;
             margin: 0 -0.5rem;
@@ -69,7 +69,7 @@
             vertical-align: middle;
         }
         
-        .find-a-dealer-form-content1 .acr-cta-btn {
+        .find-a-dealer-form-content-acura .acr-cta-btn {
             min-width: 0;
             padding: 0.7rem;
             height: 4.4rem;
@@ -472,12 +472,12 @@
                                                     <div class="field-group zip " id="dealer-zip-form-data">
 
                                                         <!-- desktop version of the form -->
-                                                        <form id="dealer-locator-form" action="../../json/data.json" class="find-a-dealer-form1 desktop-target">
+                                                        <form id="dealer-locator-form" action="../../json/data.json" class="find-a-dealer-form-acura desktop-target">
                                                                 <input type="hidden" name="productDivisionCode" value="A" />
                                                                 <input type="hidden" name="maxResults" value="3" />
                                                                 <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
                                                                 <span class="hidden-md hidden-lg hidden-xl">OR</span> 
-                                                            <div class="find-a-dealer-form-content1 col-sm-36 ">
+                                                            <div class="find-a-dealer-form-content-acura col-sm-36 ">
                                                                 <div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
                                                                     <p class="error-message"></p>
                                                                     <div>
@@ -590,8 +590,8 @@
                                                     <div class="field-group city " id="dealer-city-form-data">
                                                         <div class="field-group address-city-state " id="dealer-city-form-data">
 
-                                                            <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form1 desktop-target">
-                                                                <div class="find-a-dealer-form-content1 col-sm-36">
+                                                            <form action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form-acura desktop-target">
+                                                                <div class="find-a-dealer-form-content-acura col-sm-36">
                                                                     <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter your City" data-regex-error="Please enter a valid City">
                                                                         <p class="error-message"></p>
                                                                         <div>
@@ -640,8 +640,8 @@
                                                     <div class="field-group name " id="dealer-name-form-data">
                                                         <div class="field-group address-name-state " id="dealer-name-form-data">
 
-                                                            <form action="../../json/data-name-mok.json" class="find-a-dealer-form1 desktop-target">
-                                                                <div class="find-a-dealer-form-content1 col-sm-36">
+                                                            <form action="../../json/data-name-mok.json" class="find-a-dealer-form-acura desktop-target">
+                                                                <div class="find-a-dealer-form-content-acura col-sm-36">
                                                                     <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter Dealer Name" data-regex-error="Please enter a valid Dealer Name">
                                                                         <p class="error-message"></p>
                                                                         <div>
@@ -662,7 +662,7 @@
                                                                 <input type="hidden" name="maxResults" value="3" />
                                                                 <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
                                                                 <span class="hidden-md hidden-lg hidden-xl">OR</span> 
-                                                            <div class="find-a-dealer-form-content1 col-sm-36 ">
+                                                            <div class="find-a-dealer-form-content-acura col-sm-36 ">
                                                                 <div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
                                                                     <p class="error-message"></p>
                                                                     <div>
@@ -875,149 +875,7 @@
     </script>
 
     <script>
-        var DealerLocatorZip = (function () {
-            var $form = $('.find-a-dealer-form1'),
-                $submitButton = $('.submit', $form),
-                $zipInput = $('.zip-input', $form),
-				$cityInput = $('.city-input', $form),
-				$nameInput = $('.name-input', $form),
-                $placeHoldTextZip = '';
-				$placeHoldTextCity = '';
-				$placeHoldTextName = '';
-
-            function init() {
-
-                //here read zipCookie
-                var zip = readCookie('zip');
-                //if cookie then populate zip input and execute call to update map
-                if (zip) {
-                    $zipInput.val(zip);
-                    //update map
-                }
-
-                $placeHoldTextZip = $zipInput.attr('placeholder');				
-                $zipInput.on('focus', function () {
-                    clearError($(this).closest('.input-wrapper'));
-                    $(this).attr('placeholder', '');
-                });
-                $zipInput.on('blur', function () {
-                    if ($zipInput.val() == '') {
-                        $(this).attr('placeholder', $placeHoldTextZip);
-                    }
-                });
-				
-				//focus / blur on city input
-				$placeHoldTextCity = $cityInput.attr('placeholder');				
-				$cityInput.on('focus', function () {
-                    clearError($(this).closest('.input-wrapper'));
-                    $(this).attr('placeholder', '');
-                });
-                $cityInput.on('blur', function () {
-                    if ($cityInput.val() == '') {
-                        $(this).attr('placeholder', $placeHoldTextCity);
-                    }
-                });
-				
-				//focus / blur on name input
-				$placeHoldTextName = $nameInput.attr('placeholder');
-				$nameInput.on('focus', function () {
-                    clearError($(this).closest('.input-wrapper'));
-                    $(this).attr('placeholder', '');
-                });
-                $nameInput.on('blur', function () {
-                    if ($nameInput.val() == '') {
-                        $(this).attr('placeholder', $placeHoldTextName);
-                    }
-                });
-                //restricts users to only entering numeric values
-                $zipInput.on('input', zipInput);
-				
-                $submitButton.on('click', function (e) {
-					console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
-                    var form = $(this).closest('.find-a-dealer-form1');
-                    e.preventDefault();
-                    if (validateForm(form)) {
-                        //if no created here create a cookie for the zip only						
-                        //Create expiring cookie, 7 days from then:
-                        if ($('#zipTab').hasClass('active')) {
-                //            console.log('create a cookie  ' + $zipInput.val());
-                            //eraseCookie('zip');
-                            //createCookie('zip', $zipInput.val(), 7);
-                        }
-
-
-                        //form submit send params to service to update map
-                        //form.submit();
-                   }
-                });
-            }
-						
-
-            function validateForm($form) {
-                var $field = $('.input-wrapper', $form),
-                    required = $field.data('formRequired'),
-                    regex = new RegExp($field.data('formValidate')),
-                    value = $('input', $field).val();
-                if (required && value.length < 1) {
-                    showError($field.data('requiredError'), $field);
-                    return false;
-                } else if ((regex) && (regex.test(value) === false)) {
-                    showError($field.data('regexError'), $field);
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function showError(message, $field) {
-                $('.error-message', $field).text(message);
-            }
-
-            function clearError($field) {
-                $('.error-message', $field).text('');
-            }
-
-            function zipInput(e) {
-                if (e.keyCode === 13) {
-                    e.preventDefault();
-                    $(this).closest($form).find($submitButton).trigger('click');
-                    return;
-                }
-                this.value = this.value.replace(/\D/m, '');
-                if (this.value.length > 5) {
-                    this.value = this.value.slice(0, 5);
-                }
-            }
-
-            //function to create a cookie
-            function createCookie(name, value, days) {
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    var expires = "; expires=" + date.toGMTString();
-                } else var expires = "";
-                document.cookie = name + "=" + value + expires + "; path=/";
-            }
-
-            //function to read a cookie
-            function readCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
-            //function to erase a cookie
-            function eraseCookie(name) {
-                createCookie(name, "", -1);
-            }
-            return {
-                init: init
-            };
-        })();
+        
     </script>
 
 </body>
