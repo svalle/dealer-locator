@@ -456,13 +456,13 @@
 
 
                             <ul class="nav nav-tabs ">
-                                <li class="active"><a data-toggle="tab" href="#zipCode">ZIP CODE</a></li>
-                                <li><a data-toggle="tab" href="#cityState">CITY, STATE</a></li>
+                                <li class="active"><a data-toggle="tab" href="#zipTab">ZIP CODE</a></li>
+                                <li><a data-toggle="tab" href="#cityTab">CITY, STATE</a></li>
                                 <li><a data-toggle="tab" href="#nameTab">NAME</a></li>
                             </ul>
 
                             <div class="tab-content">
-                                <div id="zipCode" class="tab-pane fade in active">
+                                <div id="zipTab" class="tab-pane fade in active">
 
                                     <section class="acr-blade-veh-info ">
 
@@ -486,7 +486,7 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <button type="submit" class="submit acr-cta-btn is-red-bg" disabled>
+                                                                <button type="submit" class="submit acr-cta-btn is-red-bg" >
                                                                     <span class="acr-icon-explore acr-f1"></span>
                                                                 </button>
                                                             </div>
@@ -581,7 +581,7 @@
 
 
                                 </div>
-                                <div id="cityState" class="tab-pane fade">
+                                <div id="cityTab" class="tab-pane fade">
                                     <section class="acr-blade-veh-info ">
 
                                         <div class="blade-wrapper info1">
@@ -858,48 +858,79 @@
             var $form = $('.find-a-dealer-form1'),
                 $submitButton = $('.submit', $form),
                 $zipInput = $('.zip-input', $form),
-                $placeHoldText = '';
+				$cityInput = $('.city-input', $form),
+				$nameInput = $('.name-input', $form),
+                $placeHoldTextZip = '';
+				$placeHoldTextCity = '';
+				$placeHoldTextName = '';
 
             function init() {
 
                 //here read zipCookie
-                var zipCookie = readCookie('zipCookie');
+                var zip = readCookie('zip');
                 //if cookie then populate zip input and execute call to update map
-                if (zipCookie) {
-                    $zipInput.val(zipCookie);
+                if (zip) {
+                    $zipInput.val(zip);
                     //update map
                 }
 
-                $placeHoldText = $zipInput.attr('placeholder');
+                $placeHoldTextZip = $zipInput.attr('placeholder');				
                 $zipInput.on('focus', function () {
                     clearError($(this).closest('.input-wrapper'));
                     $(this).attr('placeholder', '');
                 });
                 $zipInput.on('blur', function () {
                     if ($zipInput.val() == '') {
-                        $(this).attr('placeholder', $placeHoldText);
+                        $(this).attr('placeholder', $placeHoldTextZip);
+                    }
+                });
+				
+				//focus / blur on city input
+				$placeHoldTextCity = $cityInput.attr('placeholder');				
+				$cityInput.on('focus', function () {
+                    clearError($(this).closest('.input-wrapper'));
+                    $(this).attr('placeholder', '');
+                });
+                $cityInput.on('blur', function () {
+                    if ($cityInput.val() == '') {
+                        $(this).attr('placeholder', $placeHoldTextCity);
+                    }
+                });
+				
+				//focus / blur on name input
+				$placeHoldTextName = $nameInput.attr('placeholder');
+				$nameInput.on('focus', function () {
+                    clearError($(this).closest('.input-wrapper'));
+                    $(this).attr('placeholder', '');
+                });
+                $nameInput.on('blur', function () {
+                    if ($nameInput.val() == '') {
+                        $(this).attr('placeholder', $placeHoldTextName);
                     }
                 });
                 //restricts users to only entering numeric values
                 $zipInput.on('input', zipInput);
+				
                 $submitButton.on('click', function (e) {
+					console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
                     var form = $(this).closest('.find-a-dealer-form1');
                     e.preventDefault();
                     if (validateForm(form)) {
                         //if no created here create a cookie for the zip only						
                         //Create expiring cookie, 7 days from then:
-                        if ($('#zipCode').hasClass('active')) {
-                            console.log('create a cookie  ' + $zipInput.val());
-                            //eraseCookie('zipCookie');
-                            //createCookie('zipCookie', $zipInput.val(), 7);
+                        if ($('#zipTab').hasClass('active')) {
+                //            console.log('create a cookie  ' + $zipInput.val());
+                            //eraseCookie('zip');
+                            //createCookie('zip', $zipInput.val(), 7);
                         }
 
 
                         //form submit send params to service to update map
                         //form.submit();
-                    }
+                   }
                 });
             }
+						
 
             function validateForm($form) {
                 var $field = $('.input-wrapper', $form),

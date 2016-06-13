@@ -462,6 +462,19 @@ var Utility = (function() {
       });
     });
   }
+  
+  /*
+   * this function is somethif for telephones present only in civic coupe
+   *
+   */  
+  function formatPhone(e) {
+	for (var t = e.replace(/\D/g, ""), i = {
+			0: "(",
+			3: ") ",
+			6: "-"
+		}, n = "", a = 0; a < t.length; a++) n += (i[a] || "") + t[a];
+	return n
+  }
 
   //Expose the following variables and functions
   return {
@@ -490,7 +503,8 @@ var Utility = (function() {
     quickDeepClone: quickDeepClone,
     guid: guid,
     enableActive: enableActive,
-    imagesReady: imagesReady
+    imagesReady: imagesReady,
+	formatPhone: formatPhone //this has civic coupe but not present in accura
   };
 })();
 
@@ -6800,7 +6814,7 @@ var Main = (function() {
 
     SlickOverride.init();
 
-    //Utility.enableActive();
+    Utility.enableActive();
 
     YouTubeManager.init();
 
@@ -6829,7 +6843,7 @@ var Main = (function() {
 
     ModelSlider.init();
 
-    //Validation.init();
+    Validation.init();
 
     Acr.threeSixty.init();
 
