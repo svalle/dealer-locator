@@ -74,6 +74,9 @@
             padding: 0.7rem;
             height: 4.4rem;
         }
+		
+		.left-ribbon{}
+		.right-ribbon .erase-push-pull-classes{right:0; left:0;}
     </style>
 
 
@@ -449,12 +452,30 @@
                     <h3>Locate a Dealer</h3>
                 </div>
 
-                <div class="left-ribbon">
-                    <!-- could be left-ribbon or right-ribbon, default state is left-ribbon this should rease properties of push and pull, when right the normal properties for push and pull classes -->
-                    <div class="row">
-                        <div class=" col-xs-36 col-md-16 col-xl-16">
+                <div class="left-ribbon row">
+                    <!-- could be left-ribbon or right-ribbon, default state is left-ribbon, right ribbon should rease properties of push and pull -->
+                                      
+                        <div class="col-xs-36 col-md-20 col-xl-20 col-md-push-16 col-xl-push-16 erase-push-pull-classes">
+                            MAP HERE
+                            <figure class="map">
+                                <!-- pulling in the bing map -->
+                                <div id="dealer-map" style="height:600px">
+                                    <!-- <div class="loader" name="loader">
+                  <img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
+                </div> -->
+                                </div>
+                            </figure>
 
 
+                            <!-- BING MAP INTEGRATION -->
+                            <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+
+                        </div>
+                   
+					
+						<!-- ribbon -->
+						<div class=" col-xs-36 col-md-16 col-xl-16 col-md-pull-20 col-xl-pull-20 erase-push-pull-classes">
                             <ul class="nav nav-tabs ">
                                 <li class="active"><a data-toggle="tab" href="#zipTab">ZIP CODE</a></li>
                                 <li><a data-toggle="tab" href="#cityTab">CITY, STATE</a></li>
@@ -688,25 +709,15 @@
 
 
 
-                        </div>
-                        <div class="col-xs-36 col-md-20 col-xl-20">
-                            MAP HERE
-                            <figure class="map">
-                                <!-- pulling in the bing map -->
-                                <div id="dealer-map" style="height:600px">
-                                    <!-- <div class="loader" name="loader">
-                  <img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
-                </div> -->
-                                </div>
-                            </figure>
-
-
-                            <!-- BING MAP INTEGRATION -->
-                            <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-
-
-                        </div>
-                    </div>
+						</div>
+					
+					
+					
+					
+					
+					
+					
+					
                 </div>
 
 
