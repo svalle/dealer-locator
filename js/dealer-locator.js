@@ -48,6 +48,10 @@ var DealerLocator = (function () {
 //                    $resultsList = $('.results-list', $dealerLocator);
 //                    $resultsList.empty();
 //                });
+                $(".clear-search").click(function () {
+                    $resultsList.empty();
+                    return false;
+                });   
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
