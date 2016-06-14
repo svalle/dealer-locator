@@ -179,6 +179,9 @@ var DealerLocator = (function () {
                         if ($('#zipTab').hasClass('active')) {
                             $form = $('#search-by-zip-form');
                             $dealerLocator = $('#dealer-locator');
+                            $resultsList = $('.results-list', $dealerLocator);
+                            $resultsListTab = $('.dealer-locator', $dealerLocator);
+                            //$resultsList.empty();
                             zipSearch($zipInput.val());
                             $('input#zip').blur();
                         }
@@ -190,7 +193,8 @@ var DealerLocator = (function () {
                             $form = $('#search-by-name-form');
                             $dealerLocator = $('#dealer-locator-by-name');
                             $resultsList = $('.results-list', $dealerLocator);
-                            $resultsList.empty();
+                            $resultsListTab = $('.dealer-locator', $dealerLocator);
+                            //$resultsList.empty();
                             getDealerData($nameInput.val());
 
                         }
@@ -606,7 +610,7 @@ var DealerLocator = (function () {
                 var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
                 $('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);
 
-                $('.results-list').append($listItem);
+                $('.results-list', $dealerLocator).append($listItem);
             }
 
             //creates list of dealers for use by pinMouseOver
