@@ -81,6 +81,18 @@
             right: 0;
             left: 0;
         }
+        
+        .results-list {
+            margin: 0;
+        }
+        
+        .results-item-template {
+            list-style: none;
+        }
+        
+        .results-item-template.hovered {
+            background: #ccc;
+        }
     </style>
 
 
@@ -514,19 +526,13 @@
                                                             <button type="submit" class="submit acr-cta-btn is-red-bg">
                                                                 <span class="acr-icon-explore acr-f1"></span>
                                                             </button>
+                                                            <a href="#" class="clear-search">Clear Search</a>
                                                         </div>
                                                     </form>
 
                                                     <section id="dealer-locator" class="dealer-locator">
                                                         <div class="divider col-md-36"></div>
                                                         <div class="heading-bar clearfix">
-
-                                                            <div class="section-header">
-                                                                <h2>Contact a Dealer</h2>
-                                                                <p>Request a quote from a local dealer</p>
-                                                            </div>
-
-                                                            <contact_dealer_vehicle_model></contact_dealer_vehicle_model>
 
                                                         </div>
                                                         <!-- end heading-bar -->
@@ -573,6 +579,9 @@
 
                                                             </section>
                                                             <!-- END .results -->
+                                                            <a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide">
+                View More Dealers
+            </a>
                                                         </div>
                                                         <!-- END .main-content -->
                                                     </section>
@@ -625,7 +634,7 @@
                                                                 <button type="submit" class="submit acr-cta-btn is-red-bg">
                                                                     <span class="acr-icon-explore acr-f1"></span>
                                                                 </button>
-
+                                                                <a href="#" class="clear-search">Clear Search</a>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -658,19 +667,12 @@
                                                                 <button type="submit" class="submit acr-cta-btn is-red-bg">
                                                                     <span class="acr-icon-explore acr-f1"></span>
                                                                 </button>
-
+                                                                <a href="#" class="clear-search">Clear Search</a>
                                                             </div>
                                                         </form>
                                                         <section id="dealer-locator-by-name" class="dealer-locator">
                                                             <div class="divider col-md-36"></div>
                                                             <div class="heading-bar clearfix">
-
-                                                                <div class="section-header">
-                                                                    <h2>Contact a Dealer</h2>
-                                                                    <p>Request a quote from a local dealer</p>
-                                                                </div>
-
-                                                                <contact_dealer_vehicle_model></contact_dealer_vehicle_model>
 
                                                             </div>
                                                             <!-- end heading-bar -->
@@ -694,15 +696,12 @@
                                                                                 <p>
                                                                                     <span class="dealer-result-address"></span>
                                                                                     <br />
-                                                                                    <span class="dealer-result-city"></span>, <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
+                                                                                    <span class="dealer-result-city"></span> <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
                                                                                 </p>
                                                                                 <p>
                                                                                     <a href="tel:" class="dealer-result-phone "></a>
                                                                                 </p>
-                                                                                <p>
-                                                                                    <a href="#" class="dealer-result-directions anchor-link" target="_blank">GET DIRECTIONS</a>
-                                                                                </p>
-                                                                                <a class="cta-btn tertiary dealer-result-raq-modal text-center" href="#">REQUEST A QUOTE</a>
+
                                                                             </div>
                                                                             <div class="col-xs-8 text-right">
                                                                                 <h5 class="dealer-result-distance"></h5>
@@ -714,6 +713,9 @@
 
                                                                 </section>
                                                                 <!-- END .results -->
+<a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide">
+                View More Dealers
+            </a>
                                                             </div>
                                                             <!-- END .main-content -->
                                                         </section>
