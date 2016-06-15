@@ -10,7 +10,7 @@ var DealerLocator = (function () {
             lng = "",
             numResults = 1,
             resetResults = false;
-        dealerListings = {};
+            dealerListings = {};
         var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
         var geoLocateOptions = {
@@ -38,18 +38,17 @@ var DealerLocator = (function () {
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
         $placeHoldTextName = '';
-        $populateLocations = '';
 
         function init() {
 
             try {
                 //riot.mount('contact_dealer_vehicle_model', {});
                 //Clears tab results
-                //                $(".nameTab").click(function () {
-                //                    $dealerLocator = $('#dealer-locator-by-name');
-                //                    $resultsList = $('.results-list', $dealerLocator);
-                //                    $resultsList.empty();
-                //                });
+//                $(".nameTab").click(function () {
+//                    $dealerLocator = $('#dealer-locator-by-name');
+//                    $resultsList = $('.results-list', $dealerLocator);
+//                    $resultsList.empty();
+//                });
 
 
                 //Add More Dealers
@@ -59,7 +58,7 @@ var DealerLocator = (function () {
                     zipSearch($zipInput.val());
                     $('input#zip').blur();
                     return false;
-                });
+                }); 
                 $("#dealer-locator-by-name .more-dealers").click(function () {
                     $form = $('#search-by-name-form');
                     viewMore();
@@ -72,28 +71,7 @@ var DealerLocator = (function () {
                     $resultsList.empty();
                     $('.more-dealers', $dealerLocator).addClass('hide');
                     return false;
-                });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                });   
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
@@ -168,10 +146,10 @@ var DealerLocator = (function () {
                 //  a user uses autofill/autocomplete to populate zip input
                 //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
 
-
-                //here read preferred dealer cookie
-                var $preferredDealer = readCookie('preferredDealer');
-
+				
+				//here read preferred dealer cookie
+				var $preferredDealer = readCookie('preferredDealer');
+				
 
                 //here read zipCookie
                 var zip = readCookie('zip');
@@ -180,12 +158,12 @@ var DealerLocator = (function () {
                     $zipInput.val(zip);
                     //update map
                     zipSearch($zipInput.val());
-                    //here if preferred dealer cookie
-                    if ($preferredDealer) {
-                        //												
-                    }
+					//here if preferred dealer cookie
+					if ($preferredDealer) {
+						//												
+					}
                 }
-
+				
                 $placeHoldTextZip = $zipInput.attr('placeholder');
                 $zipInput.on('focus', function () {
                     clearError($(this).closest('.input-wrapper'));
@@ -246,7 +224,6 @@ var DealerLocator = (function () {
                         }
                         if ($('#nameTab').hasClass('active')) {
                             numResults = 1;
-
                             $form = $('#search-by-name-form');
                             $dealerLocator = $('#dealer-locator-by-name');
                             $resultsList = $('.results-list', $dealerLocator);
@@ -254,7 +231,6 @@ var DealerLocator = (function () {
                             //$resultsList.empty();
                             getDealerData($nameInput.val());
                             //$('.more-dealers', $dealerLocator).removeClass('hide');
-
                         }
 
 
@@ -263,8 +239,8 @@ var DealerLocator = (function () {
                         //form.submit();
                     }
                 });
-
-
+				
+				
 
 
             } catch (e) {
@@ -275,6 +251,27 @@ var DealerLocator = (function () {
 
         }
 
+		
+		
+		function assignMakePreferred(){
+			
+			$('.make-preferred-delear').click(function(e){
+				e.preventDefault();
+				var $parentItemTemplate = $(this).closest('.results-item-template');						
+				makePreferred($parentItemTemplate);
+			});
+			
+		}
+		
+		function assignRemovePreferred(){
+			
+			$('.remove-preferred-delear').click(function(e){
+				e.preventDefault();
+				var $parentItemTemplate = $(this).closest('.results-item-template');								
+				removePreferred($parentItemTemplate);
+			});
+			
+		}		
 
 		function makePreferred(parentItemTemplate){
 			//addClass for preferred dealer			
@@ -380,7 +377,7 @@ var DealerLocator = (function () {
             }
         }
 
-        // ---------------------------------------------------
+		// ---------------------------------------------------
         // function to create a cookie
         // ---------------------------------------------------        
         function createCookie(name, value, days) {
@@ -392,7 +389,7 @@ var DealerLocator = (function () {
             document.cookie = name + "=" + value + expires + "; path=/";
         }
 
-        // ---------------------------------------------------
+		// ---------------------------------------------------
         // function to read a cookie
         // ---------------------------------------------------    
         function readCookie(name) {
@@ -405,8 +402,8 @@ var DealerLocator = (function () {
             }
             return null;
         }
-
-        // ---------------------------------------------------
+		
+		// ---------------------------------------------------
         // function to erase a cookie
         // ---------------------------------------------------  
         function eraseCookie(name) {
@@ -627,21 +624,16 @@ var DealerLocator = (function () {
             } else {
                 //remove any past error messaging
                 numData = data.Dealers.length;
-                if (numData > 1) {
+                if (numData > 1){
                     $('.more-dealers', $dealerLocator).removeClass('hide');
                     //alert(numData);
                 }
-
-
-
-
-
                 $('.input-wrapper', $form).removeClass('has-error');
                 //set max results (we only want the 3 closest dealers)
                 addPins(data.Dealers.slice(0, numResults));
                 createList(data.Dealers.slice(0, numResults));
-                addPins(data.Dealers.slice(0, 3));
-                createList(data.Dealers.slice(0, 3));
+                //addPins(data.Dealers.slice(0, 3));
+                //createList(data.Dealers.slice(0, 3));
                 window.dataDealerList = data.Dealers;
             }
         }
@@ -726,7 +718,6 @@ var DealerLocator = (function () {
                     dealers[i].State + ' ' +
                     dealers[i].ZipCode.substr(0, 5)
                 );
-
                 var $listItem = $resultsItemTemplate.clone();
                 var distance = dealers[i].DrivingDistanceMiles;
 
@@ -738,7 +729,7 @@ var DealerLocator = (function () {
 
                 var listItemValues = {
                     index: i + 1,
-                    dealerNumber: dealers[i].DealerNumber,
+					dealerNumber: dealers[i].DealerNumber,
                     name: dealers[i].Name,
                     address: dealers[i].Address,
                     city: dealers[i].City,
@@ -748,9 +739,7 @@ var DealerLocator = (function () {
                     distance: distance
                 };
 				
-				
                 for (var j in listItemValues) {
-					
                     $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
                 }
 
@@ -775,9 +764,9 @@ var DealerLocator = (function () {
                 }
                 k++
             });
-
-            assignMakePreferred();
-            assignRemovePreferred();
+			
+			assignMakePreferred();
+			assignRemovePreferred();
         }
 
         // ---------------------------------------------------
