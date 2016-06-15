@@ -122,6 +122,10 @@ var DealerLocator = (function () {
                 //  a user uses autofill/autocomplete to populate zip input
                 //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
 
+				
+				//here read preferred dealer cookie
+				var $preferredDealer = readCookie('preferredDealer');
+				
 
                 //here read zipCookie
                 var zip = readCookie('zip');
@@ -130,8 +134,12 @@ var DealerLocator = (function () {
                     $zipInput.val(zip);
                     //update map
                     zipSearch($zipInput.val());
+					//here if preferred dealer cookie
+					if ($preferredDealer) {
+						//												
+					}
                 }
-
+				
                 $placeHoldTextZip = $zipInput.attr('placeholder');
                 $zipInput.on('focus', function () {
                     clearError($(this).closest('.input-wrapper'));
@@ -205,6 +213,8 @@ var DealerLocator = (function () {
                         //form.submit();
                     }
                 });
+				
+				
 
 
             } catch (e) {
@@ -215,7 +225,65 @@ var DealerLocator = (function () {
 
         }
 
+		
+		
+		function assignMakePreferred(){
+			
+			$('.make-preferred-delear').click(function(e){
+				e.preventDefault();
+				var $parentItemTemplate = $(this).closest('.results-item-template');						
+				makePreferred($parentItemTemplate);
+			});
+			
+		}
+		
+		function assignRemovePreferred(){
+			
+			$('.remove-preferred-delear').click(function(e){
+				e.preventDefault();
+				var $parentItemTemplate = $(this).closest('.results-item-template');								
+				removePreferred($parentItemTemplate);
+			});
+			
+		}		
 
+		function makePreferred(parentItemTemplate){
+			//addClass for preferred dealer
+			var $parentItemTemplate = parentItemTemplate;
+			var $dealerNumber = $parentItemTemplate.find('.dealer-result-dealerNumber').text();
+			//remove preferred-dealer class from any other			
+			$('.results-list').find('.preferred-dealer').removeClass('preferred-dealer');
+			//hide all remove preferred dealer
+			$('.results-list').find('.remove-preferred-delear').addClass('hidden');
+			//show all make preferred dealer
+			$('.results-list').find('.make-preferred-delear').removeClass('hidden');
+			//add preferred-dealer class to new item			
+			$parentItemTemplate.addClass('preferred-dealer');
+			//hide makre preferred
+			$parentItemTemplate.find('.make-preferred-delear').addClass('hidden');
+			//show remove preferred
+			$parentItemTemplate.find('.remove-preferred-delear').removeClass('hidden');
+			//create a cookie with data for preferred dealer				
+			createCookie('preferredDealer', $dealerNumber, 7)
+			//reorder nad put preferred in first place of the list
+						
+		}
+		
+		function removePreferred(parentItemTemplate){
+			//removeClass for preferred dealer
+			var $parentItemTemplate = parentItemTemplate;
+			$parentItemTemplate.removeClass('preferred-dealer');
+			//hide remove preferred
+			$parentItemTemplate.find('.remove-preferred-delear').addClass('hidden');
+			//show make preferred
+			$parentItemTemplate.find('.make-preferred-delear').removeClass('hidden');			
+			//remove a cookie with data for preferred dealer				
+			eraseCookie('preferredDealer')
+			//reorder to original order, in this case no preferred dealer
+						
+		}
+		
+		
         function validateForm($form) {
             var $field = $('.input-wrapper', $form),
                 required = $field.data('formRequired'),
@@ -252,7 +320,9 @@ var DealerLocator = (function () {
             }
         }
 
-        //function to create a cookie
+		// ---------------------------------------------------
+        // function to create a cookie
+        // ---------------------------------------------------        
         function createCookie(name, value, days) {
             if (days) {
                 var date = new Date();
@@ -262,7 +332,9 @@ var DealerLocator = (function () {
             document.cookie = name + "=" + value + expires + "; path=/";
         }
 
-        //function to read a cookie
+		// ---------------------------------------------------
+        // function to read a cookie
+        // ---------------------------------------------------    
         function readCookie(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -273,7 +345,10 @@ var DealerLocator = (function () {
             }
             return null;
         }
-        //function to erase a cookie
+		
+		// ---------------------------------------------------
+        // function to erase a cookie
+        // ---------------------------------------------------  
         function eraseCookie(name) {
             createCookie(name, "", -1);
         }
@@ -591,6 +666,7 @@ var DealerLocator = (function () {
 
                 var listItemValues = {
                     index: i + 1,
+					dealerNumber: dealers[i].DealerNumber,
                     name: dealers[i].Name,
                     address: dealers[i].Address,
                     city: dealers[i].City,
@@ -623,7 +699,10 @@ var DealerLocator = (function () {
                     dealerListings[k].addClass('mobile');
                 }
                 k++
-            })
+            });
+			
+			assignMakePreferred();
+			assignRemovePreferred();
         }
 
         // ---------------------------------------------------
