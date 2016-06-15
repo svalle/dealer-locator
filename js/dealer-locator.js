@@ -9,7 +9,8 @@ var DealerLocator = (function () {
             lat = "",
             lng = "",
             numResults = 1,
-            dealerListings = {};
+            resetResults = false;
+        dealerListings = {};
         var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
         var geoLocateOptions = {
@@ -44,30 +45,34 @@ var DealerLocator = (function () {
             try {
                 //riot.mount('contact_dealer_vehicle_model', {});
                 //Clears tab results
-//                $(".nameTab").click(function () {
-//                    $dealerLocator = $('#dealer-locator-by-name');
-//                    $resultsList = $('.results-list', $dealerLocator);
-//                    $resultsList.empty();
-//                });
+                //                $(".nameTab").click(function () {
+                //                    $dealerLocator = $('#dealer-locator-by-name');
+                //                    $resultsList = $('.results-list', $dealerLocator);
+                //                    $resultsList.empty();
+                //                });
+
+
                 //Add More Dealers
                 $("#dealer-locator .more-dealers").click(function () {
                     $form = $('#search-by-zip-form');
-                    $resultsList.empty();
-                    numResults = numResults + 3;
+                    viewMore();
                     zipSearch($zipInput.val());
                     $('input#zip').blur();
-                }); 
+                    return false;
+                });
                 $("#dealer-locator-by-name .more-dealers").click(function () {
                     $form = $('#search-by-name-form');
-                    $resultsList.empty();
-                    numResults = numResults + 3;
+                    viewMore();
                     getDealerData($nameInput.val());
-
+                    return false;
                 });
                 $(".clear-search").click(function () {
+                    numResults = 1;
+                    resetResults = false;
                     $resultsList.empty();
+                    $('.more-dealers', $dealerLocator).addClass('hide');
                     return false;
-                });   
+                });
 
 
 
@@ -163,10 +168,10 @@ var DealerLocator = (function () {
                 //  a user uses autofill/autocomplete to populate zip input
                 //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
 
-				
-				//here read preferred dealer cookie
-				var $preferredDealer = readCookie('preferredDealer');
-				
+
+                //here read preferred dealer cookie
+                var $preferredDealer = readCookie('preferredDealer');
+
 
                 //here read zipCookie
                 var zip = readCookie('zip');
@@ -175,12 +180,12 @@ var DealerLocator = (function () {
                     $zipInput.val(zip);
                     //update map
                     zipSearch($zipInput.val());
-					//here if preferred dealer cookie
-					if ($preferredDealer) {
-						//												
-					}
+                    //here if preferred dealer cookie
+                    if ($preferredDealer) {
+                        //												
+                    }
                 }
-				
+
                 $placeHoldTextZip = $zipInput.attr('placeholder');
                 $zipInput.on('focus', function () {
                     clearError($(this).closest('.input-wrapper'));
@@ -226,6 +231,7 @@ var DealerLocator = (function () {
                         //if no created here create a cookie for the zip only						
                         //Create expiring cookie, 7 days from then:
                         if ($('#zipTab').hasClass('active')) {
+                            numResults = 1;
                             $form = $('#search-by-zip-form');
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
@@ -257,8 +263,8 @@ var DealerLocator = (function () {
                         //form.submit();
                     }
                 });
-				
-				
+
+
 
 
             } catch (e) {
@@ -269,27 +275,6 @@ var DealerLocator = (function () {
 
         }
 
-		
-		
-		function assignMakePreferred(){
-			
-			$('.make-preferred-delear').click(function(e){
-				e.preventDefault();
-				var $parentItemTemplate = $(this).closest('.results-item-template');						
-				makePreferred($parentItemTemplate);
-			});
-			
-		}
-		
-		function assignRemovePreferred(){
-			
-			$('.remove-preferred-delear').click(function(e){
-				e.preventDefault();
-				var $parentItemTemplate = $(this).closest('.results-item-template');								
-				removePreferred($parentItemTemplate);
-			});
-			
-		}		
 
 		function makePreferred(parentItemTemplate){
 			//addClass for preferred dealer			
@@ -395,7 +380,7 @@ var DealerLocator = (function () {
             }
         }
 
-		// ---------------------------------------------------
+        // ---------------------------------------------------
         // function to create a cookie
         // ---------------------------------------------------        
         function createCookie(name, value, days) {
@@ -407,7 +392,7 @@ var DealerLocator = (function () {
             document.cookie = name + "=" + value + expires + "; path=/";
         }
 
-		// ---------------------------------------------------
+        // ---------------------------------------------------
         // function to read a cookie
         // ---------------------------------------------------    
         function readCookie(name) {
@@ -420,8 +405,8 @@ var DealerLocator = (function () {
             }
             return null;
         }
-		
-		// ---------------------------------------------------
+
+        // ---------------------------------------------------
         // function to erase a cookie
         // ---------------------------------------------------  
         function eraseCookie(name) {
@@ -641,9 +626,10 @@ var DealerLocator = (function () {
                 return;
             } else {
                 //remove any past error messaging
-                var numData = data.Dealers.length;
-                if (numData > 1){
+                numData = data.Dealers.length;
+                if (numData > 1) {
                     $('.more-dealers', $dealerLocator).removeClass('hide');
+                    //alert(numData);
                 }
 
 
@@ -752,7 +738,7 @@ var DealerLocator = (function () {
 
                 var listItemValues = {
                     index: i + 1,
-					dealerNumber: dealers[i].DealerNumber,
+                    dealerNumber: dealers[i].DealerNumber,
                     name: dealers[i].Name,
                     address: dealers[i].Address,
                     city: dealers[i].City,
@@ -789,9 +775,9 @@ var DealerLocator = (function () {
                 }
                 k++
             });
-			
-			assignMakePreferred();
-			assignRemovePreferred();
+
+            assignMakePreferred();
+            assignRemovePreferred();
         }
 
         // ---------------------------------------------------
@@ -833,12 +819,23 @@ var DealerLocator = (function () {
             return flag;
         }
 
+        function viewMore() {
+            //Flag to reset initial results
+            if (resetResults == false) {
+                numResults = 0;
+            }
+            if (numData > numResults) {
+                numResults = numResults + 3;
+                resetResults = true;
+            }
+        }
+
         //end functions dealer locator civic
 
         return {
             init: init
         };
-    })(),
+    })(), // End Dealer Locator
 
     Cookies = function () {
         function e(e, t, i) {
