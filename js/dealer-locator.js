@@ -8,6 +8,7 @@ var DealerLocator = (function () {
             zipGlobal = "",
             lat = "",
             lng = "",
+            numResults = 1,
             dealerListings = {};
         var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
@@ -48,6 +49,46 @@ var DealerLocator = (function () {
 //                    $resultsList = $('.results-list', $dealerLocator);
 //                    $resultsList.empty();
 //                });
+                //Add More Dealers
+                $("#dealer-locator .more-dealers").click(function () {
+                    $form = $('#search-by-zip-form');
+                    $resultsList.empty();
+                    numResults = numResults + 3;
+                    zipSearch($zipInput.val());
+                    $('input#zip').blur();
+                }); 
+                $("#dealer-locator-by-name .more-dealers").click(function () {
+                    $form = $('#search-by-name-form');
+                    $resultsList.empty();
+                    numResults = numResults + 3;
+                    getDealerData($nameInput.val());
+
+                });
+                $(".clear-search").click(function () {
+                    $resultsList.empty();
+                    return false;
+                });   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
@@ -192,11 +233,13 @@ var DealerLocator = (function () {
                             //$resultsList.empty();
                             zipSearch($zipInput.val());
                             $('input#zip').blur();
+                            //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
                         if ($('#cityTab').hasClass('active')) {
 
                         }
                         if ($('#nameTab').hasClass('active')) {
+                            numResults = 1;
 
                             $form = $('#search-by-name-form');
                             $dealerLocator = $('#dealer-locator-by-name');
@@ -204,6 +247,7 @@ var DealerLocator = (function () {
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
                             //$resultsList.empty();
                             getDealerData($nameInput.val());
+                            //$('.more-dealers', $dealerLocator).removeClass('hide');
 
                         }
 
@@ -297,6 +341,14 @@ var DealerLocator = (function () {
 			parentList.append(arr);
 		}
 		
+
+
+
+
+
+
+
+
 		//function to reorder list to original positions
 		function reorderList(containerList){
 			var $wrapper = containerList;
@@ -589,8 +641,19 @@ var DealerLocator = (function () {
                 return;
             } else {
                 //remove any past error messaging
+                var numData = data.Dealers.length;
+                if (numData > 1){
+                    $('.more-dealers', $dealerLocator).removeClass('hide');
+                }
+
+
+
+
+
                 $('.input-wrapper', $form).removeClass('has-error');
                 //set max results (we only want the 3 closest dealers)
+                addPins(data.Dealers.slice(0, numResults));
+                createList(data.Dealers.slice(0, numResults));
                 addPins(data.Dealers.slice(0, 3));
                 createList(data.Dealers.slice(0, 3));
                 window.dataDealerList = data.Dealers;
@@ -699,10 +762,12 @@ var DealerLocator = (function () {
                     distance: distance
                 };
 				
+				
                 for (var j in listItemValues) {
 					
                     $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
                 }
+
 				$listItem.attr('data-order',listItemValues.index);
                 $('.dealer-result-directions', $listItem).attr('href', mapDirections);
                 $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
