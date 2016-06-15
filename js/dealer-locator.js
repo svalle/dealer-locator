@@ -8,6 +8,7 @@ var DealerLocator = (function () {
             zipGlobal = "",
             lat = "",
             lng = "",
+            numResults = 1,
             dealerListings = {};
         var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
@@ -36,8 +37,6 @@ var DealerLocator = (function () {
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
         $placeHoldTextName = '';
-        $populateLocations = '';
-
         function init() {
 
             try {
@@ -48,6 +47,21 @@ var DealerLocator = (function () {
 //                    $resultsList = $('.results-list', $dealerLocator);
 //                    $resultsList.empty();
 //                });
+                //Add More Dealers
+                $("#dealer-locator .more-dealers").click(function () {
+                    $form = $('#search-by-zip-form');
+                    $resultsList.empty();
+                    numResults = numResults + 3;
+                    zipSearch($zipInput.val());
+                    $('input#zip').blur();
+                }); 
+                $("#dealer-locator-by-name .more-dealers").click(function () {
+                    $form = $('#search-by-name-form');
+                    $resultsList.empty();
+                    numResults = numResults + 3;
+                    getDealerData($nameInput.val());
+
+                });
                 $(".clear-search").click(function () {
                     $resultsList.empty();
                     return false;
@@ -188,19 +202,20 @@ var DealerLocator = (function () {
                             //$resultsList.empty();
                             zipSearch($zipInput.val());
                             $('input#zip').blur();
+                            $('.more-dealers', $dealerLocator).removeClass('hide');
                         }
                         if ($('#cityTab').hasClass('active')) {
 
                         }
                         if ($('#nameTab').hasClass('active')) {
-
+                            numResults = 1;
                             $form = $('#search-by-name-form');
                             $dealerLocator = $('#dealer-locator-by-name');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
                             //$resultsList.empty();
                             getDealerData($nameInput.val());
-
+                            $('.more-dealers', $dealerLocator).removeClass('hide');
                         }
 
 
@@ -497,8 +512,8 @@ var DealerLocator = (function () {
                 //remove any past error messaging
                 $('.input-wrapper', $form).removeClass('has-error');
                 //set max results (we only want the 3 closest dealers)
-                addPins(data.Dealers.slice(0, 3));
-                createList(data.Dealers.slice(0, 3));
+                addPins(data.Dealers.slice(0, numResults));
+                createList(data.Dealers.slice(0, numResults));
                 window.dataDealerList = data.Dealers;
             }
         }
@@ -583,7 +598,6 @@ var DealerLocator = (function () {
                     dealers[i].State + ' ' +
                     dealers[i].ZipCode.substr(0, 5)
                 );
-
                 var $listItem = $resultsItemTemplate.clone();
                 var distance = dealers[i].DrivingDistanceMiles;
 
