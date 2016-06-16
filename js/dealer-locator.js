@@ -9,8 +9,11 @@ var DealerLocator = (function () {
             lat = "",
             lng = "",
             numResults = 1,
+            numResultsZip = 0,
+            numResultsName = 0,
+            numDataZip, numDataName, numDataCity,
             resetResults = false;
-            dealerListings = {};
+        dealerListings = {};
         var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
         var geoLocateOptions = {
@@ -44,34 +47,63 @@ var DealerLocator = (function () {
             try {
                 //riot.mount('contact_dealer_vehicle_model', {});
                 //Clears tab results
-//                $(".nameTab").click(function () {
-//                    $dealerLocator = $('#dealer-locator-by-name');
-//                    $resultsList = $('.results-list', $dealerLocator);
-//                    $resultsList.empty();
-//                });
+                //                $(".nameTab").click(function () {
+                //                    $dealerLocator = $('#dealer-locator-by-name');
+                //                    $resultsList = $('.results-list', $dealerLocator);
+                //                    $resultsList.empty();
+                //                });
 
 
                 //Add More Dealers
                 $("#dealer-locator .more-dealers").click(function () {
                     $form = $('#search-by-zip-form');
-                    viewMore();
+                    $dealerLocator = $('#dealer-locator');
+                    $resultsList = $('.results-list', $dealerLocator);
+                    $resultsListTab = $('.dealer-locator', $dealerLocator);
+                    //alert($form.attr('id'));
+
+                    //                    localStorage.setItem("rsZip", numResults);
+                    //                    numResultsZip = parseInt(localStorage.getItem("rsZip"));
+                    //                    numResults = numResultsZip;
+                    
+                    viewMore($form);
+                    numResults = numResultsZip;
+                    //alert(numDataZip);
                     zipSearch($zipInput.val());
                     $('input#zip').blur();
                     return false;
-                }); 
+                });
                 $("#dealer-locator-by-name .more-dealers").click(function () {
                     $form = $('#search-by-name-form');
-                    viewMore();
+                    $dealerLocator = $('#dealer-locator-by-name');
+                    $resultsList = $('.results-list', $dealerLocator);
+                    $resultsListTab = $('.dealer-locator', $dealerLocator);
+                    //alert($form.attr('id'));
+                    viewMore($form);
+                    numResults = numResultsName;
+                    //alert(numDataName);
                     getDealerData($nameInput.val());
                     return false;
                 });
-                $(".clear-search").click(function () {
-                    numResults = 1;
-                    resetResults = false;
-                    $resultsList.empty();
-                    $('.more-dealers', $dealerLocator).addClass('hide');
-                    return false;
-                });   
+                // Asign correct form search
+                $('#zipTab').click(function () {
+                     //$form = $('#search-by-zip-form');
+                    //numResults = numResultsZip;
+                }); 
+                $('#nameTab').click(function () {
+                     //$form = $('#search-by-name-form');
+                    //numResults = numResultsZip;
+                }); 
+//                $(".clear-search").click(function () {
+//                    resetResults = false;
+//                    numResults = 1;
+//                    $closestResult = $(this).closest('.field-group').attr('id');
+//                    $resultsList = $('#' + $closestResult + ' .results-list');
+//                    $resultsList.empty();
+//
+//                    $('#' + $closestResult + ' .more-dealers').addClass('hide');
+//                    return false;
+//                });
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
@@ -146,10 +178,10 @@ var DealerLocator = (function () {
                 //  a user uses autofill/autocomplete to populate zip input
                 //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);
 
-				
-				//here read preferred dealer cookie
-				var $preferredDealer = readCookie('preferredDealer');
-				
+
+                //here read preferred dealer cookie
+                var $preferredDealer = readCookie('preferredDealer');
+
 
                 //here read zipCookie
                 var zip = readCookie('zip');
@@ -158,12 +190,12 @@ var DealerLocator = (function () {
                     $zipInput.val(zip);
                     //update map
                     zipSearch($zipInput.val());
-					//here if preferred dealer cookie
-					if ($preferredDealer) {
-						//												
-					}
+                    //here if preferred dealer cookie
+                    if ($preferredDealer) {
+                        //												
+                    }
                 }
-				
+
                 $placeHoldTextZip = $zipInput.attr('placeholder');
                 $zipInput.on('focus', function () {
                     clearError($(this).closest('.input-wrapper'));
@@ -239,8 +271,8 @@ var DealerLocator = (function () {
                         //form.submit();
                     }
                 });
-				
-				
+
+
 
 
             } catch (e) {
@@ -251,79 +283,77 @@ var DealerLocator = (function () {
 
         }
 
-		
-		
-		function assignMakePreferred(){
-			
-			$('.make-preferred-delear').click(function(e){
-				e.preventDefault();
-				var $parentItemTemplate = $(this).closest('.results-item-template');						
-				makePreferred($parentItemTemplate);
-			});
-			
-		}
-		
-		function assignRemovePreferred(){
-			
-			$('.remove-preferred-delear').click(function(e){
-				e.preventDefault();
-				var $parentItemTemplate = $(this).closest('.results-item-template');								
-				removePreferred($parentItemTemplate);
-			});
-			
-		}		
 
-		function makePreferred(parentItemTemplate){
-			//addClass for preferred dealer			
-			var $parentItemTemplate = parentItemTemplate;
-			var $dealerNumber = $parentItemTemplate.find('.dealer-result-dealerNumber').text();
-			var $arrayIndex = $parentItemTemplate.index();
-			var $arrayList = $parentItemTemplate.closest('.results-list').find('.results-item-template'); 
-			var $parentList = $parentItemTemplate.closest('.results-list');
-			
-			//remove preferred-dealer class from any other			
-			$('.results-list').find('.preferred-dealer').removeClass('preferred-dealer');
-			//hide all remove preferred dealer
-			$('.results-list').find('.remove-preferred-delear').addClass('hidden');
-			//show all make preferred dealer
-			$('.results-list').find('.make-preferred-delear').removeClass('hidden');
-			//add preferred-dealer class to new item			
-			$parentItemTemplate.addClass('preferred-dealer');
-			//hide makre preferred
-			$parentItemTemplate.find('.make-preferred-delear').addClass('hidden');
-			//show remove preferred
-			$parentItemTemplate.find('.remove-preferred-delear').removeClass('hidden');
-			//create a cookie with data for preferred dealer				
-			createCookie('preferredDealer', $dealerNumber, 7)
-			//reorder nad put preferred in first place of the list			
-			moveItem($arrayList, $arrayIndex,0, $parentList);
-		}
-		
-		function removePreferred(parentItemTemplate){
-			var $parentItemTemplate = parentItemTemplate;
-			var $arrayList = $parentItemTemplate.closest('.results-list').find('.results-item-template'); 
-			//removeClass for preferred dealer
-			var $containerList = $parentItemTemplate.closest('.results-list');
-			$parentItemTemplate.removeClass('preferred-dealer');
-			//hide remove preferred
-			$parentItemTemplate.find('.remove-preferred-delear').addClass('hidden');
-			//show make preferred
-			$parentItemTemplate.find('.make-preferred-delear').removeClass('hidden');			
-			//remove a cookie with data for preferred dealer				
-			eraseCookie('preferredDealer')
-			//reorder to original order, in this case no preferred dealer
-			reorderList($containerList);			
-		}
-		
-		//function to move preferred item to top of the list
-		function moveItem(arr, fromIndex, toIndex, parentList) {
-			var element = arr[fromIndex];
-			arr.splice(fromIndex, 1);
-			arr.splice(toIndex, 0, element);
-			parentList.append(arr);
-		}
-		
 
+        function assignMakePreferred() {
+
+            $('.make-preferred-delear').click(function (e) {
+                e.preventDefault();
+                var $parentItemTemplate = $(this).closest('.results-item-template');
+                makePreferred($parentItemTemplate);
+            });
+
+        }
+
+        function assignRemovePreferred() {
+
+            $('.remove-preferred-delear').click(function (e) {
+                e.preventDefault();
+                var $parentItemTemplate = $(this).closest('.results-item-template');
+                removePreferred($parentItemTemplate);
+            });
+
+        }
+
+        function makePreferred(parentItemTemplate) {
+            //addClass for preferred dealer			
+            var $parentItemTemplate = parentItemTemplate;
+            var $dealerNumber = $parentItemTemplate.find('.dealer-result-dealerNumber').text();
+            var $arrayIndex = $parentItemTemplate.index();
+            var $arrayList = $parentItemTemplate.closest('.results-list').find('.results-item-template');
+            var $parentList = $parentItemTemplate.closest('.results-list');
+
+            //remove preferred-dealer class from any other			
+            $('.results-list').find('.preferred-dealer').removeClass('preferred-dealer');
+            //hide all remove preferred dealer
+            $('.results-list').find('.remove-preferred-delear').addClass('hidden');
+            //show all make preferred dealer
+            $('.results-list').find('.make-preferred-delear').removeClass('hidden');
+            //add preferred-dealer class to new item			
+            $parentItemTemplate.addClass('preferred-dealer');
+            //hide makre preferred
+            $parentItemTemplate.find('.make-preferred-delear').addClass('hidden');
+            //show remove preferred
+            $parentItemTemplate.find('.remove-preferred-delear').removeClass('hidden');
+            //create a cookie with data for preferred dealer				
+            createCookie('preferredDealer', $dealerNumber, 7)
+                //reorder nad put preferred in first place of the list			
+            moveItem($arrayList, $arrayIndex, 0, $parentList);
+        }
+
+        function removePreferred(parentItemTemplate) {
+            var $parentItemTemplate = parentItemTemplate;
+            var $arrayList = $parentItemTemplate.closest('.results-list').find('.results-item-template');
+            //removeClass for preferred dealer
+            var $containerList = $parentItemTemplate.closest('.results-list');
+            $parentItemTemplate.removeClass('preferred-dealer');
+            //hide remove preferred
+            $parentItemTemplate.find('.remove-preferred-delear').addClass('hidden');
+            //show make preferred
+            $parentItemTemplate.find('.make-preferred-delear').removeClass('hidden');
+            //remove a cookie with data for preferred dealer				
+            eraseCookie('preferredDealer')
+                //reorder to original order, in this case no preferred dealer
+            reorderList($containerList);
+        }
+
+        //function to move preferred item to top of the list
+        function moveItem(arr, fromIndex, toIndex, parentList) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+            parentList.append(arr);
+        }
 
 
 
@@ -331,16 +361,18 @@ var DealerLocator = (function () {
 
 
 
-		//function to reorder list to original positions
-		function reorderList(containerList){
-			var $wrapper = containerList;
-			$wrapper.find('.results-item-template').sort(function (a, b) {
-				return +a.getAttribute('data-order') - +b.getAttribute('data-order');
-			})
-			.appendTo( $wrapper );
-		}
-			
-		
+
+
+        //function to reorder list to original positions
+        function reorderList(containerList) {
+            var $wrapper = containerList;
+            $wrapper.find('.results-item-template').sort(function (a, b) {
+                    return +a.getAttribute('data-order') - +b.getAttribute('data-order');
+                })
+                .appendTo($wrapper);
+        }
+
+
         function validateForm($form) {
             var $field = $('.input-wrapper', $form),
                 required = $field.data('formRequired'),
@@ -377,7 +409,7 @@ var DealerLocator = (function () {
             }
         }
 
-		// ---------------------------------------------------
+        // ---------------------------------------------------
         // function to create a cookie
         // ---------------------------------------------------        
         function createCookie(name, value, days) {
@@ -389,7 +421,7 @@ var DealerLocator = (function () {
             document.cookie = name + "=" + value + expires + "; path=/";
         }
 
-		// ---------------------------------------------------
+        // ---------------------------------------------------
         // function to read a cookie
         // ---------------------------------------------------    
         function readCookie(name) {
@@ -402,8 +434,8 @@ var DealerLocator = (function () {
             }
             return null;
         }
-		
-		// ---------------------------------------------------
+
+        // ---------------------------------------------------
         // function to erase a cookie
         // ---------------------------------------------------  
         function eraseCookie(name) {
@@ -624,7 +656,13 @@ var DealerLocator = (function () {
             } else {
                 //remove any past error messaging
                 numData = data.Dealers.length;
-                if (numData > 1){
+                if($form.attr('id') == 'search-by-zip-form'){
+                    numDataZip = numData;
+                }
+                if($form.attr('id') == 'search-by-name-form'){
+                    numDataName = numData;
+                }
+                if (numData > 1) {
                     $('.more-dealers', $dealerLocator).removeClass('hide');
                     //alert(numData);
                 }
@@ -729,7 +767,7 @@ var DealerLocator = (function () {
 
                 var listItemValues = {
                     index: i + 1,
-					dealerNumber: dealers[i].DealerNumber,
+                    dealerNumber: dealers[i].DealerNumber,
                     name: dealers[i].Name,
                     address: dealers[i].Address,
                     city: dealers[i].City,
@@ -738,12 +776,12 @@ var DealerLocator = (function () {
                     phone: Utility.formatPhone(dealers[i].Phone),
                     distance: distance
                 };
-				
+
                 for (var j in listItemValues) {
                     $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
                 }
 
-				$listItem.attr('data-order',listItemValues.index);
+                $listItem.attr('data-order', listItemValues.index);
                 $('.dealer-result-directions', $listItem).attr('href', mapDirections);
                 $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
 
@@ -764,9 +802,9 @@ var DealerLocator = (function () {
                 }
                 k++
             });
-			
-			assignMakePreferred();
-			assignRemovePreferred();
+
+            assignMakePreferred();
+            assignRemovePreferred();
         }
 
         // ---------------------------------------------------
@@ -808,15 +846,26 @@ var DealerLocator = (function () {
             return flag;
         }
 
-        function viewMore() {
-            //Flag to reset initial results
-            if (resetResults == false) {
-                numResults = 0;
+        function viewMore(searchForm) {
+            if (searchForm.attr('id') == 'search-by-zip-form') {
+                if (resetResults == false) {
+                    numResults = 0;
+                }
+                if (numDataZip > numResultsZip) {
+                    numResultsZip = numResultsZip + 3;
+                    resetResults = true;
+                }
             }
-            if (numData > numResults) {
-                numResults = numResults + 3;
-                resetResults = true;
+            if (searchForm.attr('id') == 'search-by-name-form') {
+                if (resetResults == false) {
+                    numResults = 0;
+                }
+                if (numDataName > numResultsName) {
+                    numResultsName = numResultsName + 3;
+                    resetResults = true;
+                }
             }
+
         }
 
         //end functions dealer locator civic
