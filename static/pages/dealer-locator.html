@@ -51,9 +51,10 @@
     </script>
 
     <style>
-        .dealer-locator-section {
-            padding: 0 18px;
-        }
+        .nopadding {
+		   padding: 0 !important;
+		   margin: 0 !important;
+		}
         
         .dealer-locator-section .left-ribbon,
         .dealer-locator-section .right-ribbon {
@@ -70,9 +71,64 @@
 		.dealer-locator-section .right-ribbon .map-container {
 			float:left;
 		}
+				
+		/*map*/
+		#dealer-map{height:735pt;}
+		/*@media #{$xs-breakpoint} {
+			#dealer-map{height:735pt;}
+		  }*/
+		@media (max-width: 768px) { #dealer-map{height:260pt;} }
 		
+		/* tabs styles */
+		.dealer-locator-section .tabs-container .nav-tabs{border:none;}
+		.dealer-locator-section .tabs-container .nav-tabs li {
+			background: #f3f3f3 none repeat scroll 0 0;
+			margin-right: 1%;
+			width: 32.3%;
+		}
+		.dealer-locator-section .tabs-container .nav-tabs li:last-child{margin:0;}
+		
+		.dealer-locator-section .tabs-container .nav-tabs li.active {
+			background: #fff none repeat scroll 0 0;
+			border-bottom: 4px solid #e82c2a;
+			border-top: 2px solid #fff;
+			box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.3);
+			top: -2px;
+			z-index: 10;
+		}
+		
+		.dealer-locator-section .tabs-container .nav-tabs li a {
+			border-radius: 0;
+			color: #5e6162;
+			font-family: "AvenirLTPro-Heavy",Arial,sans-serif;
+			padding: 32px 20px;
+			position: relative;
+			text-align: center;
+			border:none;
+			margin:0;
+		}
+		
+		.dealer-locator-section .tabs-container .nav-tabs li.active a {
+			background: #fff none repeat scroll 0 0;
+			color: #000;
+			border:none;
+			margin:0;
+		}
+		
+		.dealer-locator-section .tabs-container .nav-tabs li.active a::after {
+			background: #e82c2a none repeat scroll 0 0;
+			height: 4px;
+			width: 100%;
+		}
+		
+		
+		
+		
+		/* forms inputs */
+		
+		.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper{float:left; background-color: #f3f3f3; width:100%;}
         
-        .find-a-dealer-form-content-acura .input-wrapper .acr-input-pre {
+        .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .acr-input-pre {
             background-color: #f3f3f3;
             display: inline-block;
             height: 4.4rem;
@@ -81,30 +137,35 @@
             width: 4.4rem;
         }
         
-        .find-a-dealer-form-content-acura .input-wrapper input {
+        .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper input {
             background-color: #f3f3f3;
             height: 4.4rem;
             margin: 0 -0.5rem;
             outline: 0 none;
             padding: 1.3rem 0;
             vertical-align: middle;
+			width:75%;
         }
         
-        .find-a-dealer-form-content-acura .acr-cta-btn {
-            min-width: 0;
-            padding: 0.7rem;
-            height: 4.4rem;
+        .dealer-locator-section .find-a-dealer-form-content-acura .acr-cta-btn {
+            float: right;
+			height: 4.4rem;
+			min-width: 0;
+			padding: 0.7rem;
+			position: absolute;
+			right: 0;
         }
         
-        .results-list {
+		/* results list */
+        .dealer-locator-section .results-list {
             margin: 0;
         }
         
-        .results-item-template {
+        .dealer-locator-section .results-item-template {
             list-style: none;
         }
         
-        .results-item-template.hovered {
+        .dealer-locator-section .results-item-template.hovered {
             background: #ccc;
         }
     </style>
@@ -478,30 +539,29 @@
         <!-- TABS SECTION -->
         <section class="dealer-locator-section">
             <div class="blade-wrapper">
-                <div class="acr-heading1 acr-left">
+                <div class="acr-heading1 acr-left col-xs-36">
                     <h3>Locate a Dealer</h3>
                 </div>
 
                 <div class="left-ribbon row">
                     <!-- could be left-ribbon or right-ribbon, default state is left-ribbon, right ribbon should rease properties of push and pull -->
 
-                    <!-- ribbon -->
-                    <!-- <div class=" col-xs-36 col-md-16 col-xl-16 col-md-push-20 col-xl-push-20 erase-push-pull-classes"> -->
-					<div class="col-xs-36 col-md-16 col-xl-16 tabs-container">
+                    <!-- ribbon -->                   
+					<div class="col-xs-36 col-md-14 col-xl-14 tabs-container">
                         <ul class="nav nav-tabs ">
                             <li class="active zipTab"><a data-toggle="tab" href="#zipTab">ZIP CODE</a></li>
                             <li class="cityTab"><a data-toggle="tab" href="#cityTab">CITY, STATE</a></li>
                             <li class="nameTab"><a data-toggle="tab" href="#nameTab">NAME</a></li>
                         </ul>
 						<!-- each tab forms -->
-						<div class="col-xs-36 col-md-16 col-xl-16">
+						<div class=" ">
 							<div class="tab-content">
 								<div id="zipTab" class="tab-pane fade in active">
 
 									<section class="acr-blade-veh-info ">
 
 										<div class="blade-wrapper info1">
-											<div class="row">
+											<div class="row1">
 												<div class="info-content1">
 													<div class="field-group zip " id="dealer-zip-form-data">
 
@@ -509,9 +569,9 @@
 														<form id="search-by-zip-form" action="../../json/data.json" class="find-a-dealer-form-acura desktop-target">
 															<input type="hidden" name="productDivisionCode" value="A" />
 															<input type="hidden" name="maxResults" value="3" />
-															<a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a>
-															<span class="hidden-md hidden-lg hidden-xl">OR</span>
-															<div class="find-a-dealer-form-content-acura col-sm-36 ">
+															<!-- <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a> -->
+															<!-- <span class="hidden-md hidden-lg hidden-xl">OR</span> -->
+															<div class="find-a-dealer-form-content-acura  ">
 																<div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
 																	<p class="error-message"></p>
 																	<div>
@@ -523,7 +583,7 @@
 																<button type="submit" class="submit acr-cta-btn is-red-bg">
 																	<span class="acr-icon-explore acr-f1"></span>
 																</button>
-																<a href="#" class="clear-search">Clear Search</a>
+																
 															</div>
 														</form>
 													
@@ -544,7 +604,7 @@
 														<div class="field-group address-city-state " id="dealer-city-form-data">
 
 															<form id="search-by-city-form" action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form-acura desktop-target">
-																<div class="find-a-dealer-form-content-acura col-sm-36">
+																<div class="find-a-dealer-form-content-acura ">
 																	<div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter your City" data-regex-error="Please enter a valid City">
 																		<p class="error-message"></p>
 																		<div>
@@ -573,7 +633,7 @@
 																	<button type="submit" class="submit acr-cta-btn is-red-bg">
 																		<span class="acr-icon-explore acr-f1"></span>
 																	</button>
-																	<a href="#" class="clear-search">Clear Search</a>
+																	
 																</div>
 															</form>
 														</div>
@@ -594,7 +654,7 @@
 														<div class="field-group address-name-state " id="dealer-name-form-data">
 
 															<form id="search-by-name-form" action="../../json/data-name-mok.json" class="find-a-dealer-form-acura desktop-target">
-																<div class="find-a-dealer-form-content-acura col-sm-36">
+																<div class="find-a-dealer-form-content-acura ">
 																	<div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter Dealer Name" data-regex-error="Please enter a valid Dealer Name">
 																		<p class="error-message"></p>
 																		<div>
@@ -606,7 +666,7 @@
 																	<button type="submit" class="submit acr-cta-btn is-red-bg">
 																		<span class="acr-icon-explore acr-f1"></span>
 																	</button>
-																	<a href="#" class="clear-search">Clear Search</a>
+																	
 																</div>
 															</form>
 						 
@@ -627,19 +687,20 @@
 					
 
 
-					<!-- MAP -->
-					<!-- <div class="col-xs-36 col-md-20 col-xl-20 col-md-pull-16 col-xl-pull-16 erase-push-pull-classes"> -->
-					<div class="col-xs-36 col-md-20 col-xl-20 map-container">
-                        MAP HERE
-                        <figure class="map">
-                            <!-- pulling in the bing map -->
-                            <div id="dealer-map" style="height:600px">
-                                <!-- <div class="loader" name="loader">
-								<img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
-								</div> -->
-                            </div>
-                        </figure>
-
+					<!-- MAP -->					
+					<div class="col-xs-36 col-md-22 col-xl-22 map-container">
+                        
+                        <div class="col-xs-36">
+							<figure class="map">
+								<!-- pulling in the bing map -->
+								<div id="dealer-map">
+									<!-- <div class="loader" name="loader">
+									<img srcset="/Areas/Honda_Automobiles/img/honda_loading.gif 1x, /Areas/Honda_Automobiles/img/honda_loading_2x.gif 2x" alt="" title="">
+									</div> -->
+								</div>
+							</figure>
+						</div>
+						
 
                         <!-- BING MAP INTEGRATION -->
                         <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
@@ -647,7 +708,7 @@
 					<!-- END MAP-->
 
 					<!-- RESULTS -->
-					<div class="col-xs-36 col-md-16 col-xl-16 results-container">
+					<div class="col-xs-36 col-md-14 col-xl-14 results-container">
                         <div class="tab-content">
                             <div id="zipTab" class="tab-pane fade in active">
 
