@@ -297,6 +297,63 @@
 		
 		
 		
+        
+        .dealer-locator-section .dealer-result-index {
+            background-color: red;
+            border-radius: 100pt;
+            color: #fff;
+            font-size: 16pt;
+            line-height: 24pt;
+            padding: 11pt 16pt;
+        }
+        
+        .dealer-locator-section .dealer-result-distance {
+            color: #5d6061;
+            font-size: 14pt;
+            line-height: 24pt;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dealer-locator-section .make-preferred-delear,
+        .dealer-locator-section .remove-preferred-delear {
+            color: #000;
+            font-size: 12pt;
+            line-height: 24pt;
+        }
+        
+        .dealer-locator-section .dealer-result-name {
+            font-size: 20pt;
+            margin: 20pt 0 25pt;
+        }
+        
+        .dealer-locator-section .results-item-template p {
+            color: #000;
+            font-family: "AvenirLTPro-Light", Arial, sans-serif;
+            font-size: 14pt;
+        }
+        
+        .dealer-locator-section .results-item-template p strong {
+            font-family: "AvenirLTPro-Black", Arial, sans-serif;
+            font-size: 14pt;
+        }
+        
+        .dealer-locator-section .results-item-template .salesSchedule .days {}
+        
+        .dealer-locator-section .results-item-template p .acr-cta-text {
+            font-size: 14pt;
+        }
+        
+        .dealer-locator-section .results-item-template .dealer-result-directions {
+            margin-top: 10px;
+        }
+        
+        .dealer-locator-section .more-dealers {
+            margin-bottom: 26pt;
+            display: block;
+            float: none;
+            font-size: 14pt;
+        }
     </style>
 
 
@@ -760,7 +817,7 @@
                                                                     <button type="submit" class="submit acr-cta-btn is-red-bg">
 																		<span class="acr-icon-explore acr-f1"></span>
 																	</button>
-
+                                                                    <h4 class="error hide">No Results Found</h4>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -925,48 +982,40 @@
                                 <section class="acr-blade-veh-info ">
 
                                     <div class="blade-wrapper info1">
-                                        <div class="row1">
-                                            <div class="info-content1">
-                                                <div class="field-group city " id="dealer-city-form-data">
-                                                    <div class="field-group address-city-state " id="dealer-city-form-data">
+										<div class="blade-wrapper info1">
+											<div class="row1">
+												<div class="info-content1">
+													<div class="field-group city " id="dealer-city-form-data">
+														<div class="field-group address-city-state " id="dealer-city-form-data">
+															<section id="dealer-locator-by-city" class="dealer-locator">
+																<div class="divider col-md-36"></div>
+																<div class="heading-bar clearfix">
 
-                                                        <!--   <form id="search-by-city-form" action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form-acura desktop-target">
-                                                            <div class="find-a-dealer-form-content-acura col-sm-36">
-                                                                <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter your City" data-regex-error="Please enter a valid City">
-                                                                    <p class="error-message"></p>
-                                                                    <div>
-                                                                        <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
-                                                                        <input type="text" name="City" value="" maxlength="30" class="city-input txt required val-alphanum" id="dl-city" placeholder="Enter Your City" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="field state">
-                                                                    <label for="dl-state">State<span class="required-note">*</span>:</label>
+																</div>
+																<!-- end heading-bar -->
+																<div class="main-content clearfix">
+																	<section class="results">
+																		<ul class="results-list">
 
-                                                                    <select name="state" id="dl-state">
-                                                                        <option value="AL">AL</option>
-                                                                        <option value="AK">AK</option>
-                                                                        <option value="AR">AR</option>
-                                                                        <option value="AZ">AZ</option>
-                                                                        <option value="CA">CA</option>
-                                                                        <option value="CO">CO</option>
-                                                                        <option value="CT">CT</option>
-                                                                        <option value="DC">DC</option>
-                                                                        <option value="DE">DE</option>
-                                                                        <option value="FL">FL</option>
-                                                                    </select>
 
-                                                                </div>
+																		</ul>
+																		<!-- END .results-list -->
 
-                                                                <button type="submit" class="submit acr-cta-btn is-red-bg">
-                                                                    <span class="acr-icon-explore acr-f1"></span>
-                                                                </button>
-                                                                <a href="#" class="clear-search">Clear Search</a>
-                                                            </div>
-                                                        </form> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+																	</section>
+																	<!-- END .results -->
+																	<a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide center-block col-xs-26">
+																		View More Dealers
+																	</a>
+																</div>
+																<!-- END .main-content -->
+															</section>
+															<!-- END .dealer-locator -->
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
                                     </div>
                                 </section>
 
@@ -989,7 +1038,27 @@
                                                             <div class="main-content clearfix">
                                                                 <section class="results">
                                                                     <ul class="results-list">
-                                                                    
+                                                                        <!-- <li class="row results-item-template">
+                                                                            <div class="col-xs-3">
+                                                                                <span class="dealer-result-index"></span>
+                                                                            </div>
+                                                                            <div class="col-xs-25">
+                                                                                <h4 class="dealer-result-name"></h4>
+                                                                                <p>
+                                                                                    <span class="dealer-result-address"></span>
+                                                                                    <br />
+                                                                                    <span class="dealer-result-city"></span> <span class="dealer-result-state"></span> <span class="dealer-result-zipcode"></span>
+                                                                                </p>
+                                                                                <p>
+                                                                                    <a href="tel:" class="dealer-result-phone "></a>
+                                                                                </p>
+
+
+                                                                            </div>
+                                                                            <div class="col-xs-8 text-right">
+                                                                                <h5 class="dealer-result-distance"></h5>
+                                                                            </div>
+                                                                        </li>-->
 
                                                                     </ul>
                                                                     <!-- END .results-list -->
