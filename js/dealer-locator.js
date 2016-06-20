@@ -272,12 +272,12 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsCity = 0;
                             $form = $('#search-by-city-form');
-                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=6&state=KY&city='+ $cityInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=6&state='+$stateInput.val()+'&city='+ $cityInput.val());
                             $dealerLocator = $('#dealer-locator-by-city');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
                             //$resultsList.empty();
-                            getDealerData($cityInput.val());
+                            getDealerData();
                             //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
                         if ($('#nameTab').hasClass('active')) {
@@ -289,7 +289,7 @@ var DealerLocator = (function () {
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
                             //$resultsList.empty();
-                            getDealerData($nameInput.val());
+                            getDealerData();
                             //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
 
