@@ -245,7 +245,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsZip = 0;
                             $form = $('#search-by-zip-form');
-//                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -790,8 +790,7 @@ var DealerLocator = (function () {
                 };
 
                 for (var j in listItemValues) {
-                    $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
-					console.log(dealers[i].SalesHours.length)								
+                    $('.dealer-result-' + j, $listItem).text(listItemValues[j]);											
                 }
 
                 $listItem.attr('data-order', listItemValues.index);
@@ -802,19 +801,11 @@ var DealerLocator = (function () {
 				for (var increment = 0; increment < dealers[i].SalesHours.length; increment++) {
 					var salesDays = dealers[i].SalesHours[increment].Days;
 					var salesHours = dealers[i].SalesHours[increment].Hours;
-					//console.log(dealers[i].SalesHours[increment].Days);
 					
 					$('.salesSchedule', $listItem).append('<span class="days col-xs-10">' + salesDays + '</span>');
 					$('.salesSchedule', $listItem).append('<span class="hours">' + salesHours + '</span></br/>');
 
 				}
-				//console.log(dealers[i].SalesHours.length);
-				//console.log(dealers[i].SalesHours[0].Days);
-				
-				//for (var x = 0; x < dealers.Dealers.SalesHours.length; x++) {
-                //    $('.salesSchedule', $listItem).text(dealers.Dealers.SalesHours[x].Days);
-					//console.log(dealers[i].SalesHours.length)								
-                //}
 				
 
                 var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
