@@ -767,6 +767,9 @@ var DealerLocator = (function () {
                 );
                 var $listItem = $resultsItemTemplate.clone();
                 var distance = dealers[i].DrivingDistanceMiles;
+				var webAddress = dealers[i].WebAddress;
+				
+				var saleHours ={};
 
                 if (distance === null) {
                     distance = "";
@@ -782,17 +785,37 @@ var DealerLocator = (function () {
                     city: dealers[i].City,
                     state: dealers[i].State,
                     zipcode: dealers[i].ZipCode.substr(0, 5),
-                    phone: Utility.formatPhone(dealers[i].Phone),
+                    phone: Utility.formatPhone(dealers[i].Phone),			
                     distance: distance
                 };
 
                 for (var j in listItemValues) {
                     $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
+					console.log(dealers[i].SalesHours.length)								
                 }
 
                 $listItem.attr('data-order', listItemValues.index);
-                $('.dealer-result-directions', $listItem).attr('href', mapDirections);
+                $('.dealer-result-webAddress', $listItem).attr('href', webAddress);
+				$('.dealer-result-directions', $listItem).attr('href', mapDirections);
                 $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
+				
+				for (var increment = 0; increment < dealers[i].SalesHours.length; increment++) {
+					var salesDays = dealers[i].SalesHours[increment].Days;
+					var salesHours = dealers[i].SalesHours[increment].Hours;
+					//console.log(dealers[i].SalesHours[increment].Days);
+					
+					$('.salesSchedule', $listItem).append('<span class="days col-xs-10">' + salesDays + '</span>');
+					$('.salesSchedule', $listItem).append('<span class="hours">' + salesHours + '</span></br/>');
+
+				}
+				//console.log(dealers[i].SalesHours.length);
+				//console.log(dealers[i].SalesHours[0].Days);
+				
+				//for (var x = 0; x < dealers.Dealers.SalesHours.length; x++) {
+                //    $('.salesSchedule', $listItem).text(dealers.Dealers.SalesHours[x].Days);
+					//console.log(dealers[i].SalesHours.length)								
+                //}
+				
 
                 var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
                 $('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);

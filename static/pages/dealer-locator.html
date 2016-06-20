@@ -141,8 +141,12 @@
             width: 100%;
         }
         /* forms inputs */
-        
         .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper {
+            float: left;           
+            width: 100%;
+        }
+		
+        .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .input-container{
             float: left;
             background-color: #f3f3f3;
             width: 100%;
@@ -241,9 +245,14 @@
 			font-size: 14pt;
 		}
 		
+		.dealer-locator-section .results-item-template .salesSchedule .days{}
+		
 		.dealer-locator-section .results-item-template p .acr-cta-text{font-size:14pt;}
+		.dealer-locator-section .results-item-template .dealer-result-directions{margin-top:10px;}
 		
 		.dealer-locator-section .more-dealers{margin-bottom:26pt; display: block;float: none; font-size:14pt;}
+		
+		
 		
     </style>
 
@@ -650,12 +659,12 @@
                                                             <!-- <span class="hidden-md hidden-lg hidden-xl">OR</span> -->
                                                             <div class="find-a-dealer-form-content-acura  ">
                                                                 <div class="input-wrapper" data-form-required="true" data-form-validate="^[0-9]{5}(?:-[0-9]{4})?$" data-required-error="Please enter your zip" data-regex-error="Please enter a valid zip">
-                                                                    <p class="error-message"></p>
-                                                                    <div>
+                                                                    
+                                                                    <div class="input-container">
                                                                         <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
                                                                         <input type="tel" name="Zip" id="zip" value="" pattern="[0-9]*" maxlength="5" class="zip-input" placeholder="Enter Your Zip" />
                                                                     </div>
-
+																	<p class="error-message"></p>
                                                                 </div>
                                                                 <button type="submit" class="submit acr-cta-btn is-red-bg">
 																	<span class="acr-icon-explore acr-f1"></span>
@@ -683,11 +692,12 @@
                                                             <form id="search-by-city-form" action="//www.acura.com/tools/dealerlocator/dealerlocator.aspx" class="find-a-dealer-form-acura desktop-target">
                                                                 <div class="find-a-dealer-form-content-acura ">
                                                                     <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter your City" data-regex-error="Please enter a valid City">
-                                                                        <p class="error-message"></p>
-                                                                        <div>
+                                                                        
+                                                                        <div class="input-container">
                                                                             <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
                                                                             <input type="text" name="City" value="" maxlength="30" class="city-input txt required val-alphanum" id="dl-city" placeholder="Enter Your City" />
                                                                         </div>
+																		<p class="error-message"></p>
                                                                     </div>
                                                                     <div class="field state">
                                                                         <label for="dl-state">State<span class="required-note">*</span>:</label>
@@ -733,11 +743,12 @@
                                                             <form id="search-by-name-form" class="find-a-dealer-form-acura desktop-target">
                                                                 <div class="find-a-dealer-form-content-acura ">
                                                                     <div class="input-wrapper" data-form-required="true" data-form-validate="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" data-required-error="Please enter Dealer Name" data-regex-error="Please enter a valid Dealer Name">
-                                                                        <p class="error-message"></p>
-                                                                        <div>
+                                                                        
+                                                                        <div class="input-container">
                                                                             <span class="acr-input-pre"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
                                                                             <input type="text" name="Name" value="" maxlength="50" class="name-input txt required val-alphanum" id="dl-name" placeholder="Enter Dealer Name" />
                                                                         </div>
+																		<p class="error-message"></p>
                                                                     </div>
 
                                                                     <button type="submit" class="submit acr-cta-btn is-red-bg">
@@ -858,13 +869,16 @@
 																			<p>
 																				<a class="dealer-result-phone " href="tel:(805) 544-9500">(805) 544-9500</a>
 																			</p>
+																			<p class="salesSchedule row">
+																			  																  
+																			</p>
 																			<br/>
 																			
 																			<p>
-																				<a target="_blank" class="dealer-result-directions anchor-link acr-cta-text " href="#"><span>DEALER WEBSITE</span></a>
+																				<a target="_blank" class="dealer-result-webAddress anchor-link acr-cta-text " href="#"><span>DEALER WEBSITE</span></a>
 																			</p>
 																			<p>
-																				<a target="_blank" class="dealer-result-directions anchor-link acr-cta-text is-red" href="#"><span>VIEW INVENTORY</span></a>
+																				<a target="_blank" class="dealer-result-directions1 anchor-link acr-cta-text is-red" href="#"><span>VIEW INVENTORY</span></a>
 																			</p>
 																			<p><a href="#?DealerId=207209" class="cta-btn tertiary dealer-result-raq-modal acr-cta-text is-red"><span>VIEW DEALER DETAILS</span></a></p>
 																		</div>
