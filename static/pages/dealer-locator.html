@@ -63,6 +63,7 @@
         
         .dealer-locator-section .left-ribbon .map-container {
             float: right;
+			margin-bottom:36pt;
         }
         
         .dealer-locator-section .right-ribbon .tabs-container,
@@ -174,19 +175,76 @@
             position: absolute;
             right: 0;
         }
+		
+		
+		
+		
+		
+		
+		
+		
         /* results list */
         
         .dealer-locator-section .results-list {
-            margin: 0;
+            margin: 0 0 20pt 0;
+			padding:0;
         }
         
         .dealer-locator-section .results-item-template {
             list-style: none;
+			margin:0;
+			padding-top:20pt;
+			padding-bottom:20pt;
+			background-color:#f1f1f1;
         }
         
         .dealer-locator-section .results-item-template.hovered {
             background: #ccc;
         }
+		
+		.dealer-locator-section .dealer-result-index {
+			background-color: red;
+			border-radius: 100pt;
+			color: #fff;
+			font-size: 16pt;
+			line-height: 24pt;
+			padding: 11pt 16pt;
+		}
+		
+		.dealer-locator-section .dealer-result-distance {
+			color: #5d6061;
+			font-size: 14pt;
+			line-height: 24pt;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.dealer-locator-section .make-preferred-delear,
+		.dealer-locator-section .remove-preferred-delear{
+			color: #000;
+			font-size: 12pt;
+			line-height: 24pt;
+		}
+		.dealer-locator-section .dealer-result-name {
+			font-size: 20pt;
+			margin: 20pt 0 25pt;
+		}
+		
+		.dealer-locator-section .results-item-template p {
+			color: #000;
+			font-family: "AvenirLTPro-Light",Arial,sans-serif;
+			font-size: 14pt;
+		}
+		
+		.dealer-locator-section .results-item-template p strong {
+			font-family: "AvenirLTPro-Black",Arial,sans-serif;
+			font-size: 14pt;
+		}
+		
+		.dealer-locator-section .results-item-template p .acr-cta-text{font-size:14pt;}
+		
+		.dealer-locator-section .more-dealers{margin-bottom:26pt; display: block;float: none; font-size:14pt;}
+		
     </style>
 
 
@@ -742,7 +800,7 @@
                                                         <div class="main-content clearfix">
                                                             <section class="results">
                                                                 <ul class="results-list">
-                                                                    <li class="row results-item-template" data-order="0">
+                                                                   <!-- <li class="row results-item-template" data-order="0">
                                                                         <div class="col-xs-3">
                                                                             <span class="dealer-result-index"></span>
                                                                         </div>
@@ -767,14 +825,58 @@
                                                                         <div class="col-xs-8 text-right">
                                                                             <h5 class="dealer-result-distance"></h5>
                                                                         </div>
-                                                                    </li>
+                                                                    </li> -->
+																	
+																	<li data-order="1" class="row results-item-template">
+																		<div class="col-xs-4 text-center">
+																			<span class="dealer-result-index acr-avenir-black">1</span>
+																		</div>
+																		<div class="col-xs-8">
+																			<h5 class="dealer-result-distance acr-avenir-light">12.4 mi</h5>
+																		</div>
+																		<div class="col-xs-24 text-right">
+																			<p><a href="#" class="make-preferred-delear acr-avenir-light">Make Preferred Dealer</a></p>
+																			<span class="dealer-result-dealerNumber hidden">207209</span>
+																			<p><a href="#" class="remove-preferred-delear hidden">Remove Preferred Dealer</a></p>
+																		</div>
+
+																		<div class="col-xs-36">
+																			<h4 class="dealer-result-name acr-avenir-heavy">Sunset Honda                            </h4>
+																			<p><strong>Address</strong></p>
+																			<p>
+																				<span class="dealer-result-address">12250 Los Osos Valley Rd</span>
+																				<br>
+																				<span class="dealer-result-city">San Luis Obispo</span>, <span class="dealer-result-state">CA</span> <span class="dealer-result-zipcode">93405</span>
+																			</p>
+
+																			<p>
+																				<a target="_blank" class="dealer-result-directions anchor-link acr-cta-text " href="#"><span>GET DIRECTIONS</span></a>
+																			</p>
+																			<br/>
+																			
+																			<p><strong>Sales</strong></p>
+																			<p>
+																				<a class="dealer-result-phone " href="tel:(805) 544-9500">(805) 544-9500</a>
+																			</p>
+																			<br/>
+																			
+																			<p>
+																				<a target="_blank" class="dealer-result-directions anchor-link acr-cta-text " href="#"><span>DEALER WEBSITE</span></a>
+																			</p>
+																			<p>
+																				<a target="_blank" class="dealer-result-directions anchor-link acr-cta-text is-red" href="#"><span>VIEW INVENTORY</span></a>
+																			</p>
+																			<p><a href="#?DealerId=207209" class="cta-btn tertiary dealer-result-raq-modal acr-cta-text is-red"><span>VIEW DEALER DETAILS</span></a></p>
+																		</div>
+
+																	</li>
 
                                                                 </ul>
                                                                 <!-- END .results-list -->
 
                                                             </section>
                                                             <!-- END .results -->
-                                                            <a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide">
+                                                            <a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide center-block col-xs-26 ">
 																View More Dealers
 															</a>
                                                         </div>
@@ -884,7 +986,7 @@
 
                                                                 </section>
                                                                 <!-- END .results -->
-                                                                <a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide">
+                                                                <a href="#" role="button" class="acr-cta-btn is-dark is-liquid more-dealers hide center-block col-xs-26">
 																	View More Dealers
 																</a>
                                                             </div>
