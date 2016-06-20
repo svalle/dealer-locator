@@ -11,6 +11,7 @@ var DealerLocator = (function () {
             numResults = 1,
             numResultsZip = 0,
             numResultsName = 0,
+            numResultsCity = 0,
             numDataZip, numDataName, numDataCity,
             resetResults = false;
         dealerListings = {};
@@ -37,6 +38,7 @@ var DealerLocator = (function () {
             $submitButton = $('.submit', $formValidation),
             $zipInput = $('.zip-input', $formValidation),
             $cityInput = $('.city-input', $formValidation),
+            $stateInput = $('#dl-state', $formValidation),
             $nameInput = $('.name-input', $formValidation),
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
@@ -83,6 +85,18 @@ var DealerLocator = (function () {
                     numResults = numResultsName;
                     //alert(numDataName);
                     getDealerData($nameInput.val());
+                    return false;
+                });
+                $("#dealer-locator-by-city .more-dealers").click(function () {
+                    $form = $('#search-by-city-form');
+                    $dealerLocator = $('#dealer-locator-by-city');
+                    $resultsList = $('.results-list', $dealerLocator);
+                    $resultsListTab = $('.dealer-locator', $dealerLocator);
+                    //alert($form.attr('id'));
+                    viewMore($form);
+                    numResults = numResultsCity;
+                    //alert(numDataName);
+                    getDealerData($cityInput.val());
                     return false;
                 });
                 // Asign correct form search
@@ -255,7 +269,16 @@ var DealerLocator = (function () {
                             //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
                         if ($('#cityTab').hasClass('active')) {
-
+                            numResults = 1;
+                            numResultsCity = 0;
+                            $form = $('#search-by-city-form');
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=6&state=KY&city='+ $cityInput.val());
+                            $dealerLocator = $('#dealer-locator-by-city');
+                            $resultsList = $('.results-list', $dealerLocator);
+                            $resultsListTab = $('.dealer-locator', $dealerLocator);
+                            //$resultsList.empty();
+                            getDealerData($cityInput.val());
+                            //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
                         if ($('#nameTab').hasClass('active')) {
                             numResults = 1;
@@ -671,6 +694,9 @@ var DealerLocator = (function () {
                 if ($form.attr('id') == 'search-by-name-form') {
                     numDataName = numData;
                 }
+                if ($form.attr('id') == 'search-by-city-form') {
+                    numDataCity = numData;
+                }
                 if (numData > 1) {
                     $('.more-dealers', $dealerLocator).removeClass('hide');
                     //alert(numData);
@@ -897,7 +923,15 @@ var DealerLocator = (function () {
                     resetResults = true;
                 }
             }
-
+            if (searchForm.attr('id') == 'search-by-city-form') {
+                if (resetResults == false) {
+                    numResults = 0;
+                }
+                if (numDataCity > numResultsCity) {
+                    numResultsCity = numResultsCity + 3;
+                    resetResults = true;
+                }
+            }
         }
 
         //end functions dealer locator civic
