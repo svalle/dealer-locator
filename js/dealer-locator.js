@@ -65,7 +65,7 @@ var DealerLocator = (function () {
                     //                    localStorage.setItem("rsZip", numResults);
                     //                    numResultsZip = parseInt(localStorage.getItem("rsZip"));
                     //                    numResults = numResultsZip;
-                    
+
                     viewMore($form);
                     numResults = numResultsZip;
                     //alert(numDataZip);
@@ -87,23 +87,23 @@ var DealerLocator = (function () {
                 });
                 // Asign correct form search
                 $('#zipTab').click(function () {
-                     //$form = $('#search-by-zip-form');
+                    //$form = $('#search-by-zip-form');
                     //numResults = numResultsZip;
-                }); 
+                });
                 $('#nameTab').click(function () {
-                     //$form = $('#search-by-name-form');
+                    //$form = $('#search-by-name-form');
                     //numResults = numResultsZip;
-                }); 
-//                $(".clear-search").click(function () {
-//                    resetResults = false;
-//                    numResults = 1;
-//                    $closestResult = $(this).closest('.field-group').attr('id');
-//                    $resultsList = $('#' + $closestResult + ' .results-list');
-//                    $resultsList.empty();
-//
-//                    $('#' + $closestResult + ' .more-dealers').addClass('hide');
-//                    return false;
-//                });
+                });
+                //                $(".clear-search").click(function () {
+                //                    resetResults = false;
+                //                    numResults = 1;
+                //                    $closestResult = $(this).closest('.field-group').attr('id');
+                //                    $resultsList = $('#' + $closestResult + ' .results-list');
+                //                    $resultsList.empty();
+                //
+                //                    $('#' + $closestResult + ' .more-dealers').addClass('hide');
+                //                    return false;
+                //                });
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
@@ -237,12 +237,15 @@ var DealerLocator = (function () {
                     console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
                     var form = $(this).closest('.find-a-dealer-form-acura');
                     e.preventDefault();
+                    $('h4.error').addClass('hide');
                     if (validateForm(form)) {
                         //if no created here create a cookie for the zip only						
                         //Create expiring cookie, 7 days from then:
                         if ($('#zipTab').hasClass('active')) {
                             numResults = 1;
+                            numResultsZip = 0;
                             $form = $('#search-by-zip-form');
+//                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -256,7 +259,9 @@ var DealerLocator = (function () {
                         }
                         if ($('#nameTab').hasClass('active')) {
                             numResults = 1;
+                            numResultsName = 0;
                             $form = $('#search-by-name-form');
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=500&name=' + $nameInput.val());
                             $dealerLocator = $('#dealer-locator-by-name');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -573,8 +578,8 @@ var DealerLocator = (function () {
                 formData[$(this).attr('name')] = $(this).attr('value');
             });
             return formData;
-        }
 
+        }
         // ---------------------------------------------------
         // getDealerDataFromZip:
         // ---------------------------------------------------
@@ -648,7 +653,11 @@ var DealerLocator = (function () {
 
             //empty result set = invalid zip
             if (!data.Dealers || data.Dealers.length == 0) {
-                Utility.log('no dealers returned');
+                //Utility.log('no dealers returned');
+                $('.more-dealers', $dealerLocator).addClass('hide');
+                $resultsList.empty();
+                //alert('no dealers returned');
+                $('h4.error', $form).removeClass('hide');
                 $('.input-wrapper', $form).addClass('has-error');
                 var regexError = $('.input-wrapper').data('regex-error');
                 $('.help-block', $form).html(regexError);
@@ -656,10 +665,10 @@ var DealerLocator = (function () {
             } else {
                 //remove any past error messaging
                 numData = data.Dealers.length;
-                if($form.attr('id') == 'search-by-zip-form'){
+                if ($form.attr('id') == 'search-by-zip-form') {
                     numDataZip = numData;
                 }
-                if($form.attr('id') == 'search-by-name-form'){
+                if ($form.attr('id') == 'search-by-name-form') {
                     numDataName = numData;
                 }
                 if (numData > 1) {
