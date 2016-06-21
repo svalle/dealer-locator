@@ -249,6 +249,8 @@
             background: #ccc;
         }
 		
+		.dealer-locator-section .results-item-template .results-item-details{margin-top:20pt;}
+		
 		.dealer-locator-section .dealer-result-index {
 			background-color: red;
 			border-radius: 100pt;
@@ -265,16 +267,38 @@
 			margin: 0;
 			padding: 0;
 		}
+		.dealer-locator-section .preferred-container p,
+		.dealer-locator-section .preferred-container p{
+		    float: right;
+			position: absolute;
+			right: 15px;
+			text-align: right;
+			top: -10px;
+		}
 		
-		.dealer-locator-section .make-preferred-delear,
-		.dealer-locator-section .remove-preferred-delear{
+		.dealer-locator-section .make-preferred-dealer,
+		.dealer-locator-section .remove-preferred-dealer{
 			color: #000;
 			font-size: 12pt;
 			line-height: 24pt;
+			border:none;
 		}
-		.dealer-locator-section .dealer-result-name {
-			font-size: 20pt;
-			margin: 20pt 0 25pt;
+		.dealer-locator-section .make-preferred-dealer .acr-icon{
+			height: 33px;
+			left: 0;
+			position: relative;
+			top: 8px;
+		}
+		.dealer-locator-section .remove-preferred-dealer .acr-icon{
+			height: 33px;
+			left: 0;
+			position: relative;
+			top: 8px;
+			fill:red;
+		}
+		.dealer-locator-section .remove-preferred-dealer span{
+			display:block;
+			line-height:16pt;
 		}
 		
 		.dealer-locator-section .results-item-template p {
@@ -315,8 +339,8 @@
             padding: 0;
         }
         
-        .dealer-locator-section .make-preferred-delear,
-        .dealer-locator-section .remove-preferred-delear {
+        .dealer-locator-section .make-preferred-dealer,
+        .dealer-locator-section .remove-preferred-dealer {
             color: #000;
             font-size: 12pt;
             line-height: 24pt;
@@ -324,7 +348,7 @@
         
         .dealer-locator-section .dealer-result-name {
             font-size: 20pt;
-            margin: 20pt 0 25pt;
+            margin: 10pt 0 25pt;
         }
         
         .dealer-locator-section .results-item-template p {
@@ -752,7 +776,7 @@
                                                     <div class="field-group zip " id="dealer-zip-form-data">
 
                                                         <!-- desktop version of the form -->
-                                                        <form id="search-by-zip-form" action="../../json/data.json" class="find-a-dealer-form-acura desktop-target"><!-- action="../../json/data.json" -->
+                                                        <form id="search-by-zip-form" action="http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip="  class="find-a-dealer-form-acura desktop-target"><!-- action="../../json/data.json" -->
                                                             <input type="hidden" name="productDivisionCode" value="A" />
                                                             <input type="hidden" name="maxResults" value="3" />
                                                             <!-- <a class="cta-btn secondary hidden-md hidden-lg hidden-xl use-my-location text-center">USE MY LOCATION</a> -->
@@ -917,13 +941,18 @@
 																		<div class="col-xs-8">
 																			<h5 class="dealer-result-distance acr-avenir-light">12.4 mi</h5>
 																		</div>
-																		<div class="col-xs-24 text-right">
-																			<p><a href="#" class="make-preferred-delear acr-avenir-light">Make Preferred Dealer</a></p>
+																		<div class="col-xs-24 text-right preferred-container">
+																			<p>
+																				<a href="#" class="make-preferred-dealer acr-avenir-light">
+																				<svg class="acr-icon"><use xlink:href="#circle-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+																				Make Preferred Dealer
+																				</a>
+																			</p>
 																			<span class="dealer-result-dealerNumber hidden">207209</span>
-																			<p><a href="#" class="remove-preferred-delear hidden">Remove Preferred Dealer</a></p>
+																			<p><a href="#" class="remove-preferred-dealer hidden"><span><svg class="acr-icon"><use xlink:href="#circle-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>Preferred Dealer</span>Remove</a></p>
 																		</div>
 
-																		<div class="col-xs-36">
+																		<div class="col-xs-36 results-item-details">
 																			<h4 class="dealer-result-name acr-avenir-heavy">Sunset Honda                            </h4>
 																			<p><strong>Address</strong></p>
 																			<p>

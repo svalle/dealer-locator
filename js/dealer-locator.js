@@ -202,11 +202,15 @@ var DealerLocator = (function () {
                 //if cookie then populate zip input and execute call to update map
                 if (zip) {
                     $zipInput.val(zip);
-                    //update map
-                    zipSearch($zipInput.val());
+                    //update map                    					
+					$form = $('#search-by-zip-form');
+                    $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
+					zipSearch($zipInput.val());
+					
                     //here if preferred dealer cookie
                     if ($preferredDealer) {
-                        //												
+                        //	
+						
                     }
                 }
 
@@ -315,7 +319,7 @@ var DealerLocator = (function () {
 
         function assignMakePreferred() {
 
-            $('.make-preferred-delear').click(function (e) {
+            $('.make-preferred-dealer').click(function (e) {
                 e.preventDefault();
                 var $parentItemTemplate = $(this).closest('.results-item-template');
                 makePreferred($parentItemTemplate);
@@ -325,7 +329,7 @@ var DealerLocator = (function () {
 
         function assignRemovePreferred() {
 
-            $('.remove-preferred-delear').click(function (e) {
+            $('.remove-preferred-dealer').click(function (e) {
                 e.preventDefault();
                 var $parentItemTemplate = $(this).closest('.results-item-template');
                 removePreferred($parentItemTemplate);
@@ -344,15 +348,15 @@ var DealerLocator = (function () {
             //remove preferred-dealer class from any other			
             $('.results-list').find('.preferred-dealer').removeClass('preferred-dealer');
             //hide all remove preferred dealer
-            $('.results-list').find('.remove-preferred-delear').addClass('hidden');
+            $('.results-list').find('.remove-preferred-dealer').addClass('hidden');
             //show all make preferred dealer
-            $('.results-list').find('.make-preferred-delear').removeClass('hidden');
+            $('.results-list').find('.make-preferred-dealer').removeClass('hidden');
             //add preferred-dealer class to new item			
             $parentItemTemplate.addClass('preferred-dealer');
             //hide makre preferred
-            $parentItemTemplate.find('.make-preferred-delear').addClass('hidden');
+            $parentItemTemplate.find('.make-preferred-dealer').addClass('hidden');
             //show remove preferred
-            $parentItemTemplate.find('.remove-preferred-delear').removeClass('hidden');
+            $parentItemTemplate.find('.remove-preferred-dealer').removeClass('hidden');
             //create a cookie with data for preferred dealer				
             createCookie('preferredDealer', $dealerNumber, 7)
                 //reorder nad put preferred in first place of the list			
@@ -366,9 +370,9 @@ var DealerLocator = (function () {
             var $containerList = $parentItemTemplate.closest('.results-list');
             $parentItemTemplate.removeClass('preferred-dealer');
             //hide remove preferred
-            $parentItemTemplate.find('.remove-preferred-delear').addClass('hidden');
+            $parentItemTemplate.find('.remove-preferred-dealer').addClass('hidden');
             //show make preferred
-            $parentItemTemplate.find('.make-preferred-delear').removeClass('hidden');
+            $parentItemTemplate.find('.make-preferred-dealer').removeClass('hidden');
             //remove a cookie with data for preferred dealer				
             eraseCookie('preferredDealer')
                 //reorder to original order, in this case no preferred dealer
