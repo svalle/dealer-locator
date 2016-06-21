@@ -389,14 +389,6 @@ var DealerLocator = (function () {
             parentList.append(arr);
         }
 
-
-
-
-
-
-
-
-
         //function to reorder list to original positions
         function reorderList(containerList) {
             var $wrapper = containerList;
