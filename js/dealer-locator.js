@@ -251,7 +251,7 @@ var DealerLocator = (function () {
                     console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
                     var form = $(this).closest('.find-a-dealer-form-acura');
                     e.preventDefault();
-                    $('h4.error').addClass('hide');
+                    $('strong.text-center').addClass('hide');
                     if (validateForm(form)) {
                         //if no created here create a cookie for the zip only						
                         //Create expiring cookie, 7 days from then:
@@ -680,7 +680,7 @@ var DealerLocator = (function () {
                 $('.more-dealers', $dealerLocator).addClass('hide');
                 $resultsList.empty();
                 //alert('no dealers returned');
-                $('h4.error', $form).removeClass('hide');
+                $('strong.text-center', $form).removeClass('hide');
                 $('.input-wrapper', $form).addClass('has-error');
                 var regexError = $('.input-wrapper').data('regex-error');
                 $('.help-block', $form).html(regexError);
