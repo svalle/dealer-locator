@@ -39,6 +39,8 @@ var DealerLocator = (function () {
             $zipInput = $('.zip-input', $formValidation),
             $cityInput = $('.city-input', $formValidation),
             $stateInput = $('#dl-state', $formValidation),
+            $maxResultsZip = $('.max-results-zip', $formValidation),
+            $maxResultsCity = $('.max-results-city', $formValidation),
             $nameInput = $('.name-input', $formValidation),
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
@@ -259,7 +261,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsZip = 0;
                             $form = $('#search-by-zip-form');
-                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -272,7 +274,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsCity = 0;
                             $form = $('#search-by-city-form');
-                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=6&state='+$stateInput.val()+'&city='+ $cityInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&state='+$stateInput.val()+'&city='+ $cityInput.val());
                             $dealerLocator = $('#dealer-locator-by-city');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);

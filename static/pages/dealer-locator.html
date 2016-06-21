@@ -768,6 +768,7 @@
                                                                     <div class="input-container">
                                                                         <span class="acr-input-pre col-xs-4"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
                                                                         <input type="tel" name="Zip" id="zip" value="" pattern="[0-9]*" maxlength="5" class="zip-input col-xs-20 col-sm-27" placeholder="Enter Your Zip" />
+                                                                        <input class="max-results-zip" type="hidden" value="16"/>
                                                                     </div>
 																	<p class="error-message"></p>
                                                                 </div>
@@ -801,6 +802,7 @@
                                                                         <div class="input-container">
                                                                             <span class=" col-xs-1"></span>
                                                                             <input type="text" name="City" value="" maxlength="30" class="city-input txt required val-alphanum col-xs-23" id="dl-city" placeholder="Enter Your City" />
+                                                                            <input class="max-results-city" type="hidden" value="6"/>
 																			<select name="state" id="dl-state" class="selectpicker col-xs-9">
 																				<option value="AL">AL</option>
 																				<option value="AK">AK</option>
