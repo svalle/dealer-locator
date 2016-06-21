@@ -39,6 +39,8 @@ var DealerLocator = (function () {
             $zipInput = $('.zip-input', $formValidation),
             $cityInput = $('.city-input', $formValidation),
             $stateInput = $('#dl-state', $formValidation),
+            $maxResultsZip = $('.max-results-zip', $formValidation),
+            $maxResultsCity = $('.max-results-city', $formValidation),
             $nameInput = $('.name-input', $formValidation),
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
@@ -255,7 +257,7 @@ var DealerLocator = (function () {
                     console.log('pressed submit from:' + $('ul.nav.nav-tabs li.active a').attr('href'));
                     var form = $(this).closest('.find-a-dealer-form-acura');
                     e.preventDefault();
-                    $('h4.error').addClass('hide');
+                    $('strong.text-center').addClass('hide');
                     if (validateForm(form)) {
                         //if no created here create a cookie for the zip only						
                         //Create expiring cookie, 7 days from then:
@@ -263,7 +265,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsZip = 0;
                             $form = $('#search-by-zip-form');
-                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -276,7 +278,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsCity = 0;
                             $form = $('#search-by-city-form');
-                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=6&state='+$stateInput.val()+'&city='+ $cityInput.val());
+                            $form.attr('action', 'http://acura.sc.r2.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&state='+$stateInput.val()+'&city='+ $cityInput.val());
                             $dealerLocator = $('#dealer-locator-by-city');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -684,7 +686,7 @@ var DealerLocator = (function () {
                 $('.more-dealers', $dealerLocator).addClass('hide');
                 $resultsList.empty();
                 //alert('no dealers returned');
-                $('h4.error', $form).removeClass('hide');
+                $('strong.text-center', $form).removeClass('hide');
                 $('.input-wrapper', $form).addClass('has-error');
                 var regexError = $('.input-wrapper').data('regex-error');
                 $('.help-block', $form).html(regexError);

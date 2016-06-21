@@ -307,7 +307,7 @@
 			font-size: 14pt;
 		}
 		
-		.dealer-locator-section .results-item-template p strong {
+		.dealer-locator-section .results-item-template p strong{
 			font-family: "AvenirLTPro-Black",Arial,sans-serif;
 			font-size: 14pt;
 		}
@@ -378,6 +378,11 @@
             float: none;
             font-size: 14pt;
         }
+        strong.text-center {
+			font-family: "AvenirLTPro-Black",Arial,sans-serif;
+			font-size: 14pt;
+            padding-top: 30px;
+		}
     </style>
 
 
@@ -787,13 +792,14 @@
                                                                     <div class="input-container">
                                                                         <span class="acr-input-pre col-xs-4"><svg viewbox="0 0 22 22"><use xlink:href="#find-dealer"></use></svg></span>
                                                                         <input type="tel" name="Zip" id="zip" value="" pattern="[0-9]*" maxlength="5" class="zip-input col-xs-20 col-sm-27" placeholder="Enter Your Zip" />
+                                                                        <input class="max-results-zip" type="hidden" value="16"/>
                                                                     </div>
 																	<p class="error-message"></p>
                                                                 </div>
                                                                 <button type="submit" class="submit acr-cta-btn is-red-bg">
 																	<span class="acr-icon-explore acr-f1"></span>
 																</button>
-                                                                <h4 class="error hide">No Results Found</h4>
+                                                                <strong class="text-center center-block hide"><br/>No Results Found</strong>
                                                             </div>
                                                         </form>
 
@@ -820,6 +826,7 @@
                                                                         <div class="input-container">
                                                                             <span class=" col-xs-1"></span>
                                                                             <input type="text" name="City" value="" maxlength="30" class="city-input txt required val-alphanum col-xs-23" id="dl-city" placeholder="Enter Your City" />
+                                                                            <input class="max-results-city" type="hidden" value="6"/>
 																			<select name="state" id="dl-state" class="selectpicker col-xs-9">
 																				<option value="AL">AL</option>
 																				<option value="AK">AK</option>
@@ -841,7 +848,7 @@
                                                                     <button type="submit" class="submit acr-cta-btn is-red-bg">
 																		<span class="acr-icon-explore acr-f1"></span>
 																	</button>
-                                                                    <h4 class="error hide">No Results Found</h4>
+                                                                    <strong class="text-center center-block hide"><br/>No Results Found</strong>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -875,7 +882,7 @@
                                                                     <button type="submit" class="submit acr-cta-btn is-red-bg">
 																		<span class="acr-icon-explore acr-f1"></span>
 																	</button>
-                                                                    <h4 class="error hide">No Results Found</h4>
+                                                                    <strong class="text-center center-block hide"><br/>No Results Found</strong>
                                                                 </div>
                                                             </form>
 
