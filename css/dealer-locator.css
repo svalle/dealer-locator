@@ -329,3 +329,17 @@ strong.text-center {
 	font-size: 14pt;
 	padding-top: 30px;
 }
+#dealer-map .loader {
+    display: block;
+    z-index: 200;
+    position: relative;
+    background: white;
+    width: 108%;
+    height: 100%;
+    margin-left: -15px;
+}
+#dealer-map .loader img {
+    position: relative;
+    left:42%;
+    top:40%;
+}

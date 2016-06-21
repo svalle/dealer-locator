@@ -638,6 +638,7 @@ var DealerLocator = (function () {
                     dataType: 'json',
                     beforeSend: function beforeZipSubmit() {
                         disableSubmitButton();
+                        $('#dealer-map .loader').show();
                     }
                 })
                 .done(applyDealerData)
@@ -666,7 +667,7 @@ var DealerLocator = (function () {
         // ---------------------------------------------------
         function applyDealerData(data) {
             Utility.log('applyDealerData', data);
-
+            $('#dealer-map .loader').hide();
             //check if service returned a zip code
             if (data.ZipCode) {
                 setZipInputValue(data.ZipCode);
