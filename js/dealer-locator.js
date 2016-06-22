@@ -93,7 +93,7 @@ var DealerLocator = (function () {
                     viewMore($form);
                     numResults = numResultsName;
                     //alert(numDataName);
-                    getDealerData($nameInput.val());
+                    getDealerData();
                     return false;
                 });
                 $("#dealer-locator-by-city .more-dealers").click(function () {
@@ -105,7 +105,7 @@ var DealerLocator = (function () {
                     viewMore($form);
                     numResults = numResultsCity;
                     //alert(numDataName);
-                    getDealerData($cityInput.val());
+                    getDealerData();
                     return false;
                 });
                 
@@ -945,6 +945,8 @@ var DealerLocator = (function () {
         }
     function centerMap(){
         $('.dealer-result-index').click(function () {
+             $('.results-item-template').removeClass('hovered'); 
+             $(this).closest('.results-item-template').addClass('hovered');   
              $('html, body').animate({
                    scrollTop: $('#dealer-map').offset().top-70
               }, 1000); 
