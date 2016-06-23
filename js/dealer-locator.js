@@ -93,7 +93,7 @@ var DealerLocator = (function () {
                     viewMore($form);
                     numResults = numResultsName;
                     //alert(numDataName);
-                    getDealerData($nameInput.val());
+                    getDealerData();
                     return false;
                 });
                 $("#dealer-locator-by-city .more-dealers").click(function () {
@@ -105,7 +105,7 @@ var DealerLocator = (function () {
                     viewMore($form);
                     numResults = numResultsCity;
                     //alert(numDataName);
-                    getDealerData($cityInput.val());
+                    getDealerData();
                     return false;
                 });
                 
@@ -812,7 +812,8 @@ var DealerLocator = (function () {
                 $('.dealer-result-webAddress', $listItem).attr('href', webAddress);
 				$('.dealer-result-directions', $listItem).attr('href', mapDirections);
                 $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
-				
+                //$('.dealer-result-index', $listItem).attr('onclick', 'DealerLocator.centerMap()');
+ 				
 				for (var increment = 0; increment < dealers[i].SalesHours.length; increment++) {
 					var salesDays = dealers[i].SalesHours[increment].Days;
 					var salesHours = dealers[i].SalesHours[increment].Hours;
@@ -844,6 +845,7 @@ var DealerLocator = (function () {
 			//assign make/remove preferred to anchors
             assignMakePreferred();
             assignRemovePreferred();
+            centerMap();
 			
 			// reorder preferred after view more
 			if ($preferredDealer) {        
@@ -938,7 +940,16 @@ var DealerLocator = (function () {
                 }
             }
         }
-
+    function centerMap(){
+        $('.dealer-result-index').click(function () {
+             $('.results-item-template').removeClass('hovered'); 
+             $(this).closest('.results-item-template').addClass('hovered');   
+             $('html, body').animate({
+                   scrollTop: $('#dealer-map').offset().top-70
+              }, 1000); 
+            return false;
+         });   
+    }
         //end functions dealer locator civic
 
         return {
