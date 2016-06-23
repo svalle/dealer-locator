@@ -169,10 +169,18 @@
 .dealer-locator-section .find-a-dealer-form-content-acura .acr-cta-btn {
 	float: right;
 	height: 4.4rem;
+	width: 4.4rem;
 	min-width: 0;
 	padding: 0.7rem;
 	position: absolute;
 	right: 0;
+}
+.dealer-locator-section .find-a-dealer-form-content-acura .acr-cta-btn .acr-icon{
+	position: relative;
+    top: 3px;
+    transform: scaleX(-1);
+	width: 2rem;
+	height: 2rem;
 }
 
 

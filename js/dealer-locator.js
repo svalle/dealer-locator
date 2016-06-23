@@ -841,21 +841,18 @@ var DealerLocator = (function () {
                 k++
             });
 
+			//assign make/remove preferred to anchors
             assignMakePreferred();
             assignRemovePreferred();
 			
-			// reorder preferred
+			// reorder preferred after view more
 			if ($preferredDealer) {        
 
 				var $parentList = $listItem.closest('.results-list');     						
 				var $arrayList = $parentList.find('.results-item-template');
-				var $arrayIndex = 0;											
+				var $arrayIndex = 0;																			
 				
-				//console.log('$listItem: '+ $listItem.attr('class'));	
-				
-				$parentList.find('.dealer-result-dealerNumber').each(function(index){
-				//$('.main-content .dealer-result-dealerNumber').each(function(index){
-				//console.log( index + ": " + $( this ).text() + ' list-item parent: ' + $listItem.closest('.results-list').attr('class') );
+				$parentList.find('.dealer-result-dealerNumber').each(function(index){				
 					
 				  if($(this).text()== $preferredDealer){ 
 					$arrayIndex = $(this).closest('.row.results-item-template').index();		
