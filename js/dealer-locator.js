@@ -1,6 +1,5 @@
 var DealerLocator = (function () {
-        //vars from dealer locator civic
-        //temporary var for testing future use of ip to lat/long service
+        //vars from dealer locator acura
         var fallbackGeoTest = false;
         var bapWaypoint = {};
         var map,
@@ -56,29 +55,14 @@ var DealerLocator = (function () {
 
             try {
                 //riot.mount('contact_dealer_vehicle_model', {});
-                //Clears tab results
-                //                $(".nameTab").click(function () {
-                //                    $dealerLocator = $('#dealer-locator-by-name');
-                //                    $resultsList = $('.results-list', $dealerLocator);
-                //                    $resultsList.empty();
-                //                });
-
-
                 //Add More Dealers
                 $("#dealer-locator .more-dealers").click(function () {
                     $form = $('#search-by-zip-form');
                     $dealerLocator = $('#dealer-locator');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    //alert($form.attr('id'));
-
-                    //                    localStorage.setItem("rsZip", numResults);
-                    //                    numResultsZip = parseInt(localStorage.getItem("rsZip"));
-                    //                    numResults = numResultsZip;
-
                     viewMore($form);
                     numResults = numResultsZip;
-                    //alert(numDataZip);
                     zipSearch($zipInput.val());
                     $('input#zip').blur();
 					
@@ -89,7 +73,6 @@ var DealerLocator = (function () {
                     $dealerLocator = $('#dealer-locator-by-name');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    //alert($form.attr('id'));
                     viewMore($form);
                     numResults = numResultsName;
                     //alert(numDataName);
