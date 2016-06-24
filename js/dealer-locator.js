@@ -824,6 +824,7 @@ var DealerLocator = (function () {
 				}
 				
 
+				//here modal				
                 var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
                 $('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);
 

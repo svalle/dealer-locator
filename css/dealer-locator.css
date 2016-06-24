@@ -351,3 +351,18 @@ strong.text-center {
     left:42%;
     top:40%;
 }
+
+
+
+/* ---------------------------- */
+/* custom modal dealer locator  */
+/* ---------------------------- */
+
+.dealer-locator-modal .modal-lg {
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 900px;
+}
