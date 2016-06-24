@@ -44,12 +44,12 @@ var DealerLocator = (function () {
             $placeHoldTextZip = '';
         $placeHoldTextCity = '';
         $placeHoldTextName = '';
-		
-		//here read zipCookie
+
+        //here read zipCookie
         var zip = readCookie('zip');
-		//cookie for preferred dealer
-		var $preferredDealer = readCookie('preferredDealer');
-		
+        //cookie for preferred dealer
+        var $preferredDealer = readCookie('preferredDealer');
+
 
         function init() {
 
@@ -65,7 +65,7 @@ var DealerLocator = (function () {
                     numResults = numResultsZip;
                     zipSearch($zipInput.val());
                     $('input#zip').blur();
-					
+
                     //return false;
                 });
                 $("#dealer-locator-by-name .more-dealers").click(function () {
@@ -91,8 +91,8 @@ var DealerLocator = (function () {
                     getDealerData();
                     return false;
                 });
-                
-				
+
+
                 isMobile = checkMobile();
 
                 $('#dealer-map .loader').stop().fadeOut(100);
@@ -166,20 +166,20 @@ var DealerLocator = (function () {
                 //checking zip length on mouseover/mouseout to fix the case where
                 //  a user uses autofill/autocomplete to populate zip input
                 //$('.results', '.main-content').on('mouseout mouseover', zipCheckOnMousemove);   
-                
-            
+
+
                 //if cookie then populate zip input and execute call to update map
                 if (zip) {
                     $zipInput.val(zip);
                     //update map                    					
-					$form = $('#search-by-zip-form');
+                    $form = $('#search-by-zip-form');
                     $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
-					zipSearch($zipInput.val());
-					
+                    zipSearch($zipInput.val());
+
                     //here if preferred dealer cookie
                     if ($preferredDealer) {
                         //	
-						
+
                     }
                 }
 
@@ -232,7 +232,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsZip = 0;
                             $form = $('#search-by-zip-form');
-                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&zip=' + $zipInput.val());
+                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=' + $maxResultsCity.val() + '&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -245,7 +245,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsCity = 0;
                             $form = $('#search-by-city-form');
-                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&state='+$stateInput.val()+'&city='+ $cityInput.val());
+                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=' + $maxResultsCity.val() + '&state=' + $stateInput.val() + '&city=' + $cityInput.val());
                             $dealerLocator = $('#dealer-locator-by-city');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -326,9 +326,9 @@ var DealerLocator = (function () {
             //show remove preferred
             $parentItemTemplate.find('.remove-preferred-dealer').removeClass('hidden');
             //create a cookie with data for preferred dealer	
-			createCookie('preferredDealer', $dealerNumber, 7);
-			//change cookie var
-			$preferredDealer = '';
+            createCookie('preferredDealer', $dealerNumber, 7);
+            //change cookie var
+            $preferredDealer = '';
             //reorder nad put preferred in first place of the list			
             moveItem($arrayList, $arrayIndex, 0, $parentList);
         }
@@ -345,8 +345,8 @@ var DealerLocator = (function () {
             $parentItemTemplate.find('.make-preferred-dealer').removeClass('hidden');
             //remove a cookie with data for preferred dealer				
             eraseCookie('preferredDealer');
-			//change cookie var
-			
+            //change cookie var
+
             //reorder to original order, in this case no preferred dealer
             reorderList($containerList);
         }
@@ -732,7 +732,7 @@ var DealerLocator = (function () {
                 var pinNumber = e.target._text - 1;
                 dealerListings[pinNumber].addClass('hovered');
                 $('html, body').animate({
-                    scrollTop: dealerListings[pinNumber].offset().top-70
+                    scrollTop: dealerListings[pinNumber].offset().top - 70
                 }, 1000);
             }
         }
@@ -765,9 +765,9 @@ var DealerLocator = (function () {
                 );
                 var $listItem = $resultsItemTemplate.clone();
                 var distance = dealers[i].DrivingDistanceMiles;
-				var webAddress = dealers[i].WebAddress;
-				
-				var saleHours ={};
+                var webAddress = dealers[i].WebAddress;
+
+                var saleHours = {};
 
                 if (distance === null) {
                     distance = "";
@@ -783,33 +783,33 @@ var DealerLocator = (function () {
                     city: dealers[i].City,
                     state: dealers[i].State,
                     zipcode: dealers[i].ZipCode.substr(0, 5),
-                    phone: Utility.formatPhone(dealers[i].Phone),			
+                    phone: Utility.formatPhone(dealers[i].Phone),
                     distance: distance,
                     lat: dealers[i].Latitude,
                     lon: dealers[i].Longitude
                 };
 
                 for (var j in listItemValues) {
-                    $('.dealer-result-' + j, $listItem).text(listItemValues[j]);											
+                    $('.dealer-result-' + j, $listItem).text(listItemValues[j]);
                 }
 
                 $listItem.attr('data-order', listItemValues.index);
                 $('.dealer-result-webAddress', $listItem).attr('href', webAddress);
-				$('.dealer-result-directions', $listItem).attr('href', mapDirections);
+                $('.dealer-result-directions', $listItem).attr('href', mapDirections);
                 $('.dealer-result-phone', $listItem).attr('href', 'tel:' + Utility.formatPhone(dealers[i].Phone));
                 //$('.dealer-result-index', $listItem).attr('onclick', 'DealerLocator.centerMap()');
- 				
-				for (var increment = 0; increment < dealers[i].SalesHours.length; increment++) {
-					var salesDays = dealers[i].SalesHours[increment].Days;
-					var salesHours = dealers[i].SalesHours[increment].Hours;
-					
-					$('.salesSchedule', $listItem).append('<span class="days col-xs-10">' + salesDays + '</span>');
-					$('.salesSchedule', $listItem).append('<span class="hours">' + salesHours + '</span></br/>');
 
-				}
-				
+                for (var increment = 0; increment < dealers[i].SalesHours.length; increment++) {
+                    var salesDays = dealers[i].SalesHours[increment].Days;
+                    var salesHours = dealers[i].SalesHours[increment].Hours;
 
-				//here modal				
+                    $('.salesSchedule', $listItem).append('<span class="days col-xs-10">' + salesDays + '</span>');
+                    $('.salesSchedule', $listItem).append('<span class="hours">' + salesHours + '</span></br/>');
+
+                }
+
+
+                //here modal				
                 var modalUrl = $('.dealer-result-raq-modal', $listItem).attr('href') + '?DealerId=' + dealers[i].DealerNumber;
                 $('.dealer-result-raq-modal', $listItem).attr('href', modalUrl);
 
@@ -828,34 +828,34 @@ var DealerLocator = (function () {
                 k++
             });
 
-			//assign make/remove preferred to anchors
+            //assign make/remove preferred to anchors
             assignMakePreferred();
             assignRemovePreferred();
             centerMap();
-			
-			// reorder preferred after view more
-			if ($preferredDealer) {        
 
-				var $parentList = $listItem.closest('.results-list');     						
-				var $arrayList = $parentList.find('.results-item-template');
-				var $arrayIndex = 0;																			
-				
-				$parentList.find('.dealer-result-dealerNumber').each(function(index){				
-					
-				  if($(this).text()== $preferredDealer){ 
-					$arrayIndex = $(this).closest('.row.results-item-template').index();		
-					//reorder nad put preferred in first place of the list			
-					moveItem($arrayList, $arrayIndex, 0, $parentList);
-					//make preferred dealer anchor
-					$arrayList.find('.remove-preferred-dealer').first().removeClass('hidden');					
-					//show make preferred
-					$arrayList.find('.make-preferred-dealer').first().addClass('hidden');
-				  }
-				  
-				});					
-					
-			}	
-	
+            // reorder preferred after view more
+            if ($preferredDealer) {
+
+                var $parentList = $listItem.closest('.results-list');
+                var $arrayList = $parentList.find('.results-item-template');
+                var $arrayIndex = 0;
+
+                $parentList.find('.dealer-result-dealerNumber').each(function (index) {
+
+                    if ($(this).text() == $preferredDealer) {
+                        $arrayIndex = $(this).closest('.row.results-item-template').index();
+                        //reorder nad put preferred in first place of the list			
+                        moveItem($arrayList, $arrayIndex, 0, $parentList);
+                        //make preferred dealer anchor
+                        $arrayList.find('.remove-preferred-dealer').first().removeClass('hidden');
+                        //show make preferred
+                        $arrayList.find('.make-preferred-dealer').first().addClass('hidden');
+                    }
+
+                });
+
+            }
+
         }
 
         // ---------------------------------------------------
@@ -926,24 +926,25 @@ var DealerLocator = (function () {
                 }
             }
         }
-    function centerMap(){
-        $('.dealer-result-index').click(function () {
-            
-            var latitude = $('.dealer-result-lat', $(this).closest('li')).html();
-            var longitude = $('.dealer-result-lon', $(this).closest('li')).html();
-            map.setView({
-             center: 
-              new Microsoft.Maps.Location(latitude, longitude),
-             zoom:12});
-            //alert(numResult);
-             $('.results-item-template').removeClass('hovered'); 
-             $(this).closest('.results-item-template').addClass('hovered');   
-             $('html, body').animate({
-                   scrollTop: $('#dealer-map').offset().top-70
-              }, 1000); 
-            return false;
-         });   
-    }
+
+        function centerMap() {
+            $('.dealer-result-index').click(function () {
+
+                var latitude = $('.dealer-result-lat', $(this).closest('li')).html();
+                var longitude = $('.dealer-result-lon', $(this).closest('li')).html();
+                map.setView({
+                    center: new Microsoft.Maps.Location(latitude, longitude),
+                    zoom: 12
+                });
+                //alert(numResult);
+                $('.results-item-template').removeClass('hovered');
+                $(this).closest('.results-item-template').addClass('hovered');
+                $('html, body').animate({
+                    scrollTop: $('#dealer-map').offset().top - 70
+                }, 1000);
+                return false;
+            });
+        }
         //end functions dealer locator civic
 
         return {
