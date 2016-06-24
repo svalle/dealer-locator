@@ -801,7 +801,9 @@ var DealerLocator = (function () {
                     state: dealers[i].State,
                     zipcode: dealers[i].ZipCode.substr(0, 5),
                     phone: Utility.formatPhone(dealers[i].Phone),			
-                    distance: distance
+                    distance: distance,
+                    lat: dealers[i].Latitude,
+                    lon: dealers[i].Longitude
                 };
 
                 for (var j in listItemValues) {
@@ -943,6 +945,14 @@ var DealerLocator = (function () {
         }
     function centerMap(){
         $('.dealer-result-index').click(function () {
+            
+            var latitude = $('.dealer-result-lat', $(this).closest('li')).html();
+            var longitude = $('.dealer-result-lon', $(this).closest('li')).html();
+            map.setView({
+             center: 
+              new Microsoft.Maps.Location(latitude, longitude),
+             zoom:12});
+            //alert(numResult);
              $('.results-item-template').removeClass('hovered'); 
              $(this).closest('.results-item-template').addClass('hovered');   
              $('html, body').animate({
