@@ -113,11 +113,14 @@ var DealerLocator = (function () {
                     zoom: 4
                 });
 
-                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
+//                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
+//                    e.handled = true;
+//                    return true;
+//                });
+                Microsoft.Maps.Events.addHandler(map, 'mousedown', function (e) {
                     e.handled = true;
                     return true;
                 });
-
                 Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) {
                     e.handled = true;
                     return true;
@@ -724,7 +727,8 @@ var DealerLocator = (function () {
         function pinMouseClick(e) {
             if (e.isTouchEvent === true || e.eventName === "click") {
                 pinMouseOut();
-                var pinNumber = e.target._text - 1;
+                
+                var pinNumber = e.target._text - 1; 
                 dealerListings[pinNumber].addClass('hovered');
                 $('html, body').animate({
                     scrollTop: dealerListings[pinNumber].offset().top-70
