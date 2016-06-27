@@ -19,8 +19,7 @@ var DealerLocator = (function () {
             numDataZip, numDataName, numDataCity,
             resetResults = false;
         dealerListings = {};
-        //var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
-		var bingApiCredentials = "Ai3LAP9B4dVgmxiUYVXs8y5CoKOtxgUzYCTeoN8UvTBnmxIPao4Vb-AUmUiFV038";
+        var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
         //options for the geolocation.getCurrentPosition call
         var geoLocateOptions = {
             enableHighAccuracy: true,
@@ -733,6 +732,8 @@ var DealerLocator = (function () {
         function pinMouseClick(e) {
             if (e.isTouchEvent === true || e.eventName === "click") {
                 pinMouseOut();
+                var pinNumber = e.target._text - 1;
+                
                 var pinNumber = e.target._text - 1;
                 dealerListings[pinNumber].addClass('hovered');
                 $('html, body').animate({
