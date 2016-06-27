@@ -1,3 +1,7 @@
+window.onload = function() {
+  DealerLocator.init();
+};
+
 var DealerLocator = (function () {
         //vars from dealer locator civic
         //temporary var for testing future use of ip to lat/long service
@@ -15,7 +19,8 @@ var DealerLocator = (function () {
             numDataZip, numDataName, numDataCity,
             resetResults = false;
         dealerListings = {};
-        var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
+        //var bingApiCredentials = "Ajkz_KnsjHxsfhRJeU78Xc8VgxAssv1iCF4leVVvmJLsPCaSXPaHdxuljT7aQ059";
+		var bingApiCredentials = "Ai3LAP9B4dVgmxiUYVXs8y5CoKOtxgUzYCTeoN8UvTBnmxIPao4Vb-AUmUiFV038";
         //options for the geolocation.getCurrentPosition call
         var geoLocateOptions = {
             enableHighAccuracy: true,
@@ -62,7 +67,55 @@ var DealerLocator = (function () {
                 //                });
 
 
-                //Add More Dealers
+                isMobile = checkMobile();
+
+                $('#dealer-map .loader').stop().fadeOut(100);
+
+				console.log('se cargo el dealer-locator.js')
+				
+                //initialize the map
+                map = new Microsoft.Maps.Map(document.getElementById('dealer-map'), {				
+                    credentials: bingApiCredentials,
+                    mapTypeId: Microsoft.Maps.MapTypeId.road,                    
+                    center: new Microsoft.Maps.Location(39.407547, -94.2591867),
+                    zoom: 4
+                });
+				
+
+/* erased not supported in bings maps 8
+                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
+                    e.handled = true;
+                    return true;
+                });
+
+                Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) {
+                    e.handled = true;
+                    return true;
+                });
+*/
+
+                //delay geoservices until user has scrolled down to the dealerLocator component
+                $resultsListTab.waypoint({
+                    handler: function (direction) {
+                        if (direction == 'down') {
+                            //check for value stored in cookie with name of'zip'
+                            if (checkCookie()) {
+                                setZipInputValue(zipGlobal);
+                                getDealerDataFromZip(zipGlobal);
+                                //if no cookie found try to use browser geolocation
+                            } else if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
+                            }
+                            //if no browser geolocation try to use hawk IP to zip service
+                            else {
+                                ipToZip();
+                            }
+                        }
+                    },
+                    offset: '-20%'
+                });
+				
+				//Add More Dealers
                 $("#dealer-locator .more-dealers").click(function () {
                     $form = $('#search-by-zip-form');
                     $dealerLocator = $('#dealer-locator');
@@ -98,50 +151,6 @@ var DealerLocator = (function () {
                     numResults = numResultsCity;                    
                     getDealerData();
                     return false;
-                });
-                
-				
-                isMobile = checkMobile();
-
-                $('#dealer-map .loader').stop().fadeOut(100);
-
-                //initialize the map
-                map = new Microsoft.Maps.Map(document.getElementById('dealer-map'), {
-                    credentials: bingApiCredentials,
-                    mapTypeId: Microsoft.Maps.MapTypeId.road,                    
-                    center: new Microsoft.Maps.Location(39.407547, -94.2591867),
-                    zoom: 4
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                //delay geoservices until user has scrolled down to the dealerLocator component
-                $resultsListTab.waypoint({
-                    handler: function (direction) {
-                        if (direction == 'down') {
-                            //check for value stored in cookie with name of'zip'
-                            if (checkCookie()) {
-                                setZipInputValue(zipGlobal);
-                                getDealerDataFromZip(zipGlobal);
-                                //if no cookie found try to use browser geolocation
-                            } else if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(geoLocateSuccess, geoLocateFail, geoLocateOptions);
-                            }
-                            //if no browser geolocation try to use hawk IP to zip service
-                            else {
-                                ipToZip();
-                            }
-                        }
-                    },
-                    offset: '-20%'
                 });
 
 

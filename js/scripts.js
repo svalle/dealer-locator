@@ -6891,7 +6891,7 @@ var Main = (function() {
 
     MultiCol.init();
 		
-	DealerLocator.init();
+	//DealerLocator.init();
 	
   });
 

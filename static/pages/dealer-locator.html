@@ -59,10 +59,11 @@
 
 
 
+	
 
 </head>
-
 <body>
+<!-- <body onload='DealerLocator.init();'> -->
     <div class="wrapper">
 
         <header class="acr-header" role="menu">
@@ -589,8 +590,12 @@
                             </figure>
                         </div>
 
-                        <!-- BING MAP INTEGRATION -->
-                        <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+                       <!-- BING MAP INTEGRATION -->
+                       <!--  <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> -->
+					   <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?branch=release'></script>
+					  
+					  
+					  
                     </div>
                     <!-- END MAP-->
 
@@ -950,18 +955,23 @@
 
 
     </div>
-
+	
+	
     <script type="text/javascript" src="../../js/vendor/vendor.min.js"></script>
     <script type="text/javascript" src="../../js/vendor-civic.js"></script>
     <script type="text/javascript" src="../../js/scripts.js"></script>
     <script type="text/javascript" src="../../js/dealer-locator.js"></script>
 	<!-- bootstrap select -->
 	<script type="text/javascript" src="../../js/bootstrap-select.min.js"></script>
+	
+	<!-- Reference to the Bing Maps SDK -->
+	<!-- <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?branch=release'></script> -->
 
+    
 
     <script type="text/javascript">
         Utility.svgLoader('/icons/systems.svg');
-        Utility.svgLoader('/icons/vehicle-sample.svg');
+        Utility.svgLoader('/icons/vehicle-sample.svg');	
     </script>
 
     <script>
