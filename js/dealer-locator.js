@@ -25,8 +25,6 @@ var DealerLocator = (function () {
             $map = $('#dealer-map', $dealerLocator),
             $form = $('#search-by-zip-form'),
             $resultsListTab = $('.dealer-locator', $dealerLocator),
-            //$submitButton = $('[type=submit]', $form),
-            //$zipInput = $('#zip', $form),
             $resultsList = $('.results-list', $dealerLocator),
             $resultsItemTemplate = $('.results-item-template', $resultsList).clone();
 
@@ -70,11 +68,7 @@ var DealerLocator = (function () {
                     $dealerLocator = $('#dealer-locator');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    //alert($form.attr('id'));
-
-                    //                    localStorage.setItem("rsZip", numResults);
-                    //                    numResultsZip = parseInt(localStorage.getItem("rsZip"));
-                    //                    numResults = numResultsZip;
+                    numResults = numResultsZip;
 
                     viewMore($form);
                     numResults = numResultsZip;
@@ -89,10 +83,9 @@ var DealerLocator = (function () {
                     $dealerLocator = $('#dealer-locator-by-name');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    //alert($form.attr('id'));
+                    
                     viewMore($form);
                     numResults = numResultsName;
-                    //alert(numDataName);
                     getDealerData();
                     return false;
                 });
@@ -100,11 +93,9 @@ var DealerLocator = (function () {
                     $form = $('#search-by-city-form');
                     $dealerLocator = $('#dealer-locator-by-city');
                     $resultsList = $('.results-list', $dealerLocator);
-                    $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    //alert($form.attr('id'));
+                    $resultsListTab = $('.dealer-locator', $dealerLocator);                    
                     viewMore($form);
-                    numResults = numResultsCity;
-                    //alert(numDataName);
+                    numResults = numResultsCity;                    
                     getDealerData();
                     return false;
                 });
@@ -117,8 +108,7 @@ var DealerLocator = (function () {
                 //initialize the map
                 map = new Microsoft.Maps.Map(document.getElementById('dealer-map'), {
                     credentials: bingApiCredentials,
-                    mapTypeId: Microsoft.Maps.MapTypeId.road,
-                    //center: new Microsoft.Maps.Location(34.0058945,-118.4440439),
+                    mapTypeId: Microsoft.Maps.MapTypeId.road,                    
                     center: new Microsoft.Maps.Location(39.407547, -94.2591867),
                     zoom: 4
                 });
@@ -167,14 +157,6 @@ var DealerLocator = (function () {
                     return false;
                 });
 
-
-                /*
-                $zipInput.focus(function() {
-                	if ($zipInput.val().length == 5) {
-                		enableSubmitButton();
-                		$submitButton.removeClass('disabled-button');
-                	}
-                });*/
 
                 //restricts users to only entering numeric values
                 //					$zipInput.on('keydown', zipKeyDown);
@@ -283,10 +265,6 @@ var DealerLocator = (function () {
                             //$('.more-dealers', $dealerLocator).removeClass('hide');
                         }
 
-
-
-                        //form submit send params to service to update map
-                        //form.submit();
                     }
                 });
 
@@ -344,8 +322,8 @@ var DealerLocator = (function () {
             $parentItemTemplate.find('.remove-preferred-dealer').removeClass('hidden');
             //create a cookie with data for preferred dealer	
 			createCookie('preferredDealer', $dealerNumber, 7);
-			//change cookie var
-			$preferredDealer = '';
+			//change cookie var			
+			$preferredDealer = readCookie('preferredDealer');
             //reorder nad put preferred in first place of the list			
             moveItem($arrayList, $arrayIndex, 0, $parentList);
         }
@@ -363,7 +341,7 @@ var DealerLocator = (function () {
             //remove a cookie with data for preferred dealer				
             eraseCookie('preferredDealer');
 			//change cookie var
-			
+			$preferredDealer = '';
             //reorder to original order, in this case no preferred dealer
             reorderList($containerList);
         }
