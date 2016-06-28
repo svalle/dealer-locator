@@ -77,21 +77,18 @@ var DealerLocator = (function () {
                     credentials: bingApiCredentials,
                     mapTypeId: Microsoft.Maps.MapTypeId.road,                    
                     center: new Microsoft.Maps.Location(39.407547, -94.2591867),
-                    zoom: 4
+                    maxZoom: 15,
+					minZoom: 5,
+					zoom: 10,
+					disableZooming: false,
+					enableClickableLogo: false,
+					showCopyright: false
                 });
 				
 
-/* erased not supported in bings maps 8
-                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-*/
+				//mousewheel event avoid zoom 
+				//Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) { e.handled = true; return true; });
+				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); })
 
                 //delay geoservices until user has scrolled down to the dealerLocator component
                 $resultsListTab.waypoint({
