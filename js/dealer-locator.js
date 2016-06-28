@@ -90,7 +90,7 @@ var DealerLocator = (function () {
 
 				//mousewheel event avoid zoom 
 				//Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) { e.handled = true; return true; });
-				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); return true;})
+				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); return false;})
 
                 //delay geoservices until user has scrolled down to the dealerLocator component
                 $resultsListTab.waypoint({
@@ -180,7 +180,7 @@ var DealerLocator = (function () {
                     $zipInput.val(zip);
                     //update map                    					
 					$form = $('#search-by-zip-form');
-                    $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=16&zip=' + $zipInput.val());
+                    $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsZip.val()+'&zip=' + $zipInput.val());										 
 					zipSearch($zipInput.val());
 					
                     //here if preferred dealer cookie
@@ -239,7 +239,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsZip = 0;
                             $form = $('#search-by-zip-form');
-                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsCity.val()+'&zip=' + $zipInput.val());
+                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+$maxResultsZip.val()+'&zip=' + $zipInput.val());
                             $dealerLocator = $('#dealer-locator');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
