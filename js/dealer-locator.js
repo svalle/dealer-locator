@@ -77,21 +77,20 @@ var DealerLocator = (function () {
                     credentials: bingApiCredentials,
                     mapTypeId: Microsoft.Maps.MapTypeId.road,                    
                     center: new Microsoft.Maps.Location(39.407547, -94.2591867),
-                    zoom: 4
+                    maxZoom: 15,
+					minZoom: 5,					
+					disableZooming: false,
+					enableClickableLogo: false,
+					showCopyright: false,
+					showMapTypeSelector: false,
+					showScalebar: false,
+					zoom: 13
                 });
 				
 
-/* erased not supported in bings maps 8
-                Microsoft.Maps.Events.addHandler(map, 'keydown', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-
-                Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) {
-                    e.handled = true;
-                    return true;
-                });
-*/
+				//mousewheel event avoid zoom 
+				//Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) { e.handled = true; return true; });
+				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); return true;})
 
                 //delay geoservices until user has scrolled down to the dealerLocator component
                 $resultsListTab.waypoint({
@@ -731,11 +730,12 @@ var DealerLocator = (function () {
         }
 
         function pinMouseClick(e) {
+			//console.log(e.target);
+			//console.log(e.target._options.text);
             if (e.isTouchEvent === true || e.eventName === "click") {
                 pinMouseOut();
-                var pinNumber = e.target._text - 1;
-                
-                var pinNumber = e.target._text - 1;
+                //var pinNumber = e.target._text - 1;
+				var pinNumber = e.target._options.text - 1;                
                 dealerListings[pinNumber].addClass('hovered');
                 $('html, body').animate({
                     scrollTop: dealerListings[pinNumber].offset().top-70
