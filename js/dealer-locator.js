@@ -135,9 +135,9 @@ var DealerLocator = (function () {
                     $dealerLocator = $('#dealer-locator-by-name');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
-                    
                     viewMore($form);
                     numResults = numResultsName;
+                    //alert(numResults);
                     getDealerData();
                     return false;
                 });
@@ -145,9 +145,10 @@ var DealerLocator = (function () {
                     $form = $('#search-by-city-form');
                     $dealerLocator = $('#dealer-locator-by-city');
                     $resultsList = $('.results-list', $dealerLocator);
-                    $resultsListTab = $('.dealer-locator', $dealerLocator);                    
+                    $resultsListTab = $('.dealer-locator', $dealerLocator);  
                     viewMore($form);
-                    numResults = numResultsCity;                    
+                    numResults = numResultsCity;
+                    //alert(numResults);
                     getDealerData();
                     return false;
                 });
@@ -691,8 +692,8 @@ var DealerLocator = (function () {
         // ---------------------------------------------------
         function addPins(dealers) {
             //clear previous pins
-            map.entities.pop(pinLayer);
-
+            //map.entities.pop(pinLayer);
+            map.entities.clear();
             //create pins from the long/lat of long/lat of returned dealers
             var pins = [];
             var pinLayer = new Microsoft.Maps.EntityCollection();
