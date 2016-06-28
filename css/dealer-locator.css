@@ -280,11 +280,14 @@
 
 .dealer-locator-section .dealer-result-index {
 	background-color: red;
-	border-radius: 100pt;
-	color: #fff;
-	font-size: 16pt;
-	line-height: 24pt;
-	padding: 11pt 16pt;
+    border-radius: 100pt;
+    color: #fff;
+    display: inline;
+    font-size: 16pt;
+    line-height: 24pt;
+    padding: 11pt 5pt;
+    text-align: center;
+    width: 47pt;
 }
 
 .dealer-locator-section .dealer-result-distance {
