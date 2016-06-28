@@ -78,17 +78,19 @@ var DealerLocator = (function () {
                     mapTypeId: Microsoft.Maps.MapTypeId.road,                    
                     center: new Microsoft.Maps.Location(39.407547, -94.2591867),
                     maxZoom: 15,
-					minZoom: 5,
-					zoom: 10,
+					minZoom: 5,					
 					disableZooming: false,
 					enableClickableLogo: false,
-					showCopyright: false
+					showCopyright: false,
+					showMapTypeSelector: false,
+					showScalebar: false,
+					zoom: 13
                 });
 				
 
 				//mousewheel event avoid zoom 
 				//Microsoft.Maps.Events.addHandler(map, 'mousewheel', function (e) { e.handled = true; return true; });
-				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); })
+				$('#dealer-map').mousewheel(function(e){ e.preventDefault(); return true;})
 
                 //delay geoservices until user has scrolled down to the dealerLocator component
                 $resultsListTab.waypoint({
@@ -727,11 +729,12 @@ var DealerLocator = (function () {
         }
 
         function pinMouseClick(e) {
+			//console.log(e.target);
+			//console.log(e.target._options.text);
             if (e.isTouchEvent === true || e.eventName === "click") {
                 pinMouseOut();
-                var pinNumber = e.target._text - 1;
-                
-                var pinNumber = e.target._text - 1;
+                //var pinNumber = e.target._text - 1;
+				var pinNumber = e.target._options.text - 1;                
                 dealerListings[pinNumber].addClass('hovered');
                 $('html, body').animate({
                     scrollTop: dealerListings[pinNumber].offset().top-70
