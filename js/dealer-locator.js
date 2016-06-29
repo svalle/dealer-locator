@@ -675,6 +675,9 @@ var DealerLocator = (function () {
                 }else{
                    $('.more-dealers', $dealerLocator).addClass('hide'); 
                 }
+                if (numResults > numData) {
+                    $('.more-dealers', $dealerLocator).addClass('hide');
+                }
                 $('.input-wrapper', $form).removeClass('has-error');
                 //set max results (we only want the 3 closest dealers)
                 addPins(data.Dealers.slice(0, numResults));
@@ -919,10 +922,11 @@ var DealerLocator = (function () {
                 if (resetResults == false) {
                     numResults = 0;
                 }
-                if (numDataName+3 > numResultsName) {
+                if (numDataName+3 >= numResultsName) {
                     numResultsName = numResultsName + 3;
                     $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+numResultsName+'&name=' + $nameInput.val());
                     resetResults = true;
+                    console.log(numDataName+','+ numResultsName)
                 }
             }
             if (searchForm.attr('id') == 'search-by-city-form') {
