@@ -131,12 +131,12 @@ var DealerLocator = (function () {
                 });
                 $("#dealer-locator-by-name .more-dealers").click(function () {
                     $form = $('#search-by-name-form');
+//                    $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=+300&name=' + $nameInput.val());
                     $dealerLocator = $('#dealer-locator-by-name');
                     $resultsList = $('.results-list', $dealerLocator);
                     $resultsListTab = $('.dealer-locator', $dealerLocator);
                     viewMore($form);
                     numResults = numResultsName;
-                    //alert(numResults);
                     getDealerData();
                     return false;
                 });
@@ -264,7 +264,7 @@ var DealerLocator = (function () {
                             numResults = 1;
                             numResultsName = 0;
                             $form = $('#search-by-name-form');
-                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=500&name=' + $nameInput.val());
+                            $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults=2&name=' + $nameInput.val());
                             $dealerLocator = $('#dealer-locator-by-name');
                             $resultsList = $('.results-list', $dealerLocator);
                             $resultsListTab = $('.dealer-locator', $dealerLocator);
@@ -917,8 +917,9 @@ var DealerLocator = (function () {
                 if (resetResults == false) {
                     numResults = 0;
                 }
-                if (numDataName > numResultsName) {
+                if (numDataName+3 > numResultsName) {
                     numResultsName = numResultsName + 3;
+                    $form.attr('action', 'http://acura.sc.release.dev.ignition.razorfish.com/platform/api/v1/dealer?productDivisionCode=B&maxResults='+numResultsName+'&name=' + $nameInput.val());
                     resetResults = true;
                 }
             }
