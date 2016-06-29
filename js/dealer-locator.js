@@ -78,7 +78,7 @@ var DealerLocator = (function () {
                     mapTypeId: Microsoft.Maps.MapTypeId.road,                    
                     center: new Microsoft.Maps.Location(39.407547, -94.2591867),
                     maxZoom: 15,
-					minZoom: 5,					
+					minZoom: 4,					
 					disableZooming: false,
 					enableClickableLogo: false,
 					showCopyright: false,
