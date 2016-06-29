@@ -672,6 +672,8 @@ var DealerLocator = (function () {
                 if (numData > 1) {
                     $('.more-dealers', $dealerLocator).removeClass('hide');
                     //alert(numData);
+                }else{
+                   $('.more-dealers', $dealerLocator).addClass('hide'); 
                 }
                 $('.input-wrapper', $form).removeClass('has-error');
                 //set max results (we only want the 3 closest dealers)
