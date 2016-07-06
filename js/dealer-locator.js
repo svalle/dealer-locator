@@ -276,8 +276,13 @@ var DealerLocator = (function () {
                     }
                 });
 
-
-
+				//filter options overlay
+				$('.filters-options').click(function(e){
+					$(this).closest('.input-wrapper').find('.filters-container').toggle();
+				});
+				$('.filters-container .close').click(function(e){
+					$(this).closest('.filters-container').toggle();
+				});
 
             } catch (e) {
                 if ($form.length > 0) {

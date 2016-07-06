@@ -111,12 +111,40 @@
 	padding-right:45px;
 }
 
-.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .bootstrap-select{
+.dealer-locator-section .find-a-dealer-form-content-acura .input-container .filters-options-container{
+	background-color: #fff;
+	display: flex;
+	align-items: center; 
+	justify-items: center; 
+	padding-right: 30px; 	
+	float: left; 
+	height: 44px;
+}
+
+.dealer-locator-section .find-a-dealer-form-content-acura .input-container .filters-options-container a.filters-options{display: block; align-self: center; border: medium none;}
+
+.dealer-locator-section .find-a-dealer-form-content-acura .input-container .filters-options-container a.filters-options img{display: block; height: auto; width: 30px; margin: auto;}
+
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .input-container .bootstrap-select{
 	background: #fff none repeat scroll 0 0;
 	float: right;
 	height: 4.4rem;
 	padding: 0 5px;          
 }
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container{display:none; width: 100%; height:900px; background-color:#fff; /* border: 1px solid red */; position: absolute; z-index: 99;}
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container ul.list-filters{
+    border-top: 2px solid #d2d2d2;
+    padding-left: 0;
+}
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container ul.list-filters li {
+    border-bottom: 1px solid #d2d2d2;
+    list-style: outside none none;
+    padding: 10px 0 5px 20px;
+}
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container .acr-cta-btn{margin:0 auto; display:block;}
+
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container .bootstrap-select{width:100%; padding:0; background-color:#fff; border:2px solid red;}
+.dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .filters-container .bootstrap-select .btn.dropdown-toggle.btn-default{background-color:#fff;}
 
 .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .bootstrap-select .filter-option{font-size:12pt;}
 .dealer-locator-section .find-a-dealer-form-content-acura .input-wrapper .bootstrap-select .dropdown-menu > li > a{font-size: 12pt;}
@@ -168,7 +196,7 @@
 	/*width: 75%;*/
 }
 
-.dealer-locator-section .find-a-dealer-form-content-acura .acr-cta-btn {
+.dealer-locator-section .find-a-dealer-form-content-acura .acr-cta-btn.submit {
 	float: right;
 	height: 4.4rem;
 	width: 4.4rem;
